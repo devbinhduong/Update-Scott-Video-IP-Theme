@@ -420,6 +420,7 @@
       },
       "settings": {
         "cover_banner_size": "1320x400",
+        "cover_banner_bottom_size": "1320x476",
         "hide_breadcrumbs": false,
         "hide_page_heading": false,
         "hide_category_page_heading": false,

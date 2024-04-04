@@ -1,7 +1,10 @@
 // Common
 .page-shipping {
-    #main-content .container {
+    #main-content > .container {
         max-width: 1350px;
+        @include smax-m {
+            padding: 0 20px;
+        }
     }
     .page-heading {
         display: none;
@@ -224,25 +227,187 @@
                         }
                     }
                 }
+                @include smax-m {
+                    justify-content: center;
+                }
             }
         }
     }
     @include smax-m {
+        &-list {
+            padding-top: 0px;
+            padding-bottom: 0px;
+        }
         &-item {
             flex-direction: column;
             &__title,
             &__content {
                 width: 100%;
                 text-align: center;
-                padding-top: 30px;
                 padding-left: 0px;
-            }
-            &__title {
-                
             }
             &__content {
                 font-size: 16px;
+                padding-top: 30px;
             }
         }
+    }
+}
+
+// Custom Block Banner
+.custom-block-banner {
+    padding: 40px 0px 60px;
+
+    .block-banner-item {  
+        .img-box {
+            @include lazy-loaded-padding("cover_banner_bottom_size");
+            img {
+                @include lazy-loaded-img;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                @include smin-m {
+                    min-height: unset;
+                }
+            }
+            &-mb {
+                display: none;
+                &::after {
+                    padding-bottom: 183.0769%;
+                }
+            }
+            @include smax-m {
+                display: none;
+                &-mb {
+                    display: block;
+                    &::after {
+                        padding-bottom: 65.3769%;
+                    }
+                    img {
+                        bottom: unset;
+                        height: auto;
+                    }
+                }
+            }
+        }
+
+        .content-box {
+            z-index: 1;
+            padding: 30px 20px;
+            width: calc(100% - 40px);
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 1px;
+            max-width: unset;
+            min-height: unset;
+            margin: 0 auto;
+            
+            @include smin-m {
+                max-width: 696px;
+                min-height: unset !important;
+                overflow-x: hidden;
+                overflow-y: auto;
+                height: auto;
+                position: absolute;
+                top: calc(50% + 18px);
+                left: 45px !important;
+                transform: translateY(-50%);
+                padding: 30px;
+                padding-right: 29px;
+
+                @include smax-m {
+                    padding: 20px;
+                }
+
+                &.content-box--right {
+                    left: auto;
+                    right: 60px;
+                }
+            }
+
+            @include smin-l {
+                left: 100px;
+            }
+
+            .banner-title {
+                font-size: 30px;
+                color: #444444;
+                font-weight: 600;
+                margin: 0;
+                line-height: 1.3333;
+                margin-bottom: 30px;
+                max-width: unset;
+
+                @include smax-l {
+                    font-size: 26px;
+                    line-height: 1.45;
+                }
+
+                @include smax-m {
+                    font-size: 22px;
+                    text-align: center;
+                    max-width: 100%;
+                }
+
+                &.banner-title--full {
+                    max-width: 100%;
+                }
+
+            }
+
+            .banner-text {
+                font-size: 18px;
+                font-weight: 300; 
+                color: #333333;
+                line-height: 1.5555; 
+                max-width: unset;
+                margin-bottom: 10px;
+                &:last-child {
+                    margin-bottom: 0;
+                }
+                &.text-strong {
+                    font-weight: 500;
+                    color: #F47B20;
+                }
+
+                @include smax-m {
+                    margin-bottom: 20px;
+                    font-size: 16px;
+                    text-align: center;
+                    max-width: 100%;
+                    line-height: 1.625;
+                }
+            }
+
+            @media(min-width: 1440px) {
+                left: calc((100% - 1290px) / 2);
+                min-height: 356px;
+
+                &.content-box--right {
+                    left: auto;
+                    right: calc((100% - 1290px) / 2);
+                }
+            }
+
+            /* Mint Update Button */
+            .button {
+                min-height: 56px;
+                display: inline-flex;
+                justify-content: center;
+                align-items: center;
+                min-width: 162px;
+
+                @include smax-m {
+                    min-height: unset;
+                }
+            }
+        }
+        @include smax-m {
+            overflow: hidden;
+            padding-bottom: 30px;
+        }
+    }
+
+    @include smax-m {
+        padding: 25px 0;
     }
 }
