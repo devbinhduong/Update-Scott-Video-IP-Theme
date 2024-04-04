@@ -1,0 +1,49 @@
+---
+product:
+    videos:
+        limit: {{theme_settings.productpage_videos_count}}
+    reviews:
+        limit: {{theme_settings.productpage_reviews_count}}
+    related_products:
+        limit: {{theme_settings.productpage_related_products_count}}
+    similar_by_views:
+        limit: {{theme_settings.productpage_similar_by_views_count}}
+---
+{{inject 'productId' product.id}}
+
+{{#partial "page"}}
+
+    {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+
+    {{#each product.shipping_messages}}
+        {{> components/common/alert/alert-info message}}
+    {{/each}}
+
+    <div class="page page-product">
+        <div class="product-view-top">
+            {{> components/products/product-view}}
+            
+            {{{region name="product_below_content"}}}
+            
+            {{#if product.videos.list.length}}
+                {{> components/products/videos product.videos}}
+            {{/if}}
+        </div>
+
+        <div class="product-view-bottom">
+            {{#if product.related_products}}
+                <section class="section-productRelated">
+                    <h2 class="custom-heading productRelatedv__heading">RELATED PRODUCTS</h2>
+                    {{> components/products/carousel products=product.related_products columns=3 list="Related Products"}}
+                </section>
+            {{/if}}
+        </div>
+    </div>
+
+
+    <!-- Ask An Expert Popup -->
+    {{> components/custom/global/custom-ask-an-expert-popup }}
+    
+    {{> components/products/schema}}
+{{/partial}}
+{{> layout/base}}

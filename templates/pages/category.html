@@ -1,0 +1,82 @@
+---
+category:
+    shop_by_price: true
+    products:
+        limit: {{theme_settings.categorypage_products_per_page}}
+---
+{{inject "categoryProductsPerPage" theme_settings.categorypage_products_per_page}}
+{{#partial "head"}}
+    {{#if pagination.category.previous}}
+        <link rel="prev" href="{{pagination.category.previous}}">
+    {{/if}}
+    {{#if pagination.category.next}}
+        <link rel="next" href="{{pagination.category.next}}">
+    {{/if}}
+{{/partial}}
+
+{{#partial "page"}}
+
+
+<div class="container">
+    <div class="category-header">
+        <h1 class="category-title">Showing Results for <span class="category-result-filter">{{category.name}}</span></h1>
+        {{> components/custom/category/custom-view-as}}
+    </div>
+
+    <!-- Category Desctription -->
+    {{#if category.description}}
+        <div class="category-description">
+            {{{category.description}}}
+        </div>
+    {{/if}}
+
+    <div class="custom-toolbar">
+        {{#if theme_settings.custom-category-sidebar}}
+            <div class="page-sidebar-mobile-wrapper hide-on-desktop">
+                <div class="page-sidebar-mobile">
+                    <span class="text">{{lang 'common.sidebar'}}</span>
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-sidebar"></use>
+                    </svg>
+                </div>
+            </div>
+        {{/if}}
+    </div>
+    <div class="page page-category page-listing">
+        {{#if theme_settings.custom-category-sidebar}}
+        <aside class="page-sidebar custom-sidebar" id="faceted-search-container">
+            <div class="page-sidebar-close hide-on-desktop">
+                <a href="#" class="close" aria-label="Icon Close Sidebar">
+                    <span class="icon icon--close">
+                        <svg>
+                            <use xlink:href="#icon-close"></use>
+                        </svg>
+                    </span>
+                </a>
+            </div>
+
+            <div class="custom-sidebar-header">
+                <span class="title">Filter</span>
+            </div>
+
+            <div class="breadcrumb-wrapper hide-on-tablet">
+                {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+            </div>
+
+            {{> components/category/sidebar}}
+        </aside>
+        {{/if}}
+
+        <main class="page-content" id="product-listing-container"> 
+            {{#if category.products}}
+                {{> components/category/product-listing productsnew=products.new show_compare=category.show_compare}}
+            {{else}}
+                <p class="page-no-products">{{lang 'categories.no_products'}}</p>
+            {{/if}}
+            {{{region name="category_below_content"}}}
+        </main>
+    </div>
+</div>
+
+{{/partial}}
+{{> layout/base}}

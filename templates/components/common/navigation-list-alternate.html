@@ -1,0 +1,89 @@
+{{#if type '==' 'category'}}
+    {{#if children}}
+        <p class="navPages-action navPages-action-lv1 navPages-action-depth-max has-subMenu is-root{{#if is_active}} activePage{{/if}}" data-label="{{url}}" data-index="{{@index}}">
+            <a class="text hover-link" href="{{url}}" aria-label="{{name}}">
+              <span>{{name}}</span>
+            </a>
+            <span class="navPages-action-moreIcon" aria-hidden="true">
+                <svg class="icon"><use href="#icon-chevron-down" /></svg>
+            </span>
+        </p>
+        {{> components/common/navigation-dropdown}}
+    {{else}}
+        <a class="navPages-action navPages-action-lv1 no-subMenu navPages-action-end hover-link{{#if is_active}} activePage{{/if}}" data-label="{{url}}" href="{{url}}" aria-label="{{name}}" data-index="{{@index}}">
+          <span class="text">{{name}}</span>
+        </a>
+    {{/if}}
+{{else if type '==' 'page'}}
+    {{#if children}}
+        <p class="navPages-action navPages-action-lv1 navPages-action-depth-max has-subMenu is-root{{#if name '==' page.title}} activePage{{/if}}" data-label="{{url}}" data-index="{{@index}}">
+            <a class="text hover-link {{name}}" href="{{url}}" aria-label="{{name}}">
+              <span>{{name}}</span>
+            </a>
+            <span class="navPages-action-moreIcon" aria-hidden="true">
+                <svg class="icon"><use href="#icon-chevron-down" /></svg>
+            </span>
+        </p>
+        <div class="navPage-subMenu navPage-subMenu-horizontal level-2" id="navPages-{{id}}" aria-hidden="true" tabindex="-1">
+            <ul class="navPage-subMenu-list">
+                <li class="navPage-subMenu-item-parent navPage-subMenu-item-child navPage-subMenu-title">
+                    <p class="navPage-subMenu-action navPages-action navPages-action-lv1 navPages-action-depth-max has-subMenu">
+                        <span class="navPages-action-moreIcon" aria-hidden="true">
+                            <svg class="icon"><use href="#icon-long-arrow-left" /></svg>
+                        </span>
+                        <a class="text hover-link" href="{{url}}"><span>{{name}}</span></a>
+                    </p>
+                </li>
+                <li class="navPage-subMenu-item-child navPages-action-end navPage-subMenu-all">
+                    <a class="navPage-subMenu-action navPages-action navPages-action-lv1 no-subMenu hover-link" href="{{url}}">
+                        <span class="text">{{lang 'category.view_all.name' category=name}}</span>
+                    </a>
+                </li>
+                {{#each children}}
+                    {{#if children}}
+                        <li class="navPage-subMenu-item-child has-dropdown custom-fadeInLeft" data-step-animate="0">
+                            <p class="navPage-subMenu-action navPages-action navPages-action-lv2 navPages-action-depth-max has-subMenu{{#if name '==' page.title}} activePage{{/if}}" data-navId="navPages-{{id}}">
+                                <a class="text hover-link" href="{{url}}"><span>{{name}}</span></a>
+                                <span class="navPages-action-moreIcon" aria-hidden="true">
+                                    <svg class="icon"><use href="#icon-chevron-down" /></svg>
+                                </span>
+                            </p>
+                            <div class="navPage-subMenu navPage-subMenu-horizontal level-3" aria-hidden="true" tabindex="-1">
+                                <ul class="navPage-subMenu-list">
+                                    <li class="navPage-subMenu-item-parent navPage-subMenu-item-child navPage-subMenu-title">
+                                        <p class="navPage-subMenu-action navPages-action navPages-action-lv2{{#if name '==' ../page.title}} activePage{{/if}}">
+                                            <span class="navPages-action-moreIcon" aria-hidden="true">
+                                                <svg class="icon"><use href="#icon-long-arrow-left" /></svg>
+                                            </span>
+                                            <a class="text hover-link" href="{{url}}"><span>{{name}}</span></a>
+                                        </p>
+                                    </li>
+                                    <li class="navPage-subMenu-item-child navPages-action-end navPage-subMenu-all">
+                                        <a class="navPage-subMenu-action navPages-action navPages-action-lv2 no-subMenu hover-link{{#if name '==' ../page.title}} activePage{{/if}}" href="{{url}}">
+                                            <span class="text">{{lang 'category.view_all.name' category=name}}</span>
+                                        </a>
+                                    </li>
+                                    {{#each children}}
+                                        <li class="navPage-subMenu-item-child navPages-action-end">
+                                            <a class="navPage-subMenu-action navPages-action navPages-action-lv3 no-subMenu level-3 hover-link{{#if name '==' ../../page.title}} activePage{{/if}}" href="{{url}}"><span class="text">{{name}}</span></a>
+                                        </li>
+                                    {{/each}}
+                                </ul>
+                            </div>
+                        </li>
+                    {{else}}
+                        <li class="navPage-subMenu-item-child navPages-action-end custom-fadeInLeft" data-step-animate="0">
+                            <a class="navPage-subMenu-action navPages-action navPages-action-lv2 no-subMenu hover-link{{#if name '==' ../page.title}} activePage{{/if}}" href="{{url}}"><span class="text">{{name}}</span></a>
+                        </li>
+                    {{/if}}
+                {{/each}}
+            </ul>
+        </div>
+    {{else}}
+        <a class="navPages-action navPages-action-lv1 no-subMenu navPages-action-end hover-link{{#if name '==' page.title}} activePage{{/if}}" data-label="{{url}}" href="{{url}}" aria-label="{{name}}" data-index="{{@index}}">
+          <span class="text">{{name}}</span>
+        </a>
+    {{/if}}
+{{/if}}
+
+

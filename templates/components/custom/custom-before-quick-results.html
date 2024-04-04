@@ -1,0 +1,57 @@
+<div class="quickResults-wrapper">
+    {{#if theme_settings.beforeQuickSearch-trending-now}}
+        <div class="quickResults-item quickResults-text">
+            {{#if theme_settings.beforeQuickSearch-trending-now-title}}
+                <h3 class="quickResults-title">{{theme_settings.beforeQuickSearch-trending-now-title}}</h3>
+            {{/if}}
+            <ul class="productGrid-search">
+                {{#if theme_settings.beforeQuickSearch-trending-now-1}}
+                    <li class="search-item">
+                        <a class="link" href="/search.php?search_query={{lowercase (plusify theme_settings.beforeQuickSearch-trending-now-1)}}&section=product">
+                            {{theme_settings.beforeQuickSearch-trending-now-1}}
+                        </a>
+                    </li>
+                {{/if}}
+                {{#if theme_settings.beforeQuickSearch-trending-now-2}}
+                    <li class="search-item">
+                        <a class="link" href="/search.php?search_query={{lowercase (plusify theme_settings.beforeQuickSearch-trending-now-2)}}&section=product">
+                            {{theme_settings.beforeQuickSearch-trending-now-2}}
+                        </a>
+                    </li>
+                {{/if}}
+                {{#if theme_settings.beforeQuickSearch-trending-now-3}}
+                    <li class="search-item">
+                        <a class="link" href="/search.php?search_query={{lowercase (plusify theme_settings.beforeQuickSearch-trending-now-3)}}&section=product">
+                            {{theme_settings.beforeQuickSearch-trending-now-3}}
+                        </a>
+                    </li>
+                {{/if}}
+                {{#if theme_settings.beforeQuickSearch-trending-now-4}}
+                    <li class="search-item">
+                        <a class="link" href="/search.php?search_query={{lowercase (plusify theme_settings.beforeQuickSearch-trending-now-4)}}&section=product">
+                            {{theme_settings.beforeQuickSearch-trending-now-4}}
+                        </a>
+                    </li>
+                {{/if}}
+                {{#if theme_settings.beforeQuickSearch-trending-now-5}}
+                    <li class="search-item">
+                        <a class="link" href="/search.php?search_query={{lowercase (plusify theme_settings.beforeQuickSearch-trending-now-5)}}&section=product">
+                            {{theme_settings.beforeQuickSearch-trending-now-5}}
+                        </a>
+                    </li>
+                {{/if}}
+            </ul>
+        </div>
+    {{/if}}
+    {{#if theme_settings.beforeQuickSearch-popular}}
+        <div class="quickResults-item quickResults-product">
+            {{#if theme_settings.beforeQuickSearch-popular-title}}
+                <h3 class="quickResults-title">{{theme_settings.beforeQuickSearch-popular-title}}</h3>
+            {{/if}}
+            <div class="loadingOverlay"></div>
+            <ul class="productGrid"></ul>
+        </div>
+    {{/if}}
+</div>
+{{~inject 'quickSearchPopularId' theme_settings.beforeQuickSearch-popular-id}}
+{{~inject 'quickSearchResultLimit' theme_settings.beforeQuickSearch-limit}}

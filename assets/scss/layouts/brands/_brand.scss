@@ -1,0 +1,108 @@
+.brandGrid {
+    margin-left: -12px;
+    margin-right: -12px;
+
+    .brand {
+        padding-left: 12px;
+        padding-right: 12px;
+
+        .card {
+            padding: 0;
+            border: 1px solid #e6e6e6;
+
+            .card-title {
+                a {
+                    font-size: 20px;
+                    color: #000;
+                    text-decoration: none;
+                    display: block;
+                    font-weight: 500;
+                    line-height: 30px;
+                }
+            }
+            .card-figure {
+                background-color: transparent;
+
+                .card-img-container {
+                    max-height: 125px;
+                }
+            }
+            .card-body {
+                padding: 8px 10px;
+                background-color: #fafafa;
+                border-bottom-left-radius: 8px;
+                border-bottom-right-radius: 8px;
+            }
+        }
+    }
+}
+
+/* Custom Top Brand Details start */
+.brandSection {
+    &__container {
+        display: flex;
+        justify-content: center;
+        margin-left: -15px;
+        margin-right: -15px;
+
+        &--noCenter {
+            justify-content: flex-start;
+        }
+
+        @include smax-s {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        >div {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+    }
+
+    &__left {
+        width: 100%;
+        max-width: 255px;
+
+        @include smax-s {
+            margin-bottom: 24px;
+        }
+    }
+
+    &__right {
+        .page-heading {
+            font-size: 28px;
+            margin-bottom: 12px !important;
+        }
+    }
+
+    &__text {
+        font-size: 15px;
+        line-height: 24px;
+
+        @include smax-s {
+            font-size: 14px;
+        }
+
+        h3 {
+            margin-top: 27px;
+            margin-bottom: 9px;
+            font-weight: 600;
+        }
+
+        p {
+            margin-bottom: 10px;
+
+            strong {
+                margin-top: 0;
+            }
+        }
+    }
+}
+
+.page-type-brand {
+    #main-content {
+        padding-top: 20px;
+        padding-bottom: 30px;
+    }
+}

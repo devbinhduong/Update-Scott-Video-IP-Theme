@@ -1,0 +1,57 @@
+<div id="{{data}}-popup" class="account-popup{{#if data '==' 'account-pc'}} custom-auth-popup{{/if}}">
+    <div class="custom-popup-content">
+        <ul class="account-dropdown">
+            <li class="account-item">
+                <a class="account-action hover-link" href="{{urls.account.orders.all}}">
+                    <span class="hover-link--account-dropdown">{{lang 'account.nav.orders'}}</span>
+                </a>
+            </li>
+            {{#if settings.returns_enabled}}
+                <li class="account-item">
+                    <a class="account-action hover-link" href="{{urls.account.returns}}">
+                        <span class="hover-link--account-dropdown">{{lang 'account.nav.returns'}}</span>
+                    </a>
+                </li>
+            {{/if}}
+            <li class="account-item">
+                <a class="account-action hover-link" href="{{urls.account.inbox}}">
+                    <span class="hover-link--account-dropdown">Messages</span>
+                </a>
+            </li>
+                <li class="account-item">
+                <a class="account-action hover-link" href="{{urls.account.addresses}}">
+                    <span class="hover-link--account-dropdown">{{lang 'account.nav.addresses'}}</span>
+                </a>
+            </li>
+            {{#if settings.show_payment_methods}}
+                <li class="account-item">
+                    <a class="account-action hover-link" href="{{urls.account.payment_methods.all}}">
+                        <span class="hover-link--account-dropdown">{{lang 'account.nav.payment_methods'}}</span>
+                    </a>
+                </li>
+            {{/if}}
+            {{#if settings.show_wishlist}}
+                <li class="account-item">
+                    <a class="account-action hover-link" href="{{urls.account.wishlists.all}}">
+                        <span class="hover-link--account-dropdown">Wishlist</span>
+                    </a>
+                </li>
+            {{/if}}
+            <li class="account-item">
+                <a class="account-action hover-link" href="{{urls.account.recent_items}}">
+                    <span class="hover-link--account-dropdown">{{lang 'account.nav.recently_viewed'}}</span>
+                </a>
+            </li>
+            <li class="account-item">
+                <a class="account-action hover-link" href="{{urls.account.details}}">
+                    <span class="hover-link--account-dropdown">{{lang 'account.nav.settings'}}</span>
+                </a>
+            </li>
+            <li class="account-item">
+                <a class="account-action hover-link" href="{{urls.auth.logout}}">
+                    <span class="hover-link--account-dropdown">{{lang 'common.logout'}}</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

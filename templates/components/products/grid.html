@@ -1,0 +1,7 @@
+<ul class="{{#if theme_settings.product_list_display_mode '==' "grid"}} productGrid{{else}} productList{{/if}} col-2">
+    {{#each products}}
+    <li class="product">
+            {{>components/products/card settings=../settings show_compare=../show_compare show_rating=../settings.show_product_rating theme_settings=../theme_settings customer=../customer event=../event position=(add @index 1)}}
+    </li>
+    {{/each}}
+</ul>

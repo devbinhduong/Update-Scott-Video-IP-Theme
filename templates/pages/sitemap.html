@@ -1,0 +1,36 @@
+{{#partial "page"}}
+<div class="custom_breadcrumb">
+    <h1 class="page-heading">{{lang 'sitemap.page_title'}}</h1>
+</div>
+<main class="page">
+    <div class="page-content">
+        <ul class="contentSitemap">
+            {{#each sitemap}}
+            <li>
+                <h3>{{label}}</h3>
+                <ul>
+                    {{#each body}}
+                    <li>
+                        <a href="{{url}}" class="hover-link">{{label}}</a>
+                        {{#if children}}
+                        <ul>
+                            {{#each children}}
+                            {{> components/sitemap/links}}
+                            {{/each}}
+                        </ul>
+                        {{/if}}
+                    </li>
+                    {{/each}}
+                    {{#if show_all_link}}
+                    <li>
+                        <a href="{{subsection_url}}" class="hover-link">{{lang 'sitemap.show_all_link'}}</a>
+                    </li>
+                    {{/if}}
+                </ul>
+            </li>
+            {{/each}}
+        </ul>
+    </div>
+</main>
+{{/partial}}
+{{> layout/base}}

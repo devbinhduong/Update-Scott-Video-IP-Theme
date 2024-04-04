@@ -1,0 +1,71 @@
+// =============================================================================
+// BODY (CSS)
+//
+// 1. Header is fixed on small screens, use the content body to create the whitespace
+//    between it and the header on all situations. If you change the spacing here,
+//    please update .heroCarousel too.
+//
+// =============================================================================
+body {
+    &:not(.page-type-default) {
+        .header.is-sticky {
+            box-shadow: 0 2px 8px 4px rgba(0, 0, 0, 0.05);
+        }
+    }
+
+    &:not(.page-type-default):not(.page-type-product):not(.page-type-category) {
+        .page-heading {
+            font-size: $fontSize-root + 10;
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        .body {
+            padding-bottom: 30px;
+            
+            @include smin-m {
+                padding-bottom: 100px;
+            }
+        }
+    }
+
+    &.page-type-product {
+        .body {
+            padding-bottom: 40px;
+        }
+    }
+
+    .page-content--textCenter {
+        .page-heading {
+            text-align: center;
+        }
+    }
+}
+
+.page {
+    @include grid-row($behavior: nest);
+    margin: 0;
+}
+
+.body {
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.page-content,
+.page-content--full {
+    @include grid-column(12);
+    padding: 0;
+}
+
+.page-content--textCenter {
+    padding-top: 50px;
+    text-align: center;
+    float: none;
+}
+
+.page-type-default {
+    .body {
+        background-color: #F3F6F5;
+    }
+}

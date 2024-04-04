@@ -1,0 +1,413 @@
+// =============================================================================
+// CARDS (CSS)
+// =============================================================================
+//
+// 1. Allow users to click the anchor tag on the image in the figcaption empty
+//    space. This provides a much larger and simpler hit state for navigating
+//    to the product details page. (Does not work in IE10 or earlier).
+// 2. Using translate3d to counter a chrome specific bug: When using a masonry
+//    styled layout via CSS column-count etc, transforms applied to descendants
+//    are made invisible, except for 3d transforms...
+//
+// -----------------------------------------------------------------------------
+
+.card {
+    border: 1px solid #AFAFAF;
+    
+    @include smin-m {
+
+        /* Card Image Swap */
+        .card-image-2 {
+            opacity: 0;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        &.card-hover {
+            &:hover {
+                .card-link {
+                    .card-image {
+                        opacity: 0;
+                        backface-visibility: visible;
+                    }
+
+                    .card-image-2 {
+                        opacity: 1;
+                        backface-visibility: visible;
+                        z-index: 1;
+
+                        img {
+                            transform: scale3d(1.1, 1.1, 1);
+                        }
+                    }
+                }
+            }
+        }
+
+        &:not(.card-hover) {
+            .card-image {
+                transition: opacity .3s ease, transform 2s cubic-bezier(0, 0, .44, 1.18) 0s;
+            }
+
+            &:hover {
+                .card-image {
+                    transform: scale3d(1.1, 1.1, 1);
+                }
+            }
+        }
+    }
+
+    .product-card-rating {
+        position: absolute;
+        z-index: 9;
+        top: 28px;
+        left: 28px;
+        display: inline-flex;
+        gap: 4px;
+        border-radius: 60px;
+        padding: 10px 20px;
+        background: #ffffff;
+
+        @include smax-m {
+            padding: 4px 12px;
+        }
+
+        .number-review {
+            color: stencilColor("color-primary");
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 20px;
+            text-transform: uppercase;
+            transform: translateY(1px);
+        }
+
+        .icon {
+            width: 20px;
+            height: 20px;
+        }
+    }
+}
+
+.card-link {
+    display: block;
+    position: relative;
+    overflow: hidden;
+
+    .card-img-container {
+        display: block;
+        position: relative;
+        @include lazy-loaded-padding('productgallery_size');
+
+        @include smin-m {
+            max-width: get-width(stencilString('productgallery_size'));
+        }
+
+        &.card-img-container-2 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            &:after {
+                width: auto;
+            }
+        }
+
+        img {
+            object-fit: contain
+        }
+    }
+
+    .card-image {
+        @include lazy-loaded-img;
+        opacity: 1;
+        backface-visibility: visible;
+        border: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        margin-top: 0;
+        margin-bottom: 0;
+        transition: opacity .3s ease;
+    }
+
+    .card-image-2 {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        z-index: 3;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        opacity: 0;
+        backface-visibility: hidden;
+        z-index: -1;
+        transform: translate(-50%, -50%);
+        transition: opacity .3s ease, transform 2s cubic-bezier(0, 0, .44, 1.18) 0s;
+
+        img {
+            display: inline-block;
+            vertical-align: top;
+            max-height: 100%;
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            transition: opacity .3s ease, transform 2s cubic-bezier(0, 0, .44, 1.18) 0s;
+
+            &.lazyload,
+            &.lazyloading {
+                opacity: 0;
+                top: auto;
+                left: auto;
+                transform: none;
+                position: relative;
+                transition: $anchor-transition;
+            }
+        }
+    }
+
+    .card-no-image {
+        position: absolute;
+        top: 50%;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        transform: translateY(-50%);
+        margin: auto;
+        opacity: 1;
+        backface-visibility: visible;
+        border: 0;
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        margin-top: 0;
+        margin-bottom: 0;
+        transition: opacity .3s ease;
+    }
+
+    @include smin-xs {
+        .card-img-container {
+            max-width: 100%;
+        }
+    }
+
+    @include smin-m {
+        .card-image-2 {
+            opacity: 0;
+            z-index: -1;
+            overflow: hidden;
+        }
+    }
+}
+
+.card-figure {
+    margin-top: $card-figure-marginTop;
+    overflow: hidden;
+    padding: 10px;
+    position: relative;
+    z-index: 10;
+
+    &:hover {
+        .card-figcaption {
+            opacity: 1;
+        }
+    }
+
+    &__link {
+        display: block;
+        position: relative;
+        border: 1px solid #e5e5e5;
+    }
+}
+
+.card-img-container {
+
+    @include lazy-loaded-padding("productgallery_size");
+   
+    @include smin-m {
+        max-width: get-width(stencilString("productgallery_size"));
+    }
+}
+
+.card-figcaption {
+    display: none;
+    margin: $card-figcaption-margin;
+    pointer-events: none; // 1
+
+    @include breakpoint("medium") {
+        display: block;
+    }
+
+    /* Hide Default button action */
+    .card-figcaption-bottom {
+        display: none !important;
+    }
+}
+
+.card-figcaption-body {
+    display: $card-figcaption-body-display;
+    pointer-events: all; // 1
+    transform: translate3d(0, -50%, 0); // 2
+}
+
+.card-image {
+    @include lazy-loaded-img;
+    border: 0;
+    /* Object-fit polyfill */
+    font-family: "object-fit: contain;";
+    max-height: 100%;
+    object-fit: contain;
+    width: 100%;
+}
+
+.card-title {
+    font-size: $card-title-fontSize;
+    margin: $card-title-margin;
+
+    > a {
+        color: $card-title-color;
+        display: block;
+        text-decoration: $card-title-textDecoration;
+
+        &:hover {
+            color: $card-title-color-hover;
+        }
+    }
+}
+
+.card-text {
+    margin-bottom: $card-text-marginBottom;
+    display: flex;
+    justify-content: flex-start;
+    align-items: baseline;
+    .price-section.rrp-price--withoutTax {
+        font-size: 0px;
+        margin-right: 6px;
+        .price {
+            font-size: 20px;
+        }
+    }
+
+    abbr {
+        border: 0;
+        color: inherit;
+        font-size: inherit;
+    }
+}
+
+.card-figcaption-button {
+    border: $card-figcaption-button-border;
+    display: $card-figcaption-button-display;
+    margin: $card-figcaption-button-margin;
+
+    &:active {
+        background-color: $card-figcaption-button-backgroundHover;
+        border: $card-figcaption-button-border;
+    }
+
+    .card-figcaption-body & {
+        &:focus {
+            background-color: $card-figcaption-button-backgroundHover;
+            outline: revert;
+        }
+    }
+
+    + .card-figcaption-button {
+        margin: $card-figcaption-button-margin;
+    }
+}
+
+.card-body {
+    text-align: center;
+    background-color: #ffffff;
+    padding: 16px 18px 18px 22px;
+
+    @include breakpoint("small") {
+        text-align: left;
+    }
+
+    .card-text {
+        color: #444444;
+        font-style: normal;
+        font-weight: 900;
+        text-transform: uppercase;
+
+        &[data-test-info-type="brandName"] {
+            display: none;
+        }
+
+        &[data-test-info-type="price"] {
+            font-size: 20px;
+        }
+    }
+
+    .card-title {
+        margin-bottom: 24px;
+        text-align: left;
+
+        > a {
+            color: #444444;
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 1.5;
+            text-transform: capitalize;
+
+            // overflow-wrap: break-word;
+            // --lineHeight : 30px;
+            // --row: 2;
+            // line-height: var(--lineHeight);
+            // height: calc(var(--lineHeight) * var(--row));
+            // overflow: hidden;
+            // text-overflow: ellipsis;
+            // display: -webkit-box;
+            // -webkit-line-clamp: var(--row);
+            // -webkit-box-orient: vertical;
+
+            @include smax-l {
+                font-size: 16px;
+            }
+        }
+    }
+
+    .card-figcaption-bottom {
+        margin-top: 24px;
+    }
+}
+
+
+//
+// Alternate card
+//
+// Purpose: Used to give the card alternative styling
+// -----------------------------------------------------------------------------
+
+.card--alternate {
+    border: 3px solid stencilColor("card--alternate-borderColor");
+    transition: all 0.15s ease;
+
+    .card-body {
+        background-color: stencilColor("card--alternate-backgroundColor");
+        padding: spacing("half");
+        transition: all 0.15s ease;
+
+        @include breakpoint("small") {
+            padding: spacing("single");
+        }
+    }
+
+    &:hover {
+        border-color: stencilColor("color-primary");
+
+        .card-body {
+            background-color: stencilColor("color-primary");
+
+            .card-text {
+                color: stencilColor("card--alternate-color--hover");
+            }
+        }
+
+        .card-title > a {
+            color: stencilColor("card--alternate-color--hover");
+        }
+    }
+}

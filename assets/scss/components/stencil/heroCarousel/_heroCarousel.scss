@@ -1,0 +1,714 @@
+// HERO CAROUSEL
+// -----------------------------------------------------------------------------
+//
+// Purpose: Styles the hero carousel component, which basically adds extras to the
+// vendor slick carousel, to specifically display hero images.
+//
+// 1. Use object-fit on the image tag to keep aspect ratio and cover the space
+//    created by the outer div. The JS will detect browsers that do not support
+//    object-fit and instead copy the image src to a the background-image of the
+//    wrapper div and add the compat-object-fit class.
+//
+// 2. Visually overrides the top margin for '.body' defined in _body.scss.
+//    The '.body' top margin creates space between the header and page content.
+//    However, on the homepage, we want the carousel to be flush with the header.
+//
+// 3. Allows image to scale on large screens while preventing the top and bottom
+//    from becoming cut off.
+// -----------------------------------------------------------------------------
+.heroCarousel-wrapper{
+    position: relative;
+}
+
+.heroCarousel {
+    width: 1px;
+    min-width: 100%;
+    white-space: nowrap;
+    position: relative;
+    margin-top: 0;
+    margin-bottom: 0;
+
+    &.slick-dotted{
+        margin-bottom: 0;
+    }
+
+    &.slick-initialized {
+        max-height: 970px;
+        opacity: 1;
+    }
+
+    &:not(.slick-initialized) :not(.heroCarousel-slide--first).heroCarousel-slide {
+        display: none;
+    }
+
+    .slick-arrow{
+        width: 72px;
+        height: 72px;
+        padding: 17px;
+        border-radius: 50%;
+        fill: stencilColor('carousel-arrow-color');
+        stroke: stencilColor('carousel-arrow-color');
+        border: 2px solid stencilColor('carousel-arrow-color');
+        transition: $anchor-transition;
+        background-color: transparent;
+        visibility: hidden;
+        opacity: 0;
+        cursor: pointer;
+
+        &:before {
+            content: none;
+        }
+
+        &.slick-prev {
+            left: 15px;
+        }
+
+        &.slick-next {
+            right: 15px;
+        }
+
+        &.slick-disabled{
+            opacity: 0.5!important;
+            cursor: default;
+        }
+
+        &:hover {
+            fill: stencilColor('carousel-arrow-color');
+            stroke: stencilColor('carousel-arrow-color');
+        }
+    }
+
+    .slick-dots {
+        left: 0;
+        right: 0;
+        bottom: 10px;
+
+        li {
+           padding: 0;
+            width: auto;
+            height: auto;
+            vertical-align: middle;
+            margin: 0 10px;
+
+            button{
+                font-size: 0;
+                background-color: transparent;
+                border-color: $slick-dot-bgColor;
+                opacity: 1;
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+
+                &:before{
+                    display: none;
+                }
+            }
+
+            &.slick-active{
+                button{
+                    border-color: $slick-dot-bgColor;
+                    background-color: $slick-dot-bgColor;
+                }
+            }
+        }
+    }
+
+    @media (min-width: 768px){
+        overflow: hidden;
+    }
+
+    @media (min-width: 1025px){
+        .slick-dots{
+            bottom: 30px;
+
+            li {
+                margin-left: 14px;
+                margin-right: 14px;
+            }
+        }
+
+        .slick-arrow{
+            &.slick-next {
+                right: 60px;
+            }
+
+            &.slick-prev {
+                left: 60px;
+            }
+        }
+
+        &:hover{
+            .slick-arrow{
+                visibility: visible;
+                opacity: 1;
+            }
+        }
+    }
+
+    @media (min-width: 1600px){
+        .slick-dots{
+            bottom: 43px;
+        }
+    }
+}
+
+.heroCarousel-slide {
+    position: relative;
+
+    .heroCarousel-image {
+        min-height: stencilString("homepage_show_carousel_height_mobile");
+        object-fit: cover;
+        img{
+            display: none;
+
+            &.image-mobile{
+                display: block;
+                min-height: stencilString("homepage_show_carousel_height_mobile");
+                object-fit: cover;
+            }
+
+            &.lazyload,
+            &.lazyloading{
+                width: 100%;
+                height: 100%;
+                margin: 0 auto;
+                object-fit: scale-down;
+            }
+        }
+
+        img {
+            @include smax-m {
+                // min-height: 800px;
+            }
+        }
+    }
+
+    @media (min-width: 551px) {
+        .heroCarousel-image {
+            img{
+                display: block;
+
+                &.image-mobile{
+                    display: none;
+                }
+            }
+        }
+    }
+
+    @media (min-width: 551px) and (max-width: 767px){
+        .heroCarousel-image {
+            img{
+                display: block;
+            }
+        }
+    }
+}
+
+.heroCarousel-content {
+    position: absolute;
+    background-color: stencilColor('carousel-bgColor');
+    top: 150px;
+    left: 0;
+    right: 0;
+    z-index: 3;
+    width: 100%;
+    text-align: center;
+    padding: 0 15px;
+    transform: translateY(-50%);
+    white-space: normal;
+    margin: 0 auto;
+    padding-bottom: 8px;
+
+    @include smax-s {
+        top: 100px;
+        transform: unset;
+    }
+
+    @media (max-width: 400px) {
+        top: 50px;
+    }
+
+    &.heroCarousel-content--notEmpty{
+        padding: 15px;
+        max-width: 500px;
+    }
+
+    @media (min-width: 768px){
+        right: unset;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    @media (min-width: 992px) {
+        padding-left: 0;
+        padding-right: 0;
+
+        &.heroCarousel-content--empty {
+            background-color: transparent;
+        }
+    }
+
+    @media (min-width: 1025px){
+        max-width: 630px;
+        top: 50%;
+
+        &.heroCarousel-content--left{
+            left: 30px;
+            text-align: left;
+            transform: translateY(-50%);
+
+            .heroCarousel-countdown{
+                justify-content: flex-start;
+            }
+        }
+
+        &.heroCarousel-content--center{
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        &.heroCarousel-content--right{
+            left: auto;
+            right: 30px;
+            text-align: right;
+            transform: translateY(-50%);
+
+            .heroCarousel-countdown{
+                justify-content: flex-end;
+            }
+        }
+    }
+
+    @include smin-xl {
+        &.heroCarousel-content--left{
+            left: calc((100% - 1290px)/ 2);
+        }
+
+        &.heroCarousel-content--right{
+            right: calc((100% - 1290px)/ 2);
+        }
+    }
+}
+
+.heroCarousel-title {
+    position: relative;
+    color: #ffffff;
+    font-size: 90px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 100px; /* 111.111% */
+    letter-spacing: 0;
+    padding-bottom: 6px;
+
+    @include smax-l {
+        font-size: 60px;
+        line-height: 1.1;
+    }
+
+    @include smax-m {
+        font-size: 40px;
+        padding-bottom: 14px;
+    }
+
+    @include smax-s {
+        font-size: 30px;
+        margin-top: 0;
+        margin-bottom: 4px;
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 195px;
+        height: 2px;
+        background-color: #F47B20;
+
+        @include smax-m {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        @include smax-s {
+            width: 100px;
+        }
+    }
+}
+
+.heroCarousel-description {
+    color: #ffffff;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 30px;
+    margin-bottom: 40px;
+
+    @include smax-m {
+        font-size: 16px;
+    }
+
+    @include smax-s {
+        font-size: 14px;
+        margin-bottom: 16px;
+    }
+}
+
+.heroCarousel-action {
+    .button{
+        min-width: 150px;
+        color: #ffffff;
+        font-family: "Outfit", sans-serif;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 20px;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        padding: 13px 20px 15px;
+
+        @include smax-s {
+            font-size: 16px;
+            width: fit-content;
+            padding: 9px 12px;
+            min-width: 112px;
+        }
+
+        &:hover {
+            color: #F47B20;
+        }
+    }
+}
+
+
+/* Custom Product  Carousel */
+.homeCarouselFeature__wrapper {
+    position: absolute;
+    right: calc((100% - 1290px) / 2);
+    top: 167px;
+    max-width:350px;
+    width: 100%;
+    padding-right: 75px;
+    
+    @include smax-xl {
+        right: 15px;
+    }
+
+    @include smax-m {
+        right: unset;
+        left: 50%;
+        top: 40%;
+        transform: translateX(-50%);
+        max-width: 425px;
+        padding-right: 0;
+    }
+
+    @include smax-xs {
+        top: calc(45% + 20px);
+        padding-right: 60px;
+        padding-left: 12px;
+        max-width: 100%;
+    }
+
+    @media (max-width: 420px) {
+        padding-right: 40px;
+    }
+
+    .slick-list {
+        padding-top: 60px;
+
+        @include smax-m {
+            padding-left: 70px;
+        }
+
+        @media (max-width: 400px) {
+            padding-right: 0;
+            padding-left: 0;
+        }
+    }
+
+    /* Custom Slick Dots */
+    .slick-dots {
+        position: absolute;
+        left: unset;
+        top: calc(50% + 30px);
+        transform: translateY(-50%);
+        bottom: unset;
+        right: -75px;
+        display: inline-block;
+        width: auto;
+
+        @include smax-m {
+            right: -51px;
+        }
+
+        @media (max-width: 420px) {
+            right: -31px;
+        }
+
+        li {
+            width: auto;
+            height: auto;
+            display: block;
+            background-color: transparent;
+            margin: 0;
+
+            & + li {
+                margin-top: 43px;
+            }
+
+            button {
+                color: #736d6a;
+                text-align: right;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+                border: none;
+                width: 17px;
+                height: 26px;
+
+                &::before {
+                    content: unset;
+                }
+
+                .dot-stt {
+                    position: relative;
+                    font-size: 17px;
+                    display: inline-block;
+
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        left: 50%;
+                        top: 100%;
+                        transform: translateX(-50%);
+                        height: 43px;
+                        width: 1px; 
+                        background-color: #736d6a;
+                    }
+                }
+
+                [data-carousel-tooltip] {
+                    display: none;
+                }
+            }
+
+            &.slick-active {
+                button {
+                    color: #ffffff;
+
+                    .dot-stt {
+                        &::after {
+                            background-color: #ffffff;
+                        }
+                    }
+                }
+            }
+            
+            &:last-child{
+                button {
+                    .dot-stt {
+                        &::after {
+                            display: none;
+                        }
+                    
+                    }
+                }
+            }
+        }
+    }
+
+    .homeCarouselFeature  {
+        &:not(.slick-initialized) {
+            padding-top: 60px;
+            .custom-homeCarouselFeature:not(:first-child) {
+                display: none;
+            }
+        }
+    }
+}
+.custom-homeCarouselFeature {
+    background: rgba(255, 255, 255, 0.30);
+    backdrop-filter: blur(10.350000381469727px);
+    padding: 30px 20px;
+    border-radius: 10px;
+
+    @include smax-m {
+        padding: 12px 20px 12px 96px;
+    }
+
+    @media (max-width: 400px) {
+        padding-left: 20px;
+        padding-top: 80px;
+    }
+
+    .productView {
+        margin-left: 0;
+        margin-right: 0;
+        flex-direction: column;
+        padding-top: 0;
+
+        @include smax-m {
+            min-width: 173px;
+        }
+
+        @media (max-width: 400px) {
+            min-width: 180px
+        }
+
+        .custom-productView-left {
+            width: 100%;
+            padding: 0;
+            position: absolute;
+            top: -50px;
+            left: 0;
+            margin-bottom: 0;
+
+            @include smax-m {
+                top: 50%;
+                left: -66px;
+                transform: translateY(-50%);
+            }
+
+            @media (max-width: 400px) {
+                left: 0;
+                top: 0;
+                transform: translateY(-50%);
+            }
+
+            .productView-image-wrapper {
+                max-width: 182px;
+                margin-left: auto;
+                margin-right: auto;
+
+                @include smax-m {
+                    margin: 0;
+                    max-width: 142px;
+                }
+
+                @media (max-width: 400px) {
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+
+                .productView-img-container {
+                    background-color: #ffffff;
+                    border-radius: 10px;
+                    &::after {
+                        padding-bottom: 77.47252747252747%;
+                    }
+                }
+            }
+        }
+
+        .custom-productView-middle {
+            margin-top: 85px;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #85807b;
+            padding-bottom: 10px;
+
+            @include smax-m {
+                margin-top: 0;
+            }
+
+            .productView-price {
+                .price-section {
+                    &.rrp-price--withTax,
+                    &.rrp-price--withoutTax {
+                        display: none;
+                    }
+
+                    .price {
+                        color: #F47B20;
+                        font-size: 20px;
+                        font-style: normal;
+                        font-weight: 700;
+                        line-height: 1.5;
+                        text-transform: capitalize;
+
+                        @include smax-s {
+                            font-size: 16px;
+                        }
+                    }
+                }
+            }
+
+            .productView-rating {
+                .icon {
+                    width: 11px;
+                }
+                .icon--ratingFull {
+                    svg {
+                        fill: #FFB822;
+                    }
+                }
+            }
+        }
+
+        .custom-productView-right {
+            width: 100%;
+
+            .productView-details {
+                width: 100%;
+
+                .productView-title {
+                    margin: 20px 0 16px;
+
+                    @include smax-m {
+                        margin: 10px 0;
+                    }
+
+                    >a {
+                        color: #ffffff;
+                        font-size: 18px;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: 28px;
+                        text-transform: capitalize;
+                        text-decoration: none;
+                        white-space: pre-wrap;
+                        display: inline-block;
+
+                        @include smax-s {
+                            font-size: 14px;
+                        }
+                    }
+                }
+
+                .card-figcaption-bottom {
+                    .button {
+                        padding: 10px 15px !important;
+                        min-width: 144px;
+                        color: #003A63;
+                        font-family: "Outfit", sans-serif;
+                        font-size: 18px;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: 1;
+                        background-color: #ffffff;
+                        border-color: #ffffff;
+
+                        @include smax-m {
+                            font-size: 16px;
+                        }
+
+                        &::after {
+                            background-color: #003A63;
+                            border-color: #003A63;
+                        }
+
+                        &:hover {
+                            color: #ffffff !important;
+                        }
+
+                        .icon-shop-now-arrow {
+                            margin-left: 4px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

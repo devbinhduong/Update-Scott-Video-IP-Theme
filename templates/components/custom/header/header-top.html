@@ -1,0 +1,57 @@
+<div class="headerTop">
+    <div class="container">
+        <div class="flex flex-between flex-center-y-tablet">
+            {{#if settings.phone_number}}
+                <div class="headerTop__left hide-on-tablet">
+                    <p>{{settings.phone_number}}</p>
+                </div>
+            {{/if}}
+
+            <div class="headerTop__center">
+                <p class="text-center-tablet">
+                    {{theme_settings.header_top_center_text}}
+                </p>
+            </div>
+
+            <div class="headerTop__right hide-on-tablet">
+                <ul class="flex" style="--underlineColor: {{theme_settings.header_top_text_colorHover}}">
+                    {{#if theme_settings.header_right_item1_text}}
+                        <li>
+                            <a class="hover-link" href="{{theme_settings.header_right_item1_link}}">
+                                <span>{{theme_settings.header_right_item1_text}}</span>
+                            </a>
+                        </li>
+                    {{/if}}
+                    {{#if theme_settings.header_right_item2_text}}
+                        <li>
+                            <a class="hover-link" href="{{theme_settings.header_right_item2_link}}">
+                                <span>{{theme_settings.header_right_item2_text}}</span>
+                            </a>
+                        </li>
+                    {{/if}}
+                    
+                    {{#if theme_settings.header_right_item3_text}}
+                        <li>
+                            <a class="hover-link" href="{{theme_settings.header_right_item3_link}}">
+                                <span class="icon icon--help">
+                                    <svg><use xlink:href="#icon-help"></use></svg>
+                                </span>
+                                <span>{{theme_settings.header_right_item3_text}}</span> 
+                            </a>
+                        </li>
+                    {{/if}}
+                    {{#if theme_settings.header_right_item4_text}}
+                        <li>
+                            <a class="hover-link"href="{{theme_settings.header_right_item4_link}}">
+                                <span class="icon icon--chat">
+                                    <svg><use xlink:href="#icon-chat"></use></svg>
+                                </span>
+                                <span>{{theme_settings.header_right_item4_text}}</span>
+                            </a>
+                        </li>
+                    {{/if}}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

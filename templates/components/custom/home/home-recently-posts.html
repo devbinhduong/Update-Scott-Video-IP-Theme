@@ -1,0 +1,78 @@
+{{#if theme_settings.home-recently-posts}}
+<div
+    class="custom-section home-recently-posts"
+>
+    <div class="container">
+        {{#if theme_settings.home-recently-posts-title}}
+        <div class="recentlyPost__heading custom-animation" data-step-animate="1" data-section-load="animation">
+            <h2 class="title custom-heading text-center">
+                {{theme_settings.home-recently-posts-title}}
+            </h2>
+        </div>
+        {{/if}}
+        <div
+            class="recentlyPost__content section-slick custom-animation" data-step-animate="2" data-section-load="animation" data-slick='{
+                "arrows": false,
+                "mobileFirst": true,
+                "infinite": false,
+                "slidesToShow": 1,
+                "slidesToScroll": 1,
+                "dots": true,
+                "responsive": [
+                    {
+                        "breakpoint": 1024,
+                        "settings": {
+                            "slidesToShow": 3,
+                            "slidesToScroll": 1,
+                            "dots": false,
+                            "arrows": true
+                        }
+                    },
+                    {
+                        "breakpoint": 550,
+                        "settings": {
+                            "slidesToShow": 2,
+                            "slidesToScroll": 1
+                        }
+                    }
+                ]
+            }'
+        >
+            {{#each post}}
+            <div class="recentlyPost__list-slider">
+                <div class="recentlyPost__list">
+                    <div class="recentlyPost__item hover-image">
+                        <div class="item-image">
+                            <a class="image-with-overlay" href="{{url}}">
+                                {{> components/common/responsive-img
+                                image=thumbnail class=""
+                                fallback_size=../theme_settings.recent_blog_size
+                                lazyload= "disabled"
+                                default_image=../theme_settings.default_image_product
+                                }}
+                            </a>
+                        </div>
+                        <div class="item-content">
+                            <h3 class="title">
+                                <a
+                                    class="no-underline"
+                                    href="{{url}}"
+                                    style="-webkit-box-orient: vertical"
+                                    >{{title}}</a
+                                >
+                            </h3>
+                            <div
+                                class="summary"
+                                style="-webkit-box-orient: vertical"
+                            >
+                                {{{summary}}}. &nbsp;<a class="blog_post_readmore" href="{{url}}">{{lang 'blog.read_more'}}...</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+</div>
+{{{region name="home_below_recent_posts"}}} {{/if}}

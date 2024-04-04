@@ -1,0 +1,1 @@
+{"components/custom/header/custom-megamenu":"{{#if theme_settings.customMegamenu}}\r\n    {{#if theme_settings.customMegamenu_type '==' 'Source'}}\r\n        \r\n    {{/if}}\r\n    \r\n{{/if}}\n"}

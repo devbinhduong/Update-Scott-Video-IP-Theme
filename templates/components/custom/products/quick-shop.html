@@ -1,0 +1,83 @@
+<div class="modal-body quickShop">
+    <div class="productView custom-quickShop">
+        {{#each product.reviews.messages}}
+            {{#if error}}
+                {{> components/common/alert/alert-error error}}
+            {{/if}}
+            {{#if success}}
+                {{> components/common/alert/alert-success success}}
+            {{/if}}
+        {{/each}}
+        <div class="custom-productView-left productView-images zoom-image" data-image-gallery>
+            <div class="productView-image-wrapper">
+                <div class="productView-nav">
+                    <figure class="productView-image"
+                        data-image-gallery-main>
+                        <div class="productView-img-container">
+                            <a href="{{product.url}}">
+                                {{> components/common/responsive-img
+                                    image=product.main_image
+                                    class="productView-image--default"
+                                    fallback_size=../theme_settings.productview_thumb_size
+                                    lazyload="disabled"
+                                    default_image=../theme_settings.default_image_product
+                                    otherAttributes="data-main-image"
+                                }}
+                            </a>
+                        </div>
+                    </figure>
+                </div>
+            </div>
+        </div>
+        <div class="custom-productView-right">
+            <div class="productView-details">
+                <div class="productView-product">
+                    {{#if product.brand}}
+                        <h2 class="productView-brand">
+                            <a href="{{product.brand.url}}">{{product.brand.name}}</span></a>
+                        </h2>
+                    {{/if}}
+                    <h1 class="productView-title" style="-webkit-box-orient: vertical;">{{product.title}}</h1>
+                    {{#if settings.show_product_rating}}
+                        <div class="productView-topInfo">
+                            <div class="productView-rating">
+                                {{> components/products/ratings rating=product.rating}}
+                            </div>
+                            {{#if product.num_reviews}}
+                                <div class="productView-ratingCount">({{product.num_reviews}})</div>
+                            {{/if}}
+                        </div>
+                    {{/if}}
+                    <div class="productView-price">
+                        {{#or customer (if theme_settings.restrict_to_login '!==' true)}}
+                            {{> components/products/price price=product.price}}
+                        {{else}}
+                            {{> components/common/login-for-pricing}}
+                        {{/or}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="custom-quickShop-action">
+        <div class="productView-options">
+            <form class="form" method="post" action="{{product.cart_url}}" enctype="multipart/form-data"
+                  data-cart-item-add>
+                <input type="hidden" name="action" value="add">
+                <input type="hidden" name="product_id" value="{{product.id}}"/>
+                <div data-product-option-change>
+                    {{#each product.options}}
+                        {{{dynamicComponent 'components/products/options'}}}
+                    {{/each}}
+                </div>
+                {{#if product.options}}
+                    {{> components/products/add-to-cart}}
+                {{else}}
+                    {{#if product.can_purchase}}
+                        {{> components/products/add-to-cart}}
+                    {{/if}}
+                {{/if}}
+            </form>
+        </div>
+    </div>
+</div>

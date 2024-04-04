@@ -1,0 +1,48 @@
+<section class="productCarousel"
+    data-list-name="{{list}}"
+    data-slick='{
+        "infinite": false,
+        "mobileFirst": true,
+        "dots": false,
+        "slidesToShow": 1,
+        "slidesToScroll": 1,
+        "slide": "[data-product-slide]",
+        "nextArrow": ".sectionNew__wrapper .slick-next",
+        "prevArrow": ".sectionNew__wrapper .slick-prev",   
+        "responsive": [
+            {
+                "breakpoint": 1600,
+                "settings": {
+                    "slidesToShow": 2.5,
+                    "slidesToScroll": 1,
+                    "dots": false
+                }
+            },
+            {
+                "breakpoint": 800,
+                "settings": {
+                    "slidesToShow": 2.3,
+                    "slidesToScroll": 1,
+                    "dots": false
+                }
+            },
+            {
+                "breakpoint": 550,
+                "settings": {
+                    "slidesToShow": 2,
+                    "slidesToScroll": 1,
+                    "dots": false
+                }
+            }
+        ]
+    }'
+>
+    {{#each products}}
+    <div data-product-slide class="productCarousel-slide">
+        {{> components/products/card settings=../settings theme_settings=../theme_settings customer=../customer event="list" position=(add @index 1)}}
+    </div>
+    {{/each}}
+    {{#if products.length '>' 1}}
+        {{> components/carousel-content-announcement}}
+    {{/if}}
+</section>

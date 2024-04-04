@@ -1,0 +1,47 @@
+---
+blog:
+    posts:
+        limit: 3
+        pages: 3
+        summary: 380
+    recent_posts:
+        limit: 3
+products:
+    featured:
+        limit: 6
+---
+{{#partial "page"}}
+<div class="custom_breadcrumb">
+    {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+    <h1 class="page-heading">{{ blog.name }}</h1>
+</div>
+
+<div class="page">
+    <aside class="page-sidebar">
+        <div class="page-sidebar-close">
+            <a href="#" class="close">
+                <span class="icon icon--close">
+                    <svg><use xlink:href="#icon-close"></use></svg>
+                </span>
+            </a>
+        </div>
+        {{> components/blog/sidebar}}
+    </aside>
+    <main class="page-content" id="blog-listing-container">
+        <div class="custom-toolbar page-sidebar-mobile-wrapper hide-on-desktop">
+            <div class="page-sidebar-mobile">
+                <span class="text">{{lang 'common.sidebar'}}</span>
+                <svg class="icon" aria-hidden="true"><use xlink:href="#icon-sidebar"></use></svg>
+            </div>
+        </div>
+
+        {{#each blog.posts}}
+            {{> components/blog/post post=this settings=../settings}}
+        {{/each}}
+
+        {{> components/common/paginator pagination.blog}}
+    </main>
+</div>
+
+{{/partial}}
+{{> layout/base}}

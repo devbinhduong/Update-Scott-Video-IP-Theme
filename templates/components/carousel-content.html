@@ -1,0 +1,13 @@
+<div class="heroCarousel-content heroCarousel-content--left">
+    {{#if heading}}
+    	<h2 class="heroCarousel-title custom-animation" data-step-animate="2" data-section-load="animation">{{{heading}}}</h2>
+    {{/if}}
+    {{#if text}}
+    	<p class="heroCarousel-description custom-animation" data-step-animate="4" data-section-load="animation">{{{text}}}</p>
+    {{/if}}
+	{{#if button_text}}
+    	<div class="heroCarousel-action custom-animation" data-step-animate="6" data-section-load="animation">
+			<a class="button button--primary" href="{{url}}">{{button_text}}</a>
+		</div>
+	{{/if}}
+</div>

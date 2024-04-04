@@ -1,0 +1,91 @@
+<div class="heroCarousel-wrapper" data-section-load="home-product-banner">
+    <div class="heroCarousel heroCarousel--custom"
+        data-slick='{
+            "arrows": false,
+            "mobileFirst": true,
+            "slidesToShow": 1,
+            "slidesToScroll": 1,
+            "autoplay": false,
+            "autoplaySpeed": {{carousel.swap_frequency}},
+            "lazyLoad": "anticipated",
+            "infinite": true,
+            "fade": true,
+            "dots": false
+        }'>
+        {{#each carousel.slides}}
+            <div class="heroCarousel-slide {{#if ../theme_settings.homepage_stretch_carousel_images}}stretch{{/if}} {{#if @first}}heroCarousel-slide--first{{/if}}">
+                {{#if @index '==' 0}}
+                    {{#if (merge this imageMobile=../theme_settings.homepage_show_carousel_0_mobile-image)}}{{/if}}
+                    
+                {{/if}}
+                {{#if @index '==' 1}}
+                    {{#if (merge this customTextLink1=../theme_settings.homepage_show_carousel_1_customtextlink1)}}{{/if}}
+                {{/if}}
+                {{#if @index '==' 2}}
+                    {{#if (merge this customTextLink1=../theme_settings.homepage_show_carousel_2_customtextlink1)}}{{/if}}
+                {{/if}}
+                {{#if @index '==' 3}}
+                    {{#if (merge this imageMobile=../theme_settings.homepage_show_carousel_3_mobile-image)}}{{/if}}
+                {{/if}}
+                {{#if @index '==' 4}}
+                    {{#if (merge this imageMobile=../theme_settings.homepage_show_carousel_4_mobile-image)}}{{/if}}
+                {{/if}}
+                <div class="heroCarousel-image-wrapper" style="--pb: {{multiply (divide image_height image_width) 100}}%">
+                    <a class="heroCarousel-image" href="{{url}}" aria-label="{{#if this.alt_text.length '!=' 0}}{{this.alt_text}}{{else}}{{lang 'common.carousel_slide_number' slide_number=(add @index 1)}}{{/if}}" rel="preload" as="image">
+                        {{#if @first}}
+                            {{> components/common/responsive-img
+                                image=stencil_image
+                                class="heroCarousel-image"
+                                fallback_size='1280w'
+                                lazyload='disabled'
+                            }}
+                        {{else}}
+                            {{> components/common/responsive-img
+                                image=stencil_image
+                                class="heroCarousel-image"
+                                fallback_size='1280w'
+                                lazyload='lazyload'
+                            }}
+                        {{/if}}
+                        {{#if imageMobile}}
+                            {{#if @first}}
+                                <img class="image-mobile" src="https://cdn11.bigcommerce.com/s-{{../settings.store_hash}}/product_images/uploaded_images/{{imageMobile}}" alt="{{stencil_image.alt}}" title="{{stencil_image.alt}}">
+                            {{else}}
+                                <img class="lazyload image-mobile" src="{{cdn 'img/loading.svg'}}" data-src="https://cdn11.bigcommerce.com/s-{{../settings.store_hash}}/product_images/uploaded_images/{{imageMobile}}" alt="{{stencil_image.alt}}" title="{{stencil_image.alt}}">
+                            {{/if}}
+                        {{else}}
+                            <img class="lazyload image-mobile" src="{{cdn 'img/loading.svg'}}" data-src="{{getImageSrcset stencil_image 1x=(default fallback_size '960w')}}" alt="{{stencil_image.alt}}" title="{{stencil_image.alt}}">
+                        {{/if}}
+                    </a>
+                </div>
+
+                <div class="heroCarousel-content-wrapper">
+                    {{#if heading}}
+                        {{> components/carousel-content show_background=true}}
+                    {{else}}
+                        {{#if text}}
+                            {{> components/carousel-content show_background=true}}
+                        {{else}}
+                            {{#if button_text}}
+                                {{> components/carousel-content show_background=false}}
+                            {{/if}}
+                        {{/if}}
+                    {{/if}}
+                </div>
+            </div>
+        {{/each}}
+    </div>
+
+    <!-- Home Product Carousel -->
+    {{#if products.featured}}
+    <div class="homeCarouselFeature__wrapper">
+        <div class="homeCarouselFeature">
+            {{#each (limit products.featured 3)}}
+                <div class="custom-homeCarouselFeature">
+                    {{> components/custom/products/custom-feature-product-tmp product=this settings=settings theme_settings=../theme_settings customer=customer }}
+                </div>
+            {{/each}}
+        </div>
+    </div>
+    {{/if}}
+</div>

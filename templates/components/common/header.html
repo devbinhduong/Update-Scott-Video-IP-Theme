@@ -1,0 +1,149 @@
+<a href="#main-content" class="skip-to-main-link">{{lang 'header.skip_to_main'}}</a>
+{{#and banners.top theme_settings.show_banner_top}}
+<div class="banners" data-banner-location="top">
+    {{#each (limit banners.top_metadata 1)}}
+    <div class="banner" data-event-type="promotion" data-entity-id="{{this.id}}" data-name="{{this.banner-name}}" data-position="{{this.location}}" data-banner-id="{{this.banner-name}}">
+        <div data-event-type="promotion-click">
+            {{{this.content}}}
+        </div>
+    </div>
+    {{/each}}
+</div>
+{{/and}}
+<header class="header fadeInLoad" data-step-animate="0" role="banner">
+    <!-- Header Top -->
+    {{> components/custom/header/header-top}}
+
+    <!-- Header Middle -->
+    <div class="headerMiddle">
+        <div class="container static flex flex-between flex-center-y">
+            <div class="headerMiddle_item headerMiddle_item--left text-left">
+                <div class="items item--hamburger">
+                    <a class="mobileMenu-toggle" href="#" data-mobile-menu-toggle="menu">
+                        <span class="mobileMenu-toggleIcon">{{lang 'header.toggle_menu'}}</span>
+                    </a>
+                </div>
+                <div class="items item--searchMobile hide-on-desktop">
+                    <a class="navUser-action" href="#" data-search="quickSearch" aria-controls="quickSearch" aria-expanded="false" aria-label="Search Icon">
+                        <div class="navUser-icon">
+                            <svg class="icon" aria-hidden="true"><use xlink:href="#icon-search"></use></svg>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="hide-on-tablet">
+                    <div class="items item--logo">
+                        {{#if page_type '===' 'default'}}
+                            <h1 class="header-logo">
+                                {{> components/common/store-logo}}
+                            </h1>
+                        {{else}}
+                            <div class="header-logo">
+                                {{> components/common/store-logo}}
+                            </div>
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+
+            <div class="headerMiddle_item headerMiddle_item--center text-center">
+                <div class="hide-on-desktop logo-mobile-wrapper">
+                    <div class="items item--logo">
+                        {{#if page_type '===' 'default'}}
+                            <h1 class="header-logo">
+                                {{> components/common/store-logo}}
+                            </h1>
+                        {{else}}
+                            <div class="header-logo">
+                                {{> components/common/store-logo}}
+                            </div>
+                        {{/if}}
+                    </div>
+                </div>
+
+                <div class="items item--quicksearch custom-search">
+                    <div id="quickSearch" data-prevent-quick-search-close>
+                        {{> components/common/quick-search}}
+                    </div>
+                </div>
+            </div>
+
+            <div class="headerMiddle_item headerMiddle_item--right text-right">
+                {{#if theme_settings.header_contact_text}}
+                    <div class="items item--contact hide-on-tablet">
+                        <a class="navUser-action flex-center-y hover-link" style="--underlineColor:{{theme_settings.navUser-color-hover}}" href="{{theme_settings.header_contact_link}}" aria-label="{{theme_settings.header_contact_text}}">
+                            <span class="navUser-icon flex-center-inline">
+                                <svg class="icon" aria-hidden="true"><use xlink:href="#icon-contact"></use></svg>
+                            </span>
+                            <span>{{theme_settings.header_contact_text}}</span>
+                        </a>
+                    </div>
+                {{/if}}
+
+                <div class="items item--account">
+                    {{#if customer}}
+                        <a class="navUser-action flex-center-y hover-link hide-on-tablet" style="--underlineColor:{{theme_settings.navUser-color-hover}}" href="{{urls.account.index}}" aria-label="{{customer.name}}" data-login-form>
+                            <span class="navUser-icon">
+                                <svg class="icon" aria-hidden="true"><use xlink:href="#icon-information"></use></svg>
+                            </span>
+                            <span>{{customer.name}}</span>
+                        </a>
+
+                        {{> components/custom/custom-account-popup data="account-pc"}}
+                    {{else}}
+                        <a class="navUser-action flex-center-y hover-link hide-on-tablet" style="--underlineColor:{{theme_settings.navUser-color-hover}}" href="{{urls.auth.login}}" aria-label="{{lang 'account.title'}}" data-login-form>
+                            <span class="navUser-icon">
+                                <svg class="icon" aria-hidden="true"><use xlink:href="#icon-information"></use></svg>
+                            </span>
+                            <span>{{lang 'account.title'}}</span>
+                        </a>
+
+                        {{> components/custom/custom-login-popup data="login-pc" email_id="login_email" password_id="login_pass"}}
+                    {{/if}}
+
+                     <!-- Mobile -->
+                     <a class="navUser-action myAccountMobile hide-on-desktop" {{#if customer}}href="{{urls.account.index}}"{{else}}href="{{urls.auth.login}}"{{/if}} data-login-form-mobile aria-label="{{lang 'account.title'}}">
+                        <span class="navUser-icon">
+                            <svg class="icon" aria-hidden="true"><use xlink:href="#icon-information"></use></svg>
+                        </span>
+                    </a>
+                </div>
+
+                <div class="items item--cart custom-cart">
+                    <!-- Cart Icon for Desktop -->
+                    <a class="navUser-action hide-on-tablet hover-link"
+                        style="--underlineColor:{{theme_settings.navUser-color-hover}}"
+                        data-cart-preview
+                        href="{{urls.cart}}"
+                        aria-label="{{lang 'cart.nav_aria_label'}}">
+                        <span class="navUser-icon navUser-item-cartIcon">
+                            <svg class="icon" aria-hidden="true"><use xlink:href="#icon-shopping-cart"></use></svg>
+                        </span>
+                        <span>{{lang 'common.cart'}}</span>
+                    </a>
+                    <span class="countPill{{#if cart.items}} countPill--positive{{/if}} cart-quantity hide-on-tablet header-countPill">{{cart.quantity}}</span>
+                    <div class="dropdown-cart" id="cart-preview-dropdown" aria-hidden="true"></div>
+
+                    <!-- Cart Icon for Mobile -->
+                    <a class="navUser-action cartMobile hide-on-desktop" data-cart-preview2 href="/cart.php" aria-label="{{lang 'cart.nav_aria_label'}}">
+                        <span class="navUser-icon navUser-item-cartIcon">
+                            <svg class="icon" aria-hidden="true"><use xlink:href="#icon-shopping-cart"></use></svg>
+                            <span class="countPill cart-quantity header-countPill">{{#if cart.items}}{{cart.quantity}}{{else}}0{{/if}}</span>
+                        </span>
+                        {{lang 'common.cart'}}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header Bottom -->
+    <div class="headerBottom">
+        <div class="navPages-container" id="menu" data-menu>
+            {{> components/common/navigation-menu}}
+        </div>
+    </div>
+    {{{region name="header_navigation_bottom--global"}}}
+</header>
+{{{region name="header_bottom--global"}}}
+{{{region name="header_bottom"}}}

@@ -1,0 +1,50 @@
+<nav class="pagination" aria-label="pagination">
+    <ul class="pagination-list">
+        {{#if previous}}
+            <li class="pagination-item pagination-item--previous">
+                <a class="pagination-link"
+                   href="{{previous}}"
+                   {{#unless reload}}data-faceted-search-facet{{/unless}}
+                   aria-label="{{lang 'common.previous'}}"
+                >
+                    <i class="icon" aria-hidden="true">
+                        <svg>
+                            <use href="#icon-chevron-left"></use>
+                        </svg>
+                    </i>
+                </a>
+            </li>
+        {{/if}}
+        {{#each links}}
+            <li class="pagination-item {{#if this.number '==' ../current}}pagination-item--current{{/if}} {{#and ../previous (if (add this.number 3) '<' ../current)}} u-hidden{{/and}}{{#and ../previous (if this.number '>' (add ../current 3))}} u-hidden{{/and}}">
+                <a class="pagination-link"
+                   href="{{this.url}}"
+                   {{#unless reload}}data-faceted-search-facet{{/unless}}
+                   {{#if this.number '==' ../current}}
+                   aria-current="page"
+                   data-pagination-current-page-link
+                   {{/if}}
+                   aria-label="{{lang 'common.paginator.page_of' current=this.number total=../links.length}}"
+                >
+                    {{this.number}}
+                </a>
+            </li>
+        {{/each}}
+
+        {{#if next}}
+            <li class="pagination-item pagination-item--next">
+                <a class="pagination-link"
+                   href="{{next}}"
+                   {{#unless reload}}data-faceted-search-facet{{/unless}}
+                   aria-label="{{lang 'common.next'}}"
+                >
+                    <i class="icon" aria-hidden="true">
+                        <svg>
+                            <use href="#icon-chevron-right"></use>
+                        </svg>
+                    </i>
+                </a>
+            </li>
+        {{/if}}
+    </ul>
+</nav>

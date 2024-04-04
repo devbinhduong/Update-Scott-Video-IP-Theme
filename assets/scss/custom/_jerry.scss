@@ -1,0 +1,327 @@
+.custom-block--swipper{
+    @media(max-width: 1025px){
+        overflow: hidden;
+    }
+    .custom-block-row{
+        margin-left: 0;
+        margin-right: 0;
+
+        @media(max-width: 1025px){
+            white-space: nowrap;
+            overflow-x: auto;
+            overflow-y: hidden;
+            display: block;
+            &::-webkit-scrollbar {
+                width: 77px;
+            }
+            &::-webkit-scrollbar:horizontal {
+                height: 6px;
+            }
+            &::-webkit-scrollbar-track {
+                background-color: transparentize(#ccc, 0.7);
+            }
+            &::-webkit-scrollbar-thumb {
+                background: #003a63;
+            }
+
+            .card-body {
+                white-space: normal;
+            }
+        }
+        .custom-block-item{
+            @media(max-width: 1025px){
+                width: 300px!important;
+                display:inline-block;
+            }
+            @media(max-width:767px){
+                width: 200px;  
+            }
+        }
+    }
+}
+
+@media(min-width:1025px){
+    .animate-scale {
+        position: relative;
+        display: block;
+        overflow: hidden;
+        img {
+            transition: all .7s ease;
+        }
+        &:hover {
+            img {
+                transform: scale(1.1);
+            }
+            &::before {
+                overflow: visible;
+                opacity: .3;
+                filter: alpha(opacity=30);
+            }
+        }
+    }
+}
+
+.custom-block-row{
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -15px;
+    margin-right: -15px;
+   
+    .custom-block-item{
+        padding: 0px 15px;
+        width: 50%;
+    }
+    @media(min-width: 801px){
+        &.colums-3{
+            .custom-block-item{
+                width: 33.33333333%;
+            }
+        }
+        &.colums-4{
+            .custom-block-item{
+                width: 25%;
+            }
+        }
+        &.colums-5{
+            .custom-block-item{
+                width: 20%;
+            }
+        }
+        &.colums-6{
+            .custom-block-item{
+                width: 33.33333333%;
+            }
+        }
+    }
+    @media(min-width: 1025px){
+        
+        &.colums-6{
+            .custom-block-item{
+                width: 16.66666667%;
+            }
+        }
+    }
+}
+
+// Custom Block Brand
+.custom-block-brands{
+    padding: 52px 0px 33px;
+
+    .custom-block-row{
+        background: #ffffff;
+        align-items: center;
+        padding: 43px 0px 42px;
+
+        @media(min-width: 1290px){
+            padding-left: 57px;
+            padding-right: 57px;
+        }
+
+        .custom-block-item {
+            .img-box {
+                .image {
+                    text-align: center;
+                }
+            }
+        }
+    }
+}
+
+// Custom block icon with text
+.custom-block-icon-with-text{
+    padding: 0px 0px 25px;
+
+    @include smax-m {
+        padding: 30px 0 0;
+    }
+
+    .custom-block-header{
+        padding: 35px 0px 35px;
+
+        @include smax-m {
+            padding-top: 0;
+        }
+
+        .title{
+            font-weight: 600;
+            font-size: 30px;
+            color: #000000;
+            margin: 0;
+        }
+    }
+    .custom-block-item{
+        padding-bottom: 12px;
+
+        @include smax-m {
+            margin-bottom: 30px;
+        }
+
+        .img-box{
+            img{
+                width: 100%;
+            }
+        }
+        .content-box{
+            margin-top: 36px;
+
+            @include smax-m {
+                margin-top: 20px;
+            }
+
+            a {
+                font-size: 20px;
+                font-weight: 600;
+                color: #000000;
+                text-decoration: none;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}
+
+// Custom Block Banner
+.custom-block-banner{
+    padding: 40px 0px 60px;
+
+    @include smax-m {
+        padding: 30px 0;
+    }
+
+    .block-banner-item{
+        .img-box{
+            img{
+                width: 100%;
+                
+                @include smin-m{
+                    min-height: 500px;
+                }
+            }
+        }
+        .content-box {
+            z-index: 1;
+            padding: 30px 20px;
+            width: 100%;
+            background:rgba(0, 58, 99, 0.8);
+            
+            @include smin-m {
+                max-width: 740px;
+                max-height: 100%;
+                overflow-x: hidden;
+                overflow-y: auto;
+                height: auto;
+                position: absolute;
+                top: 50%;
+                left: 60px;
+                transform: translateY(-50%);
+                padding: 28px 30px 33px;
+
+                @include smax-m {
+                    padding: 20px;
+                }
+
+                &.content-box--custom {
+                    padding: 71px 30px 33px;
+
+                    @include smax-m {
+                        padding: 20px;
+                    }
+                }
+
+                &.content-box--custom2 {
+                    padding: 28px 30px 60px;
+                    
+                    @include smax-m {
+                        padding: 20px;
+                    }
+                }
+
+                &.content-box--right{
+                    left: auto;
+                    right: 60px;
+                }
+            }
+
+            .banner-title{
+                font-size: 56px;
+                color: #ffffff;
+                font-weight: 600;
+                margin: 0;
+                line-height: 1.2;
+                margin-bottom: 23px;
+                max-width: 647px;
+
+                @include smax-l {
+                    font-size: 40px;
+                }
+
+                @include smax-m {
+                    font-size: 30px;
+                    max-width: 100%;
+                }
+
+                &.banner-title--full {
+                    max-width: 100%;
+                }
+
+            }
+            .banner-text{
+                font-size: 18px;
+                font-weight: 500;
+                color: #ffffff;
+                line-height: 1.8;
+                margin-bottom: 34px;
+                max-width: 622px;
+
+                @include smax-m {
+                    margin-bottom: 20px;
+                    font-size: 16px;
+                    max-width: 100%;
+                    line-height: 1.4;
+                }
+            }
+
+            &.background-white {
+                background:rgba(255, 255, 255, 0.8);
+                
+                .banner-text,
+                .banner-title{
+                    color: #444444;
+                }
+            }
+
+            &.background-black {
+                background:rgba(0, 0, 0, 0.8);
+
+                .banner-text,
+                .banner-title{
+                    color: #ffffff;
+                }
+            }
+            @media(min-width: 1440px) {
+                left: calc((100% - 1290px) / 2);
+                min-height: 356px;
+                &.content-box--right{
+                    left: auto;
+                    right: calc((100% - 1290px) / 2);
+                }
+            }
+
+            /* Mint Update Button */
+            .button {
+                min-height: 56px;
+                display: inline-flex;
+                justify-content: center;
+                align-items: center;
+                min-width: 162px;
+
+                @include smax-m {
+                    min-height: unset;
+                }
+            }
+        }
+    }
+    
+}

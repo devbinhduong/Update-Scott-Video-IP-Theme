@@ -1,0 +1,20 @@
+<div class="home-product-banner">
+    <div class="container">
+        <div class="productBanner">
+            <div class="productBanner__col productBanner__left">
+                <h2 class="productBanner__heading custom-animation" data-section-load="animation" data-step-animate="1">Video CONFERENCING</h2>
+                <p class="productBanner__desc custom-animation" data-section-load="animation" data-step-animate="2">Seon Selmer Eu eeu Seu Be) Peles</p>
+                <div class="productBanner__button-wrapper custom-animation" data-section-load="animation" data-step-animate="3"><a href="#" class="productBanner__button button">Shop Now</a></div>
+            </div>
+            <div class="productBanner__col productBanner__right productBanner__list">
+                {{#each (limit products.featured 3)}}
+                    <div class="productBanner__item{{#if @index '==' 0}} item--full{{/if}} custom-animation" data-section-load="animation" data-step-animate="1">
+                        <div class="custom-special-product">
+                            {{> components/custom/products/custom-feature-product-tmp product=this settings=settings theme_settings=../theme_settings customer=customer event="list" position=(add @index 1)}}
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</div>

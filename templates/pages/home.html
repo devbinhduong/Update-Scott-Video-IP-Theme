@@ -1,0 +1,50 @@
+---
+products:
+    new:
+        limit: {{theme_settings.homepage_new_products_count}}
+    featured:
+        limit: {{theme_settings.homepage_featured_products_count}}
+    top_sellers:
+        limit: {{theme_settings.homepage_top_products_count}}
+carousel: {{theme_settings.homepage_show_carousel}}
+blog:
+    recent_posts:
+        limit: {{theme_settings.homepage_blog_posts_count}}
+---
+{{#partial "hero"}}
+    {{{region name="home_below_menu"}}}
+    {{#and carousel carousel.slides.length}}
+        {{> components/carousel arrows=theme_settings.homepage_show_carousel_arrows}}
+    {{/and}}
+    {{{region name="home_below_carousel"}}}
+{{/partial}}
+
+{{#partial "page"}}
+
+    {{#each shipping_messages}}
+        {{> components/common/alert/alert-info message}}
+    {{/each}}
+
+<div class="main full">
+    {{> components/custom/home/home-brand-section }}
+
+    {{> components/custom/home/home-icon-with-text }}
+
+    {{> components/custom/home/home-banner-1 }}
+
+    {{> components/custom/home/home-new-section }}
+
+    {{> components/custom/home/home-banner-2 }}
+
+    {{> components/custom/home/image-banner }}
+
+    {{> components/custom/home/featured-offer }}
+
+    <!-- Custom block banner 3 -->
+    {{> components/custom/home/home-banner-3 }}
+
+    {{> components/custom/home/home-recently-posts post=blog.recent_posts}}
+
+</div>
+{{/partial}}
+{{> layout/base}}

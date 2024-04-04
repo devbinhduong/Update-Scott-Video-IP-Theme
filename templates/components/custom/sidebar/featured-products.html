@@ -1,0 +1,30 @@
+<div id="featured-products" class="sidebarBlock">
+    <h5 class="sidebarBlock-heading">{{lang 'products.featured'}}</h5>
+    <div class="sidebarBlock-content productCarousel"
+        data-slick='{
+            "arrows": false,
+            "dots": true,
+            "autoplay": false,
+            "infinite": true,
+            "slidesToShow": 1,
+            "slidesToScroll": 1,
+            "mobileFirst": true,
+            "autoplaySpeed": 5000,
+            "adaptiveHeight": true,
+            "responsive": [
+                {
+                    "breakpoint": 1025,
+                    "settings": {
+                        "arrows": false,
+                        "dots": true,
+                        "autoplay": false
+                    }
+                }
+        ]}'>
+        {{#each products}}
+        <div class="productCarousel-slide">
+            {{> components/products/card-sidebar theme_settings=../theme_settings customer=../customer show_rating=../settings.show_product_rating show_wishlist=../settings.show_wishlist}}
+        </div>
+        {{/each}}
+    </div>
+</div>

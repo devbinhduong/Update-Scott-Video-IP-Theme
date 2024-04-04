@@ -1,0 +1,16 @@
+<nav>
+    <!-- recent post -->
+    {{> components/custom/sidebar/recent-post}}
+    <!-- slider product -->
+    {{#if products.featured}}
+        {{> components/custom/sidebar/featured-products products=products.featured}}
+    {{/if}}
+    
+    <!-- advertisement image -->
+    {{#if theme_settings.show_advertisement_image_sidebar}}
+        {{> components/custom/sidebar/advertisement-image}}
+    {{/if}}
+    
+    <!-- advertisement text -->
+    {{> components/custom/sidebar/advertisement-content}}
+</nav>

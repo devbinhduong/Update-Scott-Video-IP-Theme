@@ -1,0 +1,64 @@
+{{#partial "page"}}
+<div class="custom_map">
+    {{#if theme_settings.contactUs_map}}
+        {{> components/custom/contact-us-map}}
+    {{/if}}
+</div>
+
+<div class="container">
+    <div class="custom_breadcrumb">
+        {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+        <h1 class="page-heading">{{page.title}}</h1>
+    </div>
+    <main class="page">
+        {{#if page.sub_pages}}
+        <nav class="navBar navBar--sub">
+            <ul class="navBar-section account-navigation">
+                {{#each page.sub_pages}}
+                <li class="navBar-item"><a class="navBar-action" href="{{url}}">{{title}}</a></li>
+                {{/each}}
+            </ul>
+        </nav>
+        {{/if}}
+        <div class="page-content custom_contact-us">
+            <div class="custom_form">
+                <div id="contact-us-page">
+                    {{#if forms.contact.success}}
+                    <div id="contact-us-success">{{{lang 'forms.contact_us.successful' shopPath=urls.home}}}</div>
+                    {{else}}
+                    <p>{{{page.content}}}</p>
+                    {{> components/page/contact-us-form}}
+                    {{/if}}
+                </div>
+            </div>
+            <div class="custom_location">
+                <h3 class="title">We're here to help!</h3>
+                <div class="content">
+                    <div class="description">
+                        <p>Whether you have a question about your order, need more information about our products, or want to share your feedback, we're all ears.</p>
+                        <p>Our Business Hours: Our team is available from 8 AM to 5 PM CST, Monday through Friday (excluding holidays), and we are ready to help you.</p>
+                        <p>
+                            Before you reach out, you might find quick answers to your queries on our help and information pages. We've compiled detailed responses to the most common questions we receive, covering everything from shipping to returns:
+                        </p>
+                        <ul>
+                            <li>Shipping Policy: Learn about delivery times, costs, and order tracking.</li>
+                            <li>Return Policy: Find out how to return an item, the conditions for returns, and how refunds are processed.</li>
+                            <li>Terms & Conditions: Understand the legal agreements that govern your use of our services and products.</li>
+                        </ul>
+                        <p>If you haven't found what you're looking for in the sections above, please contact us directly. We're committed to ensuring your shopping experience is smooth and enjoyable. Please choose the most convenient way for you to get in touch with us:</p>
+                    </div>
+                    
+                    <p>Contact Form: Fill out our contact form here with your query, and we'll get back to you as soon as possible.</p>
+                    <p class="store-email">Email: 
+                        Contact us at <a href="mailto:service@ipsecuritydepot.com">service@videoconferencingsupply.com</a>; we usually respond within 24 business hours.
+                    </p>
+                    <p class="store-phone">Phone: Would you prefer to speak with someone? Call us at <a href="tel:1-888-272-5560">1-888-272-5560</a>. Our customer service team is available from 8 AM to 5 PM CST, Monday through Friday.</p>
+                    <p>We value your input. If you have suggestions or comments, please let us know.  </p>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+{{/partial}}
+
+{{> layout/base}}

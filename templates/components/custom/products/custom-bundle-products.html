@@ -1,0 +1,97 @@
+{{#each product.custom_fields}}
+    {{#startsWith '__bundle' name}}
+		<div class="custom-block custom-bundle-products custom-block-disable{{#or ../customer (if ../theme_settings.restrict_to_login '!==' true)}}{{else}} custom-bundle-login{{/or}}" id="custom-bundle-products" data-currency-symbol="{{../currency_selector.active_currency_code}}">
+			<div class="loadingOverlay"></div>
+			<div class="custom-block-header">
+		        <h2 class="title custom-heading">{{lang 'products.bundle_title'}}</h2>
+		    </div>
+		    <div class="custom-block-content bundle-products-wrapper">
+		    	<div class="bundle-product-left">
+		    		<div class="custom-product-list">
+				        <div class="custom-product-item custom-product-itemFirst {{#if ../product.can_purchase}}isChecked{{/if}}" data-product-id="{{../product.id}}">
+							<div class="custom-product-item__wrapper">
+								<div class="custom-product-image{{#and (if product.images.length '>=' 2) (if ../theme_settings.custom_card_image_swap)}} custom-product-imageSwap{{/and}}" aria-label="{{../product.title}}">
+									<i class="icon-plus"></i>
+									<a class="custom-product-link" href="{{../product.url}}" aria-label="{{../product.title}}">
+										<div class="custom-product-container">
+											{{> components/common/responsive-img
+												image=../product.main_image
+												fallback_size=../theme_settings.productgallery_size
+												lazyload=../theme_settings.lazyload_mode
+												default_image=../theme_settings.default_image_product
+											}}
+										</div>
+									</a>
+								</div>
+								<div class="custom-product-content">
+									<form method="post" action="/cart.php" enctype="multipart/form-data">
+										<input type="hidden" name="action" value="add">
+										<input type="hidden" name="product_id" value="{{../product.id}}">
+										<input type="hidden" name="qty[]" value="1">
+										<div class="custom-detail-field">
+											<input class="custom-detail-checkbox form-checkbox" type="checkbox" id="fbt_product{{../product.id}}" checked disabled>
+											<label class="custom-detail-label form-label" for="fbt_product{{../product.id}}">
+												{{#if ../theme_settings.custom_card_title '==' 'ellipsis'}}
+													<span class="custom-detail-name" style="-webkit-box-orient: vertical;">
+														<span class="text">{{../product.title}}</span>
+													</span>
+												{{else}}
+													<span class="custom-detail-name">
+														<span class="text">{{../product.title}}</span>
+													</span>
+												{{/if}}
+												<span class="custom-detail-price card-price"
+													{{#if ../product.price.with_tax}}data-price-value="{{../product.price.with_tax.value}}"{{/if}}
+													{{#if ../product.price.without_tax}}data-price-value="{{../product.price.without_tax.value}}"{{/if}}
+												>
+													{{#or ../customer (if ../theme_settings.restrict_to_login '!==' true)}}
+														{{> components/products/price price=../product.price theme_settings=../theme_settings}}
+													{{else}}
+														{{> components/common/login-for-pricing}}
+													{{/or}}
+												</span>
+											</label>
+										</div>
+										{{#if ../product.options}}
+											<a class="button button--transparent custom-toggle-options" href="#">
+												<span class="text">{{lang 'products.choose_options'}}</span>
+											</a>
+											<div class="custom-detail-options custom-productOptions" data-fbt-option-change>
+												<div class="custom-option-header">
+													<span class="custom-option-title">{{lang 'products.choose_options'}}</span>
+													<a href="#" class="custom-option-close" aria-label="Close" role="button">
+														<svg class="icon" role="img" aria-label="{{lang 'common.close'}}">
+															<title>{{lang 'common.close'}}</title>
+															<desc>{{lang 'common.close'}}</desc>
+															<use xlink:href="#icon-close"></use>
+														</svg>
+													</a>
+												</div>
+												<div class="custom-option-content customCustomScrollbar">
+													{{#each ../product.options}}
+														{{{dynamicComponent 'components/custom/fbt-options'}}}
+													{{/each}}
+													<div class="productAttributes-message">
+														<p class="alertBox-message"></p>
+													</div>
+													{{#if ../theme_settings.custom_stock_level}}
+														<div class="productView-optionsStock u-hiddenVisually">
+															<span>{{lang 'products.stock_hurry_up'}}</span>
+															<span data-stock-left></span>
+														</div>
+													{{/if}}
+												</div>
+											</div>
+										{{/if}}
+									</form>
+								</div>
+							</div>
+				        </div>
+				    </div>
+		    	</div>
+		    	<div class="bundle-product-right"></div>
+		    </div>
+		</div>
+    {{/startsWith}}
+{{/each}}
+{{inject 'productCustomFields' product.custom_fields}}

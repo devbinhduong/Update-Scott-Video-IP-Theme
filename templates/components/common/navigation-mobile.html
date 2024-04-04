@@ -1,0 +1,145 @@
+<nav class="navPages" role="navigation" aria-label="Main Navigation">
+    <ul class="navPages-list navPages-list-mobile navPages-list-custom"></ul>
+    <ul class="navPages-list navPages-list--user">
+        <li class="navPages-item navPages-item-user">
+            {{#if customer}}
+                <a class="navPages-action navPages-action-end" href="{{urls.account.index}}" aria-label="{{lang 'account.title'}}">
+                    <span class="text">
+                        <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#icon-user"></use>
+                        </svg>
+                        {{lang 'account.title'}}
+                    </span>
+                </a>
+            {{else}}
+                <a class="navPages-action navPages-action-end" href="{{urls.auth.login}}" aria-label="{{lang 'login.title'}}">
+                    <span class="text">
+                        <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#icon-user"></use>
+                        </svg>
+                        {{lang 'login.title'}}
+                    </span>
+                </a>
+            {{/if}}
+        </li>
+        <li class="navPages-item navPages-item-user">
+            <a class="navPages-action navPages-action-end" href="/wishlist.php" aria-label="{{lang 'account.wishlists.heading'}}">
+                <span class="text">
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-heart"></use>
+                    </svg>
+                    {{lang 'account.wishlists.heading'}}
+                </span>
+            </a>
+        </li>
+        {{#if settings.phone_number}}
+            <li class="navPages-item navPages-item-user">
+                <a class="navPages-action navPages-action-end" href="tel:{{settings.phone_number}}" aria-label="Phone number {{settings.phone_number}}">
+                    <span class="text">
+                        <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#icon-phone"></use>
+                        </svg>
+                        {{settings.phone_number}}
+                    </span>
+                </a>
+            </li>
+        {{/if}}
+        
+        {{#if theme_settings.header_right_item1_text}}
+            <li class="navPages-item navPages-item-user">
+                <a class="navPages-action navPages-action-end" href="{{theme_settings.header_right_item1_link}}" aria-label="{{theme_settings.header_right_item1_text}}">
+                    <span class="text">
+                        <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#icon-about-us"></use>
+                        </svg>
+                        {{theme_settings.header_right_item1_text}}
+                    </span>
+                </a>
+            </li>
+        {{/if}}
+
+        {{#if theme_settings.header_right_item2_text}}
+            <li class="navPages-item navPages-item-user">
+                <a class="navPages-action navPages-action-end" href="{{theme_settings.header_right_item2_link}}" aria-label="{{theme_settings.header_right_item2_text}}">
+                    <span class="text">
+                        <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#icon-blog"></use>
+                        </svg>
+                        {{theme_settings.header_right_item2_text}}
+                    </span>
+                </a>
+            </li>
+        {{/if}}
+
+        {{#if theme_settings.header_right_item3_text}}
+            <li class="navPages-item navPages-item-user">
+                <a class="navPages-action navPages-action-end" href="{{theme_settings.header_right_item3_link}}" aria-label="{{theme_settings.header_right_item3_text}}">
+                    <span class="text">
+                        <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#icon-help2"></use>
+                        </svg>
+                        {{theme_settings.header_right_item3_text}}
+                    </span>
+                </a>
+            </li>
+        {{/if}}
+
+        {{#if theme_settings.header_right_item4_text}}
+            <li class="navPages-item navPages-item-user">
+                <a class="navPages-action navPages-action-end" href="{{theme_settings.header_right_item4_link}}" aria-label="{{theme_settings.header_right_item4_text}}">
+                    <span class="text">
+                        <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#icon-chat2"></use>
+                        </svg>
+                        {{theme_settings.header_right_item4_text}}
+                    </span>
+                </a>
+            </li>
+        {{/if}}
+
+        {{#if currency_selector.currencies.length '>' 1}}
+            <li class="navPages-item navPages-item-user has-dropdown">
+                <p class="navPages-action navPages-action-depth-max has-subMenu is-root">
+                    <a class="text" href="#">
+                        <span class="flag">{{{currency_selector.active_currency_flag}}}</span> 
+                        {{currency_selector.active_currency_code}}
+                    </a>
+                    <span class="navPages-action-moreIcon" aria-hidden="true">
+                        <svg class="icon" aria-hidden="true"><use xlink:href="#icon-chevron-down" /></svg>
+                    </span>
+                </p>
+                <div class="navPage-subMenu navPage-subMenu-horizontal">
+                    <ul class="navPage-subMenu-list">
+                        <li class="navPage-subMenu-item-child navPage-subMenu-title">
+                            <p class="navPage-subMenu-action navPages-action">
+                                <span class="navPages-action-moreIcon" aria-hidden="true">
+                                    <svg class="icon" aria-hidden="true"><use xlink:href="#icon-chevron-down" /></svg>
+                                    <span>back</span>
+                                </span>
+                                <a class="text" href="#">
+                                    {{currency_selector.active_currency_code}}
+                                </a>
+                            </p>
+                        </li>
+                        {{#each currency_selector.currencies}}
+                            <li class="navPage-subMenu-item-child navPages-action-end">
+                                <a class="navPage-subMenu-action navPages-action" href="{{{switch_url}}}">
+                                    <span class="text"><span class="flag">{{{flag}}}</span>{{name}}</span>
+                                </a>
+                            </li>
+                        {{/each}}
+                    </ul>
+                </div>
+            </li>
+        {{/if}}
+        {{#if theme_settings.show_social-links}}
+            <li class="navPages-item navPages-item-user">
+                <div class="navPages-action navPages-action-end">
+                    <div class="text">
+                        {{> components/common/social-links position="newsletter"}}
+                    </div>
+                </div>
+            </li>
+        {{/if}}
+    </ul>
+</nav>

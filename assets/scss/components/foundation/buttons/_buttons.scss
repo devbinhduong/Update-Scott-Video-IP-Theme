@@ -1,0 +1,184 @@
+// =============================================================================
+// BUTTONS (CSS)
+// =============================================================================
+
+.button {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    font-family: $fontFamily-sans;
+    font-size: $fontSize-root - 2;
+    font-weight: $fontWeight-bold;
+    font-style: normal;
+    user-select: none;
+    appearance: none;
+    width: 100%;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 0;
+    margin: 0;
+    padding: 8px;
+    line-height: 24px;
+    min-width: 153px;
+    cursor: pointer;
+    border: 1px solid $buttonStyle-primary-borderColor;
+    color: $buttonStyle-primary-color;
+    background-color: $buttonStyle-primary-backgroundColor;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: $anchor-transition;
+
+    @include breakpoint('small') {
+        font-size: $fontSize-root;
+        width: auto;
+        padding: 11px 20px;
+    }
+
+    svg {
+        fill: $buttonStyle-primary-color;
+    }
+
+    &:after {
+        content: '';
+        background-color: $buttonStyle-primary-color;
+        position: absolute;
+        z-index: -1;
+        left: -100%;
+        right: -100%;
+        top: 0;
+        bottom: 0;
+        transform: skewX(-45deg) scale(0, 1);
+        transition: all 0.5s;
+    }
+
+    &:hover {
+        color: $buttonStyle-primary-colorHover;
+
+        &:after {
+            transform: skewX(-45deg) scale(1, 1);
+            -webkit-transition: all 0.5s;
+            transition: all 0.5s;
+        }
+    }
+
+    &:focus,
+    &:active {
+        color: $buttonStyle-primary-colorActive;
+        border-color: $buttonStyle-primary-borderColorActive;
+        background-color: $buttonStyle-primary-backgroundColorActive;
+    }
+
+    &.button--action {
+        @include breakpoint('small') {
+            font-size: $fontSize-root;
+            width: auto;
+            padding: 11px 15px !important;
+        }
+    }
+
+    &.button--full {
+        width: 100%;
+    }
+
+    /* Primary */
+    &.button--primary {
+        &:focus {
+            color: $buttonStyle-primary-colorActive !important;
+        }
+
+        &:hover {
+            color:  $buttonStyle-primary-borderColorActive !important;
+        }
+    }
+
+    /* Secondary */
+    &.button--secondary {
+        border-color: $buttonStyle-secondary-borderColor;
+        color: $buttonStyle-secondary-color;
+        background-color: $buttonStyle-secondary-backgroundColor;
+
+        svg {
+            fill: $buttonStyle-secondary-color;
+        }
+
+        &:after {
+            background-color: $buttonStyle-secondary-color;
+        }
+
+        &:hover {
+            color: $buttonStyle-secondary-colorHover;
+
+            &:after {
+                background-color: $buttonStyle-secondary-backgroundColorHover;
+            }
+        }
+
+        &:focus,
+        &:active {
+            color: $buttonStyle-secondary-colorActive;
+            border-color: $buttonStyle-secondary-borderColorActive;
+            background-color: $buttonStyle-secondary-backgroundColorActive;
+        }
+    }
+
+    /* Transparent */
+    &.button--transparent {
+        color: $buttonStyle-primary-colorHover;
+        background-color: transparent;
+        border-color: $buttonStyle-primary-backgroundColor;
+
+        svg {
+            fill: $buttonStyle-primary-color;
+        }
+
+        &:after {
+            background-color: $buttonStyle-primary-color;
+        }
+
+        &:hover {
+            color: $buttonStyle-primary-color;
+
+            &:after {
+                background-color: $buttonStyle-primary-backgroundColorHover;
+            }
+        }
+
+        &:focus,
+        &:active {
+            color: $buttonStyle-primary-color;
+            border-color: $buttonStyle-primary-borderColorActive;
+            background-color: $buttonStyle-primary-backgroundColorActive;
+        }
+    }
+
+    /* Disable */
+    &.button--disabled,
+    &.button--outOfStock {
+        pointer-events: none;
+        color: $buttonStyle-disabled-color;
+        background-color: $buttonStyle-disabled-backgroundColor;
+        border-color: $buttonStyle-disabled-borderColor;
+
+        svg {
+            fill: $buttonStyle-disabled-color;
+        }
+
+        &:after {
+            background-color: $buttonStyle-disabled-color;
+        }
+    }
+}
+
+.button[disabled] {
+    cursor: not-allowed;
+}
+
+.button--icon {
+    &.button {
+        min-width: unset;
+    }
+    svg {
+        fill: stencilColor('button--icon-svg-color');
+    }
+}

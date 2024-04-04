@@ -1,0 +1,77 @@
+<div class="product-edit-detail">
+    <div class="product-edit" data-product-edit-id="{{product.id}}" data-product-edit-item-id>
+        <div class="product-edit-image"></div>
+        <div class="product-edit-content">
+            <div class="product-edit-brand">{{product.brand.name}}</div>
+            <h4 class="product-edit-title">{{product.title}}</h4>
+            <div class="product-edit-variant"></div>
+        </div>
+    </div>
+</div>
+
+<div class="alertMessageBox" hidden>
+    {{> components/common/alert-info}}
+</div>
+
+<div class="product-edit-info">
+    <div class="product-edit-change" data-product-option-change2>
+        <form class="form" method="post" action="cart.php" enctype="multipart/form-data">
+            <input type="hidden" name="action" value="add">
+            <input type="hidden" name="product_id" value="{{product.id}}"/>
+            <div class="product-edit-option">
+                <table>
+                    <thead class="cart-edit-row cart-edit-row--heading">
+                        <tr>
+                            {{#each product.options}}
+                                <th class="text-left">{{display_name}}</th>
+                            {{/each}}
+                            <th class="text-left">{{lang 'cart.checkout.quantity'}}</th>
+                            <th class="text-right">{{lang 'cart.checkout.unit_price'}}</th>
+                            <th class="text-right"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="cart-edit-row" data-cart-edit-item>
+                            <td class="cart-edit-quantity text-left" data-cart-edit-item-quantity>
+                                <div class="form-increment" data-quantity-change>
+                                    <input class="form-input form-input--incrementTotal"
+                                        id="qty-{{id}}"
+                                        name="qty[]"
+                                        type="number"
+                                        value="{{#if product.min_purchase_quantity}}{{product.min_purchase_quantity}}{{else}}1{{/if}}"
+                                        data-quantity-min="{{product.min_purchase_quantity}}"
+                                        data-quantity-max="{{product.max_purchase_quantity}}"
+                                        data-preval=""
+                                        min="1"
+                                        data-cart-itemid="{{id}}"
+                                        pattern="[0-9]*"
+                                        aria-live="polite">  
+                                </div>
+                            </td>
+                            <td class="cart-edit-price text-right" data-cart-edit-item-price>
+                                {{#if product.price.with_tax}}
+                                    <span class="price">{{product.price.with_tax.formatted}}</span>
+                                {{/if}}
+                                {{#if product.price.without_tax}}
+                                    <span class="price">{{product.price.without_tax.formatted}}</span>
+                                {{/if}}
+                            </td>
+                            <td class="cart-edit-remove text-right" data-cart-edit-item-remove>
+                                <a href="#">×</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="product-edit-action">
+    <div class="product-add-more">
+        <a class="product-addmore-button hover-link" href="#">+ {{lang 'cart.checkout.add_more'}}</a>
+    </div>
+    <div class="product-edit-button">
+        <button class="button button--primary" data-edit-cart-add-to-cart>{{lang 'products.add_to_cart'}}</button>
+    </div>
+</div>

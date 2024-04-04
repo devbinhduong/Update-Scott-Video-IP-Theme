@@ -1,0 +1,18 @@
+<div class="sectionNew custom-section">
+    <div class="container">
+        <div class="sectionNew__wrapper">
+            <div class="sectionNew__left custom-animation" data-step-animate="1" data-section-load="animation">
+                <h2 class="custom-heading">New Arrivals</h2>
+                <div class="slick-arrow-wrapper">
+                    <div class="slick-arrow slick-prev">Prev</div>
+                    <div class="slick-arrow slick-next">Next</div>
+                </div>
+            </div>
+            <div class="sectionNew__right custom-animation" data-step-animate="2" data-section-load="animation">
+                {{#if products.new}}
+                    {{> components/products/new products=products.new customSlick=true}}
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</div>

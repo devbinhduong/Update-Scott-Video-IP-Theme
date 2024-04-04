@@ -1,0 +1,126 @@
+// =============================================================================
+// ACCOUNT
+// =============================================================================
+
+
+// Account layouts
+// -----------------------------------------------------------------------------
+
+.account {
+    margin-bottom: spacing("single");
+}
+
+.account--fixed {
+    @include breakpoint("medium") {
+        margin: 0 auto;
+        width: grid-calc(8, $total-columns);
+    }
+}
+
+.account--fixedSmall {
+    @include breakpoint("medium") {
+        margin: 0 auto;
+        width: grid-calc(6, $total-columns);
+    }
+}
+
+.account--fixedLarge {
+    @include breakpoint("medium") {
+        margin: 0 auto;
+        width: grid-calc(9, $total-columns);
+    }
+}
+
+.account-head {
+    margin-bottom: spacing("double");
+    text-align: center;
+
+    .alertBox {
+        padding-left: spacing("double");
+        padding-right: spacing("double");
+        text-align: left;
+    }
+}
+
+.account-body {
+    @include grid-row($behavior: "nest");
+}
+
+.account-content {
+    @include grid-column(12);
+}
+
+.account-content--fixed {
+
+    @include breakpoint("medium") {
+        width: grid-calc(8, $total-columns);
+    }
+}
+
+.account-content--fixedSmall {
+
+    @include breakpoint("medium") {
+        width: grid-calc(6, $total-columns);
+    }
+}
+
+.account-sidebar {
+    @include grid-column(12);
+
+    @include breakpoint("medium") {
+        width: grid-calc(4, $total-columns);
+
+        .account-content--fixedSmall + & {
+            float: right;
+        }
+    }
+}
+
+
+/* Mint Start Custom */
+//
+// Recently Viewed
+// -----------------------------------------------------------------------------
+.page-type-account_recentitems {
+    .account {
+        .productList {
+            --f-col: 4;
+            --f-gap: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            margin-left: calc(var(--f-gap) / -2);
+            margin-right: calc(var(--f-gap) / -2);
+
+            @include smax-l {
+                --f-col: 3;
+            }
+
+            @include smax-m {
+                --f-col: 2;
+            }
+
+            @include smax-xs {
+                --f-col: 1;
+            }
+        }
+        .product {
+            padding-left: calc(var(--f-gap) / 2);
+            padding-right: calc(var(--f-gap) / 2);
+            flex: 0 0 calc(100% / var(--f-col));
+            max-width: calc(100% / var(--f-col));
+            margin-bottom: var(--f-gap);
+
+            & +.product {
+                margin-top: 0;
+            }
+
+            .card {
+                margin-bottom: 0;
+            }
+            .card-compare {
+               text-align: center;
+               margin-top: 12px; 
+            }
+        }
+    }
+}

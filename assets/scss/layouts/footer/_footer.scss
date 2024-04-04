@@ -1,0 +1,327 @@
+// =============================================================================
+// FOOTER (CSS)
+// =============================================================================
+
+
+// Layout and columns
+// -----------------------------------------------------------------------------
+//
+// 1. To enable the grid's display: inline-block; to work properly, we need to
+//    remove the white-space that it creates between columns with font-size: 0;
+// 2. Re-set the font-size that was reduced to 0 in point 1 for children.
+// 3. Fix for text flickers on windows devices
+//
+// -----------------------------------------------------------------------------
+
+.footer {
+    background-color: $footer-background;
+    position: relative;
+    padding-top: 40px;
+    overflow: hidden;
+}
+
+.footer-heading {
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 28.8px;
+    margin-top: 0;
+    margin-bottom: 18px;
+}
+
+.footer-info {
+    @include smin-xs {
+        margin-left: -15px;
+        margin-right: -15px;
+    }
+
+    &--left {
+        width: 60%;
+
+        @include smin-m {
+            max-width: 723px;
+        }
+
+        @include smin-xs {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        @include smax-m {
+            width: 50%;
+        }
+
+        @include smax-xs {
+            width: 100%;
+        }
+    }
+
+    &--right {
+        width: 40%;
+        
+        @include smin-m {
+            max-width: 440px;
+        }
+
+        @include smin-xs {
+            padding-left: 15px;
+            padding-right: 15px;
+        }            
+
+        @include smax-m {
+            width: 50%;
+        }
+
+        @include smax-xs {
+            width: 100%;
+        }
+
+        .footerRight-row {
+            display: flex;
+            margin-left: -12px;
+            margin-right: -12px;
+            flex-wrap: wrap;
+
+            @include smin-m {
+                margin-left: -22px;
+                margin-right: -22px;
+            }
+
+            .footer-info-col {  
+                padding-left: 22px;
+                padding-right: 22px;
+
+                @include smax-m {
+                    width: 50%;
+
+                    padding-left: 12px;
+                    padding-right: 12px;
+                }
+
+                @include smax-s {
+                    width: 100%;
+                }
+
+                &--location {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+.footer-info-col {
+    overflow-wrap: break-word;
+
+    &.footer-info-col--submitForm {
+        width: 100%;
+
+        @include smax-xs {
+            margin-top: 40px;
+        }
+        
+        .footer-info-heading  {
+            margin-bottom: 20px;
+            color: #ffffff;
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 1.4;
+            text-transform: capitalize;
+            max-width: 300px;
+            letter-spacing: 0.03rem;
+            margin-top: 27px;
+        }
+
+        .form {
+            margin-bottom: 16px;
+            .form-prefixPostfix {
+                display: flex;
+                flex-direction: column;
+
+                .form-input {
+                    color: #000000;
+                    font-style: normal;
+                    font-weight: 500;
+                    line-height: 1.25;
+                    background-color: #f1f1f1;
+                    border-radius: 0;
+                    min-height: 40px;
+
+                    &::placeholder {
+                        color: inherit;
+                        text-transform: capitalize;
+                    }
+
+                    /* For Firefox */
+                    &::-moz-placeholder{
+                        opacity:1
+                    }
+                }
+
+                .button {
+                    margin-left: 0;
+                    margin-top: 12px;
+                    min-height: 36px;
+                }
+            }
+
+            .form-field {
+                margin-bottom: 0;
+            }
+        }
+
+        @include smax-xs {
+            .form {
+                margin-bottom: 0;
+
+                .form-field {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+
+    @include smax-s {
+        + .footer-info-col {
+            margin-top: 40px;
+        }
+    }
+
+    @include smax-xs {
+        + .footer-info-col {
+            margin-top: 0;
+        }
+    }
+
+    /* Footer Toogle On Mobile */
+    &:not(.footer-info-col--submitForm) {
+        @include smax-xs {
+            margin-bottom: 0;
+        
+            .footer-info-heading {
+                border-bottom: 1px solid stencilColor("footer_title_color");
+                margin-bottom: 0;
+                padding: 15px 0;
+                position: relative;
+        
+                &:hover {
+                    cursor: pointer;
+                }
+        
+                &:before {
+                    top: 50%;
+                    right: 5px;
+                    z-index: 2;
+                    content: "";
+                    width: 2px;
+                    height: 12px;
+                    position: absolute;
+                    transition: all .4s ease;
+                    transform: translateY(-50%);
+                    background-color: stencilColor("footer_title_color");
+                }
+        
+                &:after {
+                    top: 50%;
+                    right: 0;
+                    z-index: 2;
+                    content: "";
+                    width: 12px;
+                    height: 2px;
+                    position: absolute;
+                    transform: translateY(-50%);
+                    background-color: stencilColor("footer_title_color");
+                }
+            }
+        
+            &.open-dropdown .footer-info-heading:before {
+                transform: translateY(-50%) rotate(90deg);
+            }
+        
+            .footer-info-list {
+                display: none;
+                margin-bottom: 30px;
+                margin-top: 12px;
+            }
+        }
+    }
+
+    .footer-icon-image {
+        @include smax-xs {
+            margin-top: 20px;
+        }
+    }
+}
+
+.footer-line {
+    border-color: rgba(255, 255, 255, 0.31);
+    margin-top: 18px;
+    margin-bottom: 27px;
+
+    @include smax-xs {
+        display: none;
+    }
+}
+
+// Content
+// -----------------------------------------------------------------------------
+
+.footer-info-heading {
+    color: stencilColor("footer_title_color");
+    font-size: $fontSize-root - 2;
+    font-weight: $fontWeight-bold;
+    text-transform: inherit;
+    margin-bottom: 12px;
+    font-family: $body-font-family;
+    margin-top: 0;
+    text-transform: uppercase;
+
+    @include smin-m {
+        &:hover {
+            color: stencilColor("footer_text_colorHover");
+        }
+    }
+}
+
+.footer-info-list {
+    list-style: none;
+    margin-left: 0;
+    font-size: $fontSize-root - 2;
+
+    li + li {
+        margin-top: 8px;
+    }
+
+    a {
+        color: #ffffff;
+        text-decoration: none;
+
+        &:hover {
+            color: #ffffff;
+        }
+    }
+}
+
+.footer-copyright {
+    border-top: 1px solid rgba(255, 255, 255, 0.31);
+    padding-top: 20px;
+    padding-bottom: 24px;
+    margin-top: 15px;
+
+    > .powered-by {
+        color: #ffffff;
+        font-size: $fontSize-root - 2;
+        line-height: 20px;
+        margin: 0;
+    }
+
+    a {
+        color: #ffffff;
+        text-decoration: none;
+
+        &:hover {
+            color: #ffffff;
+        }
+    }
+}

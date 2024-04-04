@@ -1,0 +1,98 @@
+<div class="productView custom-productView homeCarouselProduct">
+    <div class="custom-productView-left productView-images zoom-image" data-image-gallery>
+        <div class="productView-image-wrapper">
+            
+            <div class="productView-nav">
+                {{#each (limit product.images 1)}}
+                    <div>
+                        <figure class="productView-image" data-fancybox="images" href="{{getImageSrcset this (cdn ../theme_settings.default_image_product) 1x=../theme_settings.zoom_size}}" 
+                            data-image-gallery-main
+                            data-zoom-image="{{getImageSrcset this (cdn ../theme_settings.default_image_product) 1x=../theme_settings.zoom_size}}">
+                            <div class="productView-img-container">
+                                <a href="{{getImageSrcset this (cdn ../theme_settings.default_image_product) 1x=../theme_settings.zoom_size}}">
+                                    {{> components/common/responsive-img
+                                        image=this
+                                        class="productView-image--default"
+                                        fallback_size=../theme_settings.product_size
+                                        lazyload="disabled"
+                                        default_image=../theme_settings.default_image_product
+                                        otherAttributes="data-main-image"
+                                    }}
+                                </a>
+                            </div>
+                        </figure>
+                    </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+    <div class="custom-productView-middle">
+        <div class="productView-price">
+            {{#or customer (if theme_settings.restrict_to_login '!==' true)}}
+                {{> components/products/price price=product.price}}
+            {{else}}
+                {{> components/common/login-for-pricing}}
+            {{/or}}
+            {{#if product.call_for_price}}
+                <p><span>{{product.call_for_price}}</span></p>
+            {{/if}}
+        </div>
+
+
+       <div class="productView-rating">
+        {{> components/products/ratings rating_target=name rating=rating}}
+       </div>
+    </div>
+    <div class="custom-productView-right">
+        <div class="productView-details">
+            <div class="productView-product">
+                <h1 class="productView-title">
+                    <a href="{{product.url}}">{{product.name}}</a>
+                </h1>
+            </div>
+
+            <div class="productView-action">
+                {{#or customer (if theme_settings.restrict_to_login '!==' true)}}
+                    {{#if show_cart_action}}
+                        <div class="card-figcaption-bottom">
+                            {{#if has_options}}
+                                {{#if theme_settings.custom_quick_shop}}
+                                    <a href="#" data-event-type="product-click" class="button button--action button--primary button--quickShop button--action" data-product-id="{{product.id}}">
+                                        {{lang 'products.quick_shop'}}
+                                        <span class="icon icon-shop-now-arrow">
+                                            <svg><use xlink:href="#icon-shop-now-arrow"></use></svg>
+                                        </span>
+                                    </a>
+                                {{else}}
+                                    <a href="{{pruduct.url}}" data-event-type="product-click" class="button button--action button--primary button--action" data-product-id="{{product.id}}">
+                                        {{lang 'products.choose_options'}}
+                                        <span class="icon icon-shop-now-arrow">
+                                            <svg><use xlink:href="#icon-shop-now-arrow"></use></svg>
+                                        </span>
+                                    </a>
+                                {{/if}}
+                            {{/if}}
+                            {{#if pre_order}}
+                                <a href="{{pre_order_add_to_cart_url}}" data-event-type="product-click" class="button button--transparent button--full button--action">{{lang 'products.pre_order'}}</a>
+                            {{/if}}
+                            {{#if add_to_cart_url }}
+                                <div class="card-action-wrapper flex-between-center">
+                                    <a href="" data-event-type="product-click" data-button-type="add-cart" class="button button--action button--primary custom-add-to-cart" data-product-id="{{product.id}}" data-wait-message="{{lang 'products.adding_to_cart'}}">
+                                        {{lang 'products.add_to_cart'}}
+                                        <span class="icon icon-shop-now-arrow">
+                                            <svg><use xlink:href="#icon-shop-now-arrow"></use></svg>
+                                        </span>
+                                    </a>
+                                </div>
+                                <span class="product-status-message aria-description--hidden">{{lang 'category.add_cart_announcement'}}</span>
+                            {{/if}}
+                            {{#if out_of_stock_message }}
+                                <a href="{{url}}" data-event-type="product-click" class="button button--full button--action button--outOfStock" data-product-id="{{id}}" disabled>{{out_of_stock_message}}</a>
+                            {{/if}}
+                        </div>
+                    {{/if}}
+                {{/or}}
+            </div>
+        </div>
+    </div>
+</div>

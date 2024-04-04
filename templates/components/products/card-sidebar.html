@@ -1,0 +1,230 @@
+<article
+    class="card
+    {{#if alternate}} card--alternate{{/if}}"
+    data-product-id="{{id}}"
+    data-test="card-{{id}}"
+    data-event-type="{{event}}"
+    data-entity-id="{{id}}"
+    data-position="{{position}}"
+    data-name="{{name}}"
+    data-product-category="
+    {{#each category}}
+        {{#if @last}}
+            {{this}}
+        {{else}}
+            {{this}},
+        {{/if}}
+    {{/each}}"
+    data-product-brand="{{brand.name}}"
+    data-product-price="
+    {{#if price.with_tax}}
+        {{price.with_tax.value}}
+    {{else}}
+        {{price.without_tax.value}}
+    {{/if}}"
+    <figure class="card-figure">
+        <!-- Rating -->
+        {{#if num_reviews}}
+            <div class="product-card-rating">
+                <span class="icon icon--rating-start">
+                    <svg><use xlink:href="#icon-rating-start"></use></svg>
+                </span>
+                <span class="number-review">{{rating}}.0</span>
+            </div>
+        {{/if}}
+
+        {{#if theme_settings.custom_label_product}}
+            <div class="custom-product-badge">
+                {{#if theme_settings.show_new_badges}}
+                    {{#each productsnew}}
+                        {{#if id '==' ../id}}
+                            <div class="product-badge new-badge">
+                                <span class="text">{{lang 'common.badge_new'}}</span>
+                            </div>
+                        {{/if}}
+                    {{/each}}
+                {{/if}}
+                {{#if theme_settings.show_sale_badges}}
+                    {{#or price.non_sale_price_with_tax price.non_sale_price_without_tax}}
+                        <div class="product-badge sale-badge">
+                            {{#if theme_settings.sale_badges_type '==' 'percent'}}
+                                {{#if price.non_sale_price_with_tax}}
+                                    <span class="text">-{{round (subtract 100 (multiply (divide price.with_tax.value price.non_sale_price_with_tax.value) 100)) 0}}%</span>
+                                {{/if}}
+                                {{#if price.non_sale_price_without_tax}}
+                                    <span class="text">-{{round (subtract 100 (multiply (divide price.without_tax.value price.non_sale_price_without_tax.value) 100)) 0}}%</span>
+                                {{/if}}
+                            {{else}}
+                                <span class="text">{{lang 'common.badge_sale'}}</span>
+                            {{/if}}
+                        </div>
+                    {{/or}}
+                {{/if}}
+                {{#if theme_settings.show_custom_badges}}
+                    {{#each custom_fields}}
+                         {{#if name '===' '__customLabel'}}
+                            <div class="product-badge custom-badge">
+                                <span class="text">{{{value}}}</span>
+                            </div>
+                        {{/if}}
+                        {{#if name '===' '__bundle'}}
+                            <div class="product-badge bundle-badge"><span class="text">{{lang 'common.badge_bundle'}}</span></div>
+                        {{/if}}
+                    {{/each}}
+                {{/if}}
+                {{#if theme_settings.show_soldout_badges}}
+                    {{#if out_of_stock_message}}
+                        <div class="product-badge soldout-badge">
+                            <span class="text">{{lang 'common.badge_sold_out'}}</span>
+                        </div>
+                    {{/if}}
+                {{/if}}
+            </div>
+        {{/if}}
+
+        <a href="{{url}}"
+           class="card-figure__link"
+           aria-label="{{name}},{{> components/products/product-aria-label}}"
+           data-event-type="product-click"
+        >
+            <div class="card-img-container{{#and (if images.length '>=' 2) (if theme_settings.custom_card_image_swap)}} card-img-hover{{/and}}">
+                {{> components/common/responsive-img
+                    image=image
+                    class="card-image"
+                    fallback_size=theme_settings.gallery_size
+                    lazyload=theme_settings.lazyload_mode
+                    default_image=theme_settings.default_image_product
+                }}
+                {{#and (if images.length '>=' 2) (if theme_settings.custom_card_image_swap)}}
+                    {{#each images}}
+                        {{#if @index '==' 1}}
+                            <span class="product-additional">
+                                {{> components/common/responsive-img
+                                    image=this
+                                    class="card-image img-responsive"
+                                    fallback_size=theme_settings.gallery_size
+                                    lazyload=theme_settings.lazyload_mode
+                                    default_image=theme_settings.default_image_product
+                                }}
+                            </span>
+                        {{/if}}
+                    {{/each}}
+                {{/and}}
+            </div>
+        </a>
+
+        <figcaption class="card-figcaption">
+            {{#or customer (if theme_settings.restrict_to_login '!==' true)}}
+                {{#if show_cart_action}}
+                    <div class="card-figcaption-bottom">
+                        {{#if has_options}}
+                            {{#if theme_settings.custom_quick_shop}}
+                                <a href="#" data-event-type="product-click" class="button button--transparent button--full button--action button--quickShop" data-product-id="{{id}}">{{lang 'products.quick_shop'}}</a>
+                            {{else}}
+                                <a href="{{url}}" data-event-type="product-click" class="button button--transparent button--full button--action" data-product-id="{{id}}">{{lang 'products.choose_options'}}</a>
+                            {{/if}}
+                        {{/if}}
+                        {{#if pre_order}} button--secondary
+                            <a href="{{pre_order_add_to_cart_url}}" data-event-type="product-click" class="button button--transparent button--full button--action">{{lang 'products.pre_order'}}</a>
+                        {{/if}}
+                        {{#if add_to_cart_url }}
+                            <a href="{{add_to_cart_url}}" data-event-type="product-click" data-button-type="add-cart" class="button button--transparent button--full button--action custom-add-to-cart" data-product-id="{{id}}" data-wait-message="{{lang 'products.adding_to_cart'}}">{{lang 'products.add_to_cart'}}</a>
+                            <span class="product-status-message aria-description--hidden">{{lang 'category.add_cart_announcement'}}</span>
+                        {{/if}}
+                        {{#if out_of_stock_message }}
+                            <a href="{{url}}" data-event-type="product-click" class="button button--small card-figcaption-button button--outOfStock" data-product-id="{{id}}">{{out_of_stock_message}}</a>
+                        {{/if}}
+                    </div>
+                {{/if}}
+            {{/or}}
+        </figcaption>
+        {{#or customer (if theme_settings.restrict_to_login '!==' true)}}
+            {{#if show_cart_action}}
+                {{#if has_options}}
+                    {{#if theme_settings.custom_quick_shop}}    
+                        <div class="quickShopPopup scrollbar"></div>
+                    {{/if}}
+                {{/if}}
+            {{/if}}
+        {{/or}}
+    </figure>
+    <div class="card-body">
+        {{#if brand.name}}
+            <p class="card-text" data-test-info-type="brandName">{{brand.name}}</p>
+        {{/if}}
+
+        <h3 class="card-title{{#if theme_settings.custom_card_title '==' 'ellipsis'}} card-ellipsis{{/if}}">
+            <a aria-label="{{name}},{{> components/products/product-aria-label}}"
+                href="{{url}}"
+                data-event-type="product-click">
+                <span>{{name}}</span>
+            </a>
+        </h3>
+        
+        <div class="card-text" data-test-info-type="price">
+            {{#or customer (if theme_settings.restrict_to_login '!==' true)}}
+                {{> components/products/price price=price}}
+            {{else}}
+                {{> components/common/login-for-pricing}}
+            {{/or}}
+        </div>
+        {{> components/products/bulk-discount-rates}}
+
+        {{#or customer (if theme_settings.restrict_to_login '!==' true)}}
+            {{#if show_cart_action}}
+                <div class="card-figcaption-bottom">
+                    {{#if has_options}}
+                        {{#if theme_settings.custom_quick_shop}}
+                            <a href="#" data-event-type="product-click" class="button button--transparent button--full button--action button--quickShop" data-product-id="{{id}}">{{lang 'products.quick_shop'}}</a>
+                        {{else}}
+                            <a href="{{url}}" data-event-type="product-click" class="button button--transparent button--full button--action" data-product-id="{{id}}">{{lang 'products.choose_options'}}</a>
+                        {{/if}}
+                    {{/if}}
+                    {{#if pre_order}}
+                        <a href="{{pre_order_add_to_cart_url}}" data-event-type="product-click" class="button button--transparent button--full button--action">{{lang 'products.pre_order'}}</a>
+                    {{/if}}
+                    {{#if add_to_cart_url }}
+                    <!-- Start Custom Quantity Card -->
+                        <div class="card-action-wrapper flex-between-center">
+                            <div class="form-field form-field--increments">
+                                    <div class="form-increment" data-quantity-change>
+                                        <button class="button button--secondary button--icon" data-action="dec">
+                                            <span class="is-srOnly">{{lang 'products.quantity_decrease' name=product.title}}</span>
+                                            <i class="icon">
+                                                <svg>
+                                                    <use href="#icon-qty-minus"/>
+                                                </svg>
+                                            </i>
+                                        </button>
+                                        <input class="form-input form-input--incrementTotal card-form-incrementTotal"
+                                            name="qty[]"
+                                            type="tel"
+                                            value="{{#if product.min_purchase_quantity}}{{product.min_purchase_quantity}}{{else}}1{{/if}}"
+                                            data-quantity-min="{{product.min_purchase_quantity}}"
+                                            data-quantity-max="{{product.max_purchase_quantity}}"
+                                            aria-label="Quantity"
+                                            min="1"
+                                            pattern="[0-9]*"
+                                            aria-live="polite">
+                                        <button class="button button--secondary button--icon" data-action="inc">
+                                            <span class="is-srOnly">{{lang 'products.quantity_increase' name=product.title}}</span>
+                                            <i class="icon">
+                                                <svg>
+                                                    <use href="#icon-qty-plus"/>
+                                                </svg>
+                                            </i>
+                                        </button>
+                                    </div>
+                            </div>
+                            <a href="{{add_to_cart_url}}" data-event-type="product-click" data-button-type="add-cart" class="button button--transparent button--full button--action custom-add-to-cart" data-product-id="{{id}}" data-wait-message="{{lang 'products.adding_to_cart'}}">{{lang 'products.add_to_cart'}}</a>
+                        </div>
+                        <span class="product-status-message aria-description--hidden">{{lang 'category.add_cart_announcement'}}</span>
+                    {{/if}}
+                    {{#if out_of_stock_message }}
+                        <a href="{{url}}" data-event-type="product-click" class="button button--small card-figcaption-button button--outOfStock" data-product-id="{{id}}">{{out_of_stock_message}}</a>
+                    {{/if}}
+                </div>
+            {{/if}}
+        {{/or}}
+    </div>
+</article>

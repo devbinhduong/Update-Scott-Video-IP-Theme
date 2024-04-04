@@ -1,0 +1,45 @@
+// =============================================================================
+// PRICE (CSS)
+// =============================================================================
+
+.price--rrp,
+.price--non-sale,
+.price--discounted {
+    text-decoration: line-through;
+}
+
+.price-section--minor {
+    color: color("greys", "light");
+}
+
+
+/* Custom Start CSS for Add to cart to for sale price text */
+.price-section {
+    &.price-section--withoutTax {
+        &.sale-price--withoutTax {
+            .price--withoutTax {
+                display: none;
+            }
+        }
+
+        &.default-price--withoutTax {
+            .price-sale-ATC {
+                display: none;
+            }
+        }
+
+        .price-sale-ATC {
+            color: #ed1c24;
+            font-size: 16px;
+            font-weight: 600;
+            text-align: left;
+            margin-bottom: 0px;
+            margin-top: 4px;
+            text-transform: capitalize;
+        }
+    }
+}
+
+.price-section.price-section--withoutTax.sale-price--withoutTax .price--withoutTax {
+    display: none;
+}

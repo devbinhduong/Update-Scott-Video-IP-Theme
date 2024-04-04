@@ -1,0 +1,41 @@
+<!-- Menu Mobile Sidebar -->
+<div class="custom-sidebar custom-menu-mobile custom-sidebar-left animated{{#if theme_settings.customMegamenu}} custom-menu-megamenu{{/if}}" id="custom-menu-mobile">
+    <a href="#" class="custom-sidebar-close" aria-label="Close Menu Sidebar">
+        <svg class="icon" aria-hidden="true"><use xlink:href="#icon-close"></use></svg>
+    </a>
+    <div class="custom-sidebar-wrapper navPages-container" data-menu>
+        {{> components/common/navigation-mobile }}
+    </div>
+</div>
+
+<!-- Search Mobile Sidebar -->
+<div class="custom-sidebar custom-search-mobile custom-sidebar-left" id="custom-search-mobile">
+    <a href="#" class="custom-sidebar-close" aria-label="Close Search Sidebar">
+        <svg class="icon" aria-hidden="true"><use xlink:href="#icon-close"></use></svg>
+    </a>
+    <div class="custom-sidebar-wrapper"></div>
+</div>
+
+<!--  Cart Sidebar -->
+<div class="custom-sidebar custom-cart-sidebar custom-sidebar-right" id="custom-cart-sidebar">
+    <a href="#" class="custom-sidebar-close" aria-label="Close Cart Sidebar">
+        <svg class="icon" aria-hidden="true"><use xlink:href="#icon-close"></use></svg>
+    </a>
+    <div class="custom-sidebar-wrapper"></div>
+</div>
+
+<!-- Account Sidebar -->
+{{#if page_type '!=' 'login'}}
+    <div class="custom-sidebar custom-auth-sidebar custom-sidebar-right" id="{{#if customer}}custom-account-mobile{{else}}custom-login-mobile{{/if}}">
+        <a href="#" class="custom-sidebar-close" aria-label="Close Account Sidebar">
+            <svg class="icon" aria-hidden="true"><use xlink:href="#icon-close"></use></svg>
+        </a>
+        <div class="custom-sidebar-wrapper">
+            {{#if customer}}
+                {{> components/custom/custom-account-popup data="account-mb"}}
+            {{else}}
+                {{> components/custom/custom-login-popup data="login-mb" email_id="login_email2" password_id="login_pass2"}}
+            {{/if}}
+        </div>
+    </div>
+{{/if}}

@@ -1,0 +1,674 @@
+// Setup Default
+.text {
+    &-center {
+        text-align: center;
+
+        &-tablet {
+            @include smax-m {
+                text-align: center;
+            }
+        }
+
+        &-mobile {
+            @include smax-s {
+                text-align: center;
+            }
+        }
+
+    }
+    
+    &-left {
+        text-align: left;
+
+        &-tablet {
+            @include smax-m {
+                text-align: left;
+            }
+        }
+
+        &-mobile {
+            @include smax-s {
+                text-align: left;
+            }
+        }
+    }
+
+    &-right {
+        text-align: right;
+
+        &-tablet {
+            @include smax-m {
+                text-align: right;
+            }
+        }
+
+        &-mobile {
+            @include smax-s {
+                text-align: right;
+            }
+        }
+    }
+
+    &-white {
+        color: #ffffff !important;
+    }
+
+    &-black {
+        color: #000000 !important;
+    }
+
+    &-clamp {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+}
+
+.fw {
+    &-400 {
+        font-weight: 400;
+
+        &-tablet {
+            @include smax-m {
+                font-weight: 400;
+            }
+        }
+
+        &-mobile {
+            @include smax-s {
+                font-weight: 400;
+            }
+        }
+    }
+
+    &-500 {
+        font-weight: 500;
+
+        &-tablet {
+            @include smax-m {
+                font-weight: 500;
+            }
+        }
+
+        &-mobile {
+            @include smax-s {
+                font-weight: 500;
+            }
+        }
+    }
+
+    &-600 {
+        font-weight: 600;
+
+        &-tablet {
+            @include smax-m {
+                font-weight: 600;
+            }
+        }
+
+        &-mobile {
+            @include smax-s {
+                font-weight: 600;
+            }
+        }
+    }
+
+    &-700 {
+        font-weight: 700;
+
+        &-tablet {
+            @include smax-m {
+                font-weight: 700;
+            }
+        }
+
+        &-mobile {
+            @include smax-s {
+                font-weight: 700;
+            }
+        }
+    }
+
+    &-900 {
+        font-weight: 900;
+
+        &-tablet {
+            @include smax-m {
+                font-weight: 900;
+            }
+        }
+
+        &-mobile {
+            @include smax-s {
+                font-weight: 900;
+            }
+        }
+    }
+}
+
+
+.flex {
+    display:flex;
+
+    &-tablet {
+        @include smax-m {
+            display: flex;
+        }
+    }
+
+    &-mobile {
+        @include smax-s {
+            display: flex;
+        }
+    }
+
+    &-center {
+        align-items:center;
+        justify-content:center;
+
+        &-tablet {
+            @include smax-m {
+                align-items:center;
+                justify-content:center;
+            }
+        }
+
+        &-mobile {
+            @include smax-s {
+                align-items:center;
+                justify-content:center;
+            }
+        }
+
+        &-x {
+            align-items:center;
+
+            &-tablet {
+                @include smax-m {
+                    align-items:center;
+                }
+            }
+
+            &-mobile {
+                @include smax-s {
+                    align-items:center;
+                }
+            }
+        }
+
+        &-y {
+            justify-content:center;
+
+            &-tablet {
+                @include smax-m {
+                    justify-content:center !important;
+                }
+            }
+
+            &-mobile {
+                @include smax-s {
+                    justify-content:center;
+                }
+            }
+        }
+    }
+
+    &-start {
+        justify-content:flex-start;
+
+        &-tablet {
+            @include smax-m {
+                justify-content:flex-start;
+            }
+        }
+
+        &-mobile {
+            @include smax-s {
+                justify-content:flex-start;
+            }
+        }
+    }
+
+    &-between {
+        justify-content:space-between;
+
+        &-tablet {
+            @include smax-m {
+                justify-content:space-between;
+            }
+        }
+
+        &-mobile {
+            @include smax-s {
+                justify-content:space-between;
+            }
+        }
+    }
+
+    &-end {
+        justify-content:flex-end;
+
+        &-tablet {
+            @include smax-m {
+                justify-content:flex-end;
+            }
+        }
+
+        &-mobile {
+            @include smax-s {
+                justify-content:flex-end;
+            }
+        }
+    }
+
+    &-wrap {
+        flex-wrap:wrap;
+
+        &-tablet {
+            @include smax-m {
+                flex-wrap:wrap;
+            }
+        }
+
+        &-mobile {
+            @include smax-s {
+                flex-wrap:wrap;
+            }
+        }
+    }
+
+    &-nowrap {
+        flex-wrap:nowrap;
+
+        &-tablet {
+            @include smax-m {
+                flex-wrap:nowrap;
+            }
+        }
+
+        &-mobile {
+            @include smax-s {
+                flex-wrap:nowrap;
+            }
+        }
+    }
+
+    &-row {
+        flex-direction:row;
+
+        &-tablet {
+            @include smax-m {
+                flex-direction:row;
+            }
+        }
+
+        &-mobile {
+            @include smax-s {
+                flex-direction:row;
+            }
+        }
+
+        &-reverse {
+            flex-direction:row-reverse;
+
+            &-tablet {
+                @include smax-m {
+                    flex-direction:row-reverse;
+                }
+            }
+
+            &-mobile {
+                @include smax-s {
+                    flex-direction:row-reverse;
+                }
+            }
+        }
+    }
+
+    &-col {
+        flex-direction:column;
+
+        &-tablet {
+            @include smax-m {
+                flex-direction:column;
+            }
+        }
+
+        &-mobile {
+            @include smax-s {
+                flex-direction:column;
+            }
+        }
+
+        &-reverse {
+            flex-direction:column-reverse;
+
+            &-tablet {
+                @include smax-m {
+                    flex-direction:column-reverse;
+                }
+            }
+
+            &-mobile {
+                @include smax-s {
+                    flex-direction:column-reverse;
+                }
+            }
+        }
+    }
+
+    &-inline {
+        display: inline-flex;
+    }
+}
+
+.block {
+    display: block;
+
+    &-tablet {
+        @include smax-m {
+            display: block;
+        }
+    }
+
+    &-mobile {
+        @include smax-s {
+            display: block;
+        }
+    }
+}
+
+.inline-block {
+    display: inline-block;
+
+    &-tablet {
+        @include smax-m {
+            display: inline-block;
+        }
+    }
+
+    &-mobile {
+        @include smax-s {
+            display: inline-block;
+        }
+    }
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.capitalize {
+    text-transform: capitalize;
+}
+
+.no-underline {
+    text-decoration: none;
+}
+
+.m-0 {
+    margin: 0;
+}
+
+.mt-0 {
+    margin-top: 0;
+}
+
+.mb-0 {
+    margin-bottom: 0;
+}
+
+.mr-0 {
+    margin-right: 0;
+}
+
+.ml-0 {
+    margin-left: 0;
+}
+.p-0 {
+    padding: 0;
+}
+
+.pt-0 {
+    padding-top: 0;
+}
+
+.pb-0 {
+    padding-bottom: 0;
+}
+
+.pr-0 {
+    padding-right: 0;
+}
+
+.pl-0 {
+    padding-left: 0;
+}
+
+@include smax-m {
+    .p-0-tablet {
+        padding: 0;
+    }
+
+    .m-0-tablet {
+        margin: 0;
+    }
+
+    .mt-0-tablet {
+        margin-top: 0;
+    }
+
+    .mb-0-tablet {
+        margin-bottom: 0;
+    }
+
+    .mr-0-tablet {
+        margin-right: 0;
+    }
+
+    .ml-0-tablet {
+        margin-left: 0;
+    }
+
+    .pt-0-tablet {
+        padding-top: 0;
+    }
+
+    .pb-0-tablet {
+        padding-bottom: 0;
+    }
+
+    .pr-0-tablet {
+        padding-right: 0;
+    }
+
+    .pl-0-tablet {
+        padding-left: 0;
+    }
+}
+
+@include smax-s {
+    .p-0-mobile {
+        padding: 0;
+    }
+
+    .m-0-mobile {
+        margin: 0;
+    }
+
+    .mt-0-mobile {
+        margin-top: 0;
+    }
+
+    .mb-0-mobile {
+        margin-bottom: 0;
+    }
+
+    .mr-0-mobile {
+        margin-right: 0;
+    }
+
+    .ml-0-mobile {
+        margin-left: 0;
+    }
+
+    .pt-0-mobile {
+        padding-top: 0;
+    }
+
+    .pb-0-mobile {
+        padding-bottom: 0;
+    }
+
+    .pr-0-mobile {
+        padding-right: 0;
+    }
+
+    .pl-0-mobile {
+        padding-left: 0;
+    }
+}
+
+
+.bg-blue {
+    background-color: #003A63 !important;
+}
+
+.bg-black {
+    background-color: #000000 !important;
+}
+
+.color-black {
+    color: #000000 !important;
+}
+
+.color-white {
+    color: #ffffff !important;
+}
+
+.static {
+    position: static;
+}
+
+.relative {
+    position: relative;
+}
+
+.custom-section {
+    padding-bottom: 120px;
+
+    &.featured-offer {
+        padding-top: 10px;
+        padding-bottom: 40px;
+
+        @include smax-m {
+            padding-bottom: 40px;
+        }
+    }
+    &.home-recently-posts {
+        padding-top: 12px;
+        padding-bottom: 100px;
+
+        @include smax-m {
+            padding-bottom: 60px;
+        }
+    }
+
+    @include smax-m {
+        padding-bottom: 60px;
+    }
+
+    @include smax-s {
+        padding-bottom: 30px;
+    }
+}
+
+.custom-heading {
+    color: #444444;
+    font-weight: 600;
+    font-size: clamp(30px, 4vw, 56px);
+    line-height: 1.2;
+
+    &.custom-heading--white {
+        color: #ffffff;
+    }
+}
+
+.custom-desc {
+    font-size: clamp(14px, 1.3vw, 18px);
+    line-height: 1.8;
+    letter-spacing: 0;
+    color: #444444;
+    font-weight: 500;
+}
+
+.custom-category-heading {
+    font-size: 35px;
+    letter-spacing: 0.025em;
+    font-weight: 900;
+    margin-top: 0;
+    color: #3a8dde;
+    font-size: clamp(24px, 1.8vw, 35px);
+} 
+
+.hide-on {
+    &-all {
+        display: none !important;
+    }
+    
+    &-tablet {
+        @include smax-m {
+            display: none !important;
+        }
+    }
+
+    &-desktop {
+        @include smin-m {
+            display: none !important;
+        }
+    }
+
+    &-mobile {
+        @include smax-s {
+            display: none !important;
+        }
+    }
+}
+
+
+.custom-page-heading {
+    line-height: 1.2;
+    letter-spacing: 0;
+    font-weight: 700;
+    color: #000000;
+    font-size: clamp(28px, 5.8vw, 58px);
+    margin-top: 0px;
+    margin-bottom: 50px;
+
+
+    @include smax-s {
+        text-align: center;
+    }
+}
+
+.custom-page-text {
+    color: #262626;
+    line-height: 1.625;
+    letter-spacing: 0;
+    font-size: clamp(14px, 1.3vw, 16px); 
+
+    @include smax-s {
+        text-align: center;
+    }
+}
+
+.custom-page-subTitle {
+    color: #262626;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 22px;
+    line-height: 1.5;
+    font-size: clamp(16px, 1.6vw, 22px);
+}

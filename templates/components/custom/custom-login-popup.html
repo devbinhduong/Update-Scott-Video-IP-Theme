@@ -1,0 +1,27 @@
+<div id="{{data}}-popup" class="login-form-popup{{#if data '==' 'login-pc'}} custom-auth-popup{{/if}}">
+    <div class="custom-popup-content">
+        <form class="form" action="{{settings.secure_base_url}}/login.php?action=check_login" method="post">
+            <div class="login-form-wrapper">
+                <div class="form-field">
+                    <label class="form-label" for="{{email_id}}">
+                        {{lang 'login.field_email'}}
+                        <em class="text-danger">*</em>
+                    </label>
+                    <input id="{{email_id}}" class="form-input" type="email" value="" name="login_email" placeholder="{{lang 'login.field_email'}}">
+                </div>
+                <div class="form-field">
+                    <label class="form-label" for="{{password_id}}">
+                        {{lang 'login.field_password'}}
+                        <em class="text-danger">*</em>
+                    </label>
+                    <input id="{{password_id}}" class="form-input" type="password" value="" placeholder="{{lang 'login.field_password'}}" name="login_pass" autocomplete="on">
+                </div>
+                <div class="form-actions text-center">
+                    <button type="button" class="button button--primary button--action">{{lang 'login.submit_value' }}</button>
+                    <a class="forgot-password hover-link" href="{{urls.auth.forgot_password}}">{{lang 'login.forgot_password'}}</a>
+                    <a class="button button--transparent button--action" href="{{urls.auth.create_account}}">{{lang 'login.new_customer.create_account'}}</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

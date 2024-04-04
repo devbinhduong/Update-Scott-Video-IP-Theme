@@ -1,0 +1,31 @@
+{{#if product.options}}
+    <a class="button button--transparent custom-toggle-options" href="#">
+        <span class="text">{{lang 'products.choose_options'}}</span>
+    </a>
+    <div class="custom-detail-options custom-productOptions" data-fbt-option-change>
+        <div class="custom-option-header">
+            <span class="custom-option-title">{{lang 'products.choose_options'}}</span>
+            <a href="#" class="custom-option-close" aria-label="Close" role="button">
+                <svg class="icon" role="img" aria-label="{{lang 'common.close'}}">
+                    <title>{{lang 'common.close'}}</title>
+                    <desc>{{lang 'common.close'}}</desc>
+                    <use xlink:href="#icon-close"></use>
+                </svg>
+            </a>
+        </div>
+        <div class="custom-option-content customCustomScrollbar">
+            {{#each product.options}}
+                {{{dynamicComponent 'components/custom/fbt-options'}}}
+            {{/each}}
+            <div class="productAttributes-message">
+                <p class="alertBox-message"></p>
+            </div>
+            {{#if theme_settings.custom_stock_level}}
+                <div class="productView-optionsStock u-hiddenVisually">
+                    <span>{{lang 'products.stock_hurry_up'}}</span>
+                    <span data-stock-left></span>
+                </div>
+            {{/if}}
+        </div>
+    </div>
+{{/if}}

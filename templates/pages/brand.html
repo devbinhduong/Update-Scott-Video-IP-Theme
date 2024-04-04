@@ -1,0 +1,91 @@
+---
+brand:
+    products:
+        limit: {{theme_settings.brandpage_products_per_page}}
+---
+{{inject "brandProductsPerPage" theme_settings.brandpage_products_per_page}}
+{{#partial "head"}}
+    {{#if pagination.brand.previous}}
+        <link rel="prev" href="{{pagination.brand.previous}}">
+    {{/if}}
+    {{#if pagination.brand.next}}
+        <link rel="next" href="{{pagination.brand.next}}">
+    {{/if}}
+{{/partial}}
+
+{{#partial "page"}}
+
+{{#unless banners.top}}
+{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+
+<h1 class="page-heading">{{brand.name}}</h1>
+{{/unless}}
+
+<!-- Custom brand Page -->
+<div class="brandSection__container{{#unless banners.top}} brandSection__container--noCenter{{/unless}}">
+    {{#if banners.top}}
+        <div class="brandSection__left">
+            {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+
+            <div class="brand-image-container">
+                <img class="lazyload" data-sizes="auto" src="{{cdn 'img/loading.svg'}}" data-src="{{getImage brand.image 'thumb_size'}}">
+            </div>
+        </div>
+
+        <div class="brandSection__right">
+            <h1 class="page-heading">{{brand.name}}</h1>
+            
+            {{#each (limit banners.top_metadata 1)}}
+                <div class="brandSection__text" data-event-type="promotion" data-entity-id="{{this.id}}" data-name="{{this.banner-name}}" data-position="{{this.location}}" data-banner-id="{{this.banner-name}}">
+                    <div data-event-type="promotion-click">
+                        {{{this.content}}}
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+    {{else}}
+        <div class="brand-image-container">
+            <img class="lazyload" data-sizes="auto" src="{{cdn 'img/loading.svg'}}" data-src="{{getImage brand.image 'thumb_size'}}">
+        </div>
+    {{/if}}
+</div>
+
+{{{region name="brand_below_header"}}}
+<div class="page">
+    {{#if theme_settings.custom_brand_sidebar}}
+        <aside class="page-sidebar" id="faceted-search-container">
+            <div class="page-sidebar-close">
+                <a href="#" class="close">
+                    <span class="icon icon--close">
+                        <svg><use xlink:href="#icon-close"></use></svg>
+                    </span>
+                </a>
+            </div>
+            {{> components/brand/sidebar}}
+        </aside>
+    {{/if}}
+
+    <div class="page-content" id="product-listing-container">
+        {{#if brand.search_error }}
+            <p>{{lang 'search.errorMessage'}}</p>
+        {{else}}
+            {{#if theme_settings.custom_brand_sidebar}}
+                <div class="page-sidebar-mobile-wrapper hide-on-desktop">
+                    <div class="page-sidebar-mobile">
+                        <span class="text">{{lang 'common.sidebar'}}</span>
+                        <svg class="icon" aria-hidden="true"><use xlink:href="#icon-sidebar"></use></svg>
+                    </div>
+                </div>
+            {{/if}}
+            {{#if brand.products}}
+                {{> components/brand/product-listing}}
+            {{else}}
+                <p>{{lang 'brands.no_products'}}</p>
+            {{/if}}
+            {{{region name="brand_below_content"}}}
+        {{/if}}
+    </div>
+</div>
+
+{{/partial}}
+{{> layout/base}}

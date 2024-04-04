@@ -1,0 +1,70 @@
+{{#if page_type '!==' 'page_contact_form'}}
+    {{#all (if theme_settings.custom_ask_an_expert) (if theme_settings.custom_ask_an_expert_pagelink)}}
+        <div id="custom-ask-an-expert" class="custom-popup custom-ask-an-expert-popup modal" data-reveal>
+            <div class="modal-content">
+                <div class="modal-header modal-header2">
+                    <h2 class="modal-header-title">{{theme_settings.custom_ask_an_expert_title}}</h2>
+                    <button class="modal-close" type="button" title="Close">
+                        <span class="aria-description--hidden">Close</span>
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body customCustomScrollbar">
+                    {{#if theme_settings.custom-ask-an-expert-logo}}
+                        <div class="custom-ask-an-expert-logo">
+                            <a href="/">
+                                {{#if settings.store_logo.image}}
+                                    <img class="header-logo-image" src="{{getImage settings.store_logo.image 'logo_size'}}" alt="{{settings.store_logo.title}}" title="{{settings.store_logo.title}}">
+                                {{else}}
+                                    <span>{{settings.store_logo.title}}</span>
+                                {{/if}}
+                            </a>
+                        </div>
+                    {{/if}}
+                    <div class="custom-ask-an-expert-subtitle text-center"><span>{{theme_settings.custom_ask_an_expert_desc1}}</span></div>
+                    <div class="custom-ask-an-expert-text description text-center">{{theme_settings.custom_ask_an_expert_desc2}}</div>
+                    <div class="custom-ask-an-expert-text question text-center">{{theme_settings.custom_ask_an_expert_desc3}}</div>
+                    <div id="custom-ask-an-expert-results" class="custom-ask-an-expert-text"></div>
+                    <form data-contact-form id="custom-ask-an-expert-form" class="custom-ask-an-expert-form" action="{{urls.contact_us_submit}}" method="post" data-product-id="{{product.id}}" data-product-title="{{product.title}}" data-product-url="{{product.url}}" data-product-sku="{{product.sku}}">
+                        <fieldset class="form-fieldset">
+                            <div class="hl-form-field-wrapper"></div>
+                            <div class="form-field form-field-radio">
+                                <label class="form-label">Do you need:</label>
+                                <input class="form-radio" id="pricing-radio" type="radio" name="type_package" checked value="Pricing">
+                                <label class="form-label" for="pricing-radio">Pricing</label>
+                                <input class="form-radio" id="answers-radio" type="radio" name="type_package" value="Answers">
+                                <label class="form-label" for="answers-radio">Answers</label>
+                                <input class="form-radio" id="both-radio" type="radio" name="type_package" value="Pricing & Answers">
+                                <label class="form-label" for="both-radio">Both</label>
+                            </div>
+                            <div class="form-field">
+                                <label class="form-label" for="contact_comment_area">What can i help you with today?
+                                    <small>*</small>
+                                </label>
+                                <textarea name="contact_comment_area" cols="30" rows="6" class="form-input" id="contact_comment_area" required></textarea>
+                            </div>
+                            <div class="form-field form-field-radio form-field-radio2">
+                                <label class="form-label form-label-custom">How would you like me to contact you?</label>
+                                <input class="form-radio" id="phone-radio" type="radio" name="type_contact" checked value="Phone">
+                                <label class="form-label" for="phone-radio">Phone</label>
+                                <input class="form-radio" id="email-radio" type="radio" name="type_contact" value="Email">
+                                <label class="form-label" for="email-radio">Email</label>
+                                <input class="form-radio" id="both-radio-2" type="radio" name="type_contact" value="Phone & Email">
+                                <label class="form-label" for="both-radio-2">Both</label>
+                            </div>
+                            <div class="hl-form-field" style="display: none;">
+                                <textarea name="contact_question" cols="30" rows="3" class="form-input" id="contact_question"></textarea>
+                            </div>
+                            <div class="g-recaptcha" data-sitekey="6LcjX0sbAAAAACp92-MNpx66FT4pbIWh-FTDmkkz"></div>
+                            <div class="form-actions">
+                                <button type="submit" class="button button--tertiary" id="custom-ask-an-expert-button"><span>Send Question</span></button>
+                             </div>
+                        </fieldset>
+                    </form>
+                    <script src="https://www.google.com/recaptcha/api.js" async="" defer=""></script>
+
+                </div>
+            </div>
+        </div>
+    {{/all}}
+{{/if}}
