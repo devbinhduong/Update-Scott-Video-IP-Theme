@@ -842,10 +842,10 @@
         "footer_col2_link3": "/av-carts/",
         "footer_col2_link4": "/microphones/",
         "footer_col2_link5": "/touch-controls/",
-        "footer_col3_heading": "CUSTOMER SERVICE",
+        "footer_col3_heading": "Other B&H Sites",
         "footer_col3_text1": "Customer Service",
         "footer_col3_text2": "Installation Support",
-        "footer_col3_text3": "Payment Methods",
+        "footer_col3_text3": "Payment Method",
         "footer_col3_text4": "",
         "footer_col3_text5": "",
         "footer_col3_link1": "/customer-service/",
@@ -996,7 +996,9 @@
         "home_banner3_text": "Our extended service and support plans are designed to provide comprehensive coverage for all brands we sell. As a manufacturer-authorized and certified retailer, we ensure that your video conferencing solutions are backed by reliable support, extending beyond standard warranties for added peace of mind and operational continuity.",
         "home_banner3_button": "Learn More",
         "home_featured_products_title": "Featured Products",
-        "disable_open_devtoll": true
+        "disable_open_devtoll": false,
+        "footer_review_link": "#",
+        "footer_review_img": "footer-shopper-review.png"
       }
     }
   ]

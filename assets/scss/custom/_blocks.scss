@@ -505,7 +505,7 @@
 
     .recentlyPost__heading {
         > .title {
-            font-size: 50px;
+            font-size: clamp(30px, 4vw, 50px);
         }
     }
 

@@ -116,10 +116,6 @@
     &.footer-info-col--submitForm {
         width: 100%;
 
-        @include smax-xs {
-            margin-top: 40px;
-        }
-        
         .footer-info-heading  {
             margin-bottom: 20px;
             color: #ffffff;
@@ -179,12 +175,6 @@
                     margin-bottom: 0;
                 }
             }
-        }
-    }
-
-    @include smax-s {
-        + .footer-info-col {
-            margin-top: 40px;
         }
     }
 
@@ -322,6 +312,204 @@
 
         &:hover {
             color: #ffffff;
+        }
+    }
+}
+
+
+/* Custom Footer 04042024 */
+.footer {
+    padding-top: 0;
+
+    &__wrapper {
+        @include flexbox();
+
+        @include smax-s {
+            flex-direction: column;
+        }; 
+    }
+    &__left {
+        flex: 1;
+        padding-top: 30px;
+        
+        .container-padding {
+            padding-left: 90px;
+            padding-right: 70px;
+            
+            @include smax-xxl {
+                padding-left: 15px;
+                padding-right: 15px;
+            }; 
+        }
+
+        .footer-heading {
+            color: #ffffff;
+            font-size: 25px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 25px;
+            margin-bottom: 33px;
+        }
+
+        .footerService {
+            padding-bottom: 33px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            &__list {
+                @include flex-layout(4, 12px);
+
+                @include smax-xl {
+                    @include flex-layout(2, 12px);
+                }; 
+
+                @include smax-m {
+                    @include flex-layout(1, 12px);
+                }; 
+            }
+
+            &__item {
+                @include flexbox($align-items: center);
+                background: rgba(255, 255, 255, 0.1);
+                padding: 5px 10px 5px 9px;
+
+                .item {
+                    &-icon {
+                        display: block;
+                        @include square(62px);
+                        margin-right: 6px;
+        
+                        svg {
+                            @include square(62px);
+                            display: block;
+                        }
+                    }
+
+                    &-title {
+                        color: #FFF;
+                        font-size: 16px;
+                        font-style: normal;
+                        font-weight: 600;
+                        line-height: 1;
+                        margin: 0;
+                    }
+
+                    &-text {
+                        color: #FFF;
+                        font-size: 12px;
+                        font-style: normal;
+                        font-weight: 300;
+                        line-height: 16px;
+                        margin-bottom: 0;
+                        letter-spacing: 0;
+                    }
+                }
+            }
+        }
+
+        .footerContent {
+            padding-top: 37px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 5px;
+
+            &__row {
+                @include flexbox();
+                margin-left: -35px;
+                margin-right: -35px;
+
+                @include smax-xxl {
+                    margin-left: -15px;
+                    margin-right: -15px;
+                };
+
+                @include smax-xl {
+                    @include flex-layout(3, 20px);
+                    margin-right: 0;
+                };
+
+                @include smax-xs {
+                    @include flex-layout(1, 20px);
+                }; 
+
+                .footer-info-col {
+                    padding: 0  35px;
+
+                    @include smax-xxl {
+                        padding: 0 15px;
+                    };
+
+                    @include smax-xl {
+                        padding: 0;
+                    }; 
+                }
+            }
+        }
+    }
+
+    &__right {
+        width: 100%;
+        max-width: 500px;
+        background: rgba(255, 255, 255, 0.05);
+        height: 652px;
+
+        @include smax-m {
+            width: 50%;
+            max-width: unset;
+        }; 
+
+        @include smax-s {
+            width: 100%;
+        };
+
+        .footer-right__top {
+            padding: 40px 48px;
+
+            .footer__logo {
+                text-align: center;
+            }
+
+            .footer__info {
+                .info {
+                    &-list {
+
+                    }
+
+                    &-item {
+                        h3 {
+                            margin: 0;
+                            color: #ffffff;
+                            font-size: 20px;
+                            font-style: normal;
+                            font-weight: 400;
+                            line-height: 20px;
+                        }
+
+                        a {
+                            color: #ffffff;
+                            font-size: 16px;
+                            font-style: normal;
+                            font-weight: 300;
+                            text-decoration: none;
+                            line-height: 16px;
+                        }
+                    }
+                }
+            }
+
+            .footer__contact {
+                .contact {
+                    &-list {}
+
+                    &-item {
+                        a {
+                            color: #ffffff;
+                            font-size: 20px;
+                            font-style: normal;
+                            font-weight: 400;
+                            line-height: 25px;
+                            text-decoration: none;
+                        }
+                    }
+                }
+            }
         }
     }
 }

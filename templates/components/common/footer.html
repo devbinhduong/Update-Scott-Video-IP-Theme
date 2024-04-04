@@ -10,307 +10,357 @@
     </div>
 {{/and}}
 <footer class="footer" role="contentinfo">
-    <div class="container">
-        <h2 class="footer-heading">{{lang 'footer.title'}}</h2>
-        <section class="footer-info flex flex-wrap flex-between">
-            <!-- Custom Start -->
-            <div class="footer-info--left flex flex-col">
-                <div class="footerLeft__top row" style="--rowDesktop: 3">
-                    <article class="footer-info-col col custom-animation" data-step-animate="1" data-section-load="animation">
-                        <h3 class="footer-info-heading footer-info-heading--toggle">{{theme_settings.footer_col1_heading}}</h3>
-                        <ul class="footer-info-list">
-                            {{#if theme_settings.footer_col1_text1}}
-                                <li>
-                                    <a href="{{theme_settings.footer_col1_link1}}" class="hover-link" style="--underlineColor: #ffffff;">
-                                        <span>{{theme_settings.footer_col1_text1}}</span>
-                                    </a>
-                                </li>
-                            {{/if}}
-                            {{#if theme_settings.footer_col1_text2}}
-                                <li>
-                                    <a href="{{theme_settings.footer_col1_link2}}" class="hover-link" style="--underlineColor: #ffffff;">
-                                        <span></span>
-                                    </a>
-                                </li>
-                            {{/if}}
-                            {{#if theme_settings.footer_col1_text3}}
-                                <li>
-                                    <a href="{{theme_settings.footer_col1_link3}}" class="hover-link" style="--underlineColor: #ffffff;">
-                                        <span>{{theme_settings.footer_col1_text3}}</span>
-                                    </a>
-                                </li>
-                            {{/if}}
-                            {{#if theme_settings.footer_col1_text4}}
-                                <li>
-                                    <a href="{{theme_settings.footer_col1_link4}}" class="hover-link" style="--underlineColor: #ffffff;">
-                                        <span>{{theme_settings.footer_col1_text4}}</span>
-                                    </a>
-                                </li>
-                            {{/if}}
-                            {{#if theme_settings.footer_col1_text5}}
-                                <li>
-                                    <a href="{{theme_settings.footer_col1_link5}}" class="hover-link" style="--underlineColor: #ffffff;">
-                                        <span>{{theme_settings.footer_col1_text5}}</span>
-                                    </a>
-                                </li>
-                            {{/if}}
-                        </ul>
-                    </article>
-                    <article class="footer-info-col col custom-animation" data-step-animate="2" data-section-load="animation">
-                        <h3 class="footer-info-heading footer-info-heading--toggle">{{theme_settings.footer_col2_heading}}</h3>
-                        <ul class="footer-info-list">
-                            {{#each categories}}
-                                <li>
-                                    <a href="{{url}}" class="hover-link" style="--underlineColor: #ffffff;">
-                                        <span>{{name}}</span>
-                                    </a>
-                                </li>
-                            {{/each}}
-                        </ul>
-                    </article>
-                    <article class="footer-info-col col custom-animation" data-step-animate="3" data-section-load="animation">
-                        <h3 class="footer-info-heading footer-info-heading--toggle">{{theme_settings.footer_col3_heading}}</h3>
-                        <ul class="footer-info-list">
-                            {{#if theme_settings.footer_col3_text1}}
-                                <li>
-                                    <a href="{{theme_settings.footer_col3_link1}}" class="hover-link" style="--underlineColor: #ffffff;">
-                                        <span>{{theme_settings.footer_col3_text1}}</span>
-                                    </a>
-                                </li>
-                            {{/if}}
-                            {{#if theme_settings.footer_col3_text2}}
-                                <li>
-                                    <a href="{{theme_settings.footer_col3_link2}}" class="hover-link" style="--underlineColor: #ffffff;">
-                                        <span>{{theme_settings.footer_col3_text2}}</span>
-                                    </a>
-                                </li>
-                            {{/if}}
-                            {{#if theme_settings.footer_col3_text3}}
-                                <li>
-                                    <a href="{{theme_settings.footer_col3_link3}}" class="hover-link" style="--underlineColor: #ffffff;">
-                                        <span>{{theme_settings.footer_col3_text3}}</span>
-                                    </a>
-                                </li>
-                            {{/if}}
-                            {{#if theme_settings.footer_col3_text4}}
-                                <li>
-                                    <a href="{{theme_settings.footer_col3_link4}}" class="hover-link" style="--underlineColor: #ffffff;">
-                                        <span>{{theme_settings.footer_col3_text4}}</span>
-                                    </a>
-                                </li>
-                            {{/if}}
-                            {{#if theme_settings.footer_col3_text5}}
-                                <li>
-                                    <a href="{{theme_settings.footer_col3_link5}}" class="hover-link" style="--underlineColor: #ffffff;">
-                                        <span>{{theme_settings.footer_col3_text5}}</span>
-                                    </a>
-                                </li>
-                            {{/if}}
-                        </ul>
-                    </article>
-                </div>
-
-                <hr class="footer-line">
-
-                <div class="footerLeft__bottom row" style="--rowDesktop: 3;">
-                    <article class="footer-info-col col custom-animation" data-step-animate="4" data-section-load="animation">
-                        <h3 class="footer-info-heading footer-info-heading--toggle">{{theme_settings.footer_col4_heading}}</h3>
-                        <ul class="footer-info-list">
-                            {{#if theme_settings.footer_col4_text1}}
-                                <li>
-                                    <a href="{{theme_settings.footer_col4_link1}}" class="hover-link" style="--underlineColor: #ffffff;">
-                                        <span>{{theme_settings.footer_col4_text1}}</span>
-                                    </a>
-                                </li>
-                            {{/if}}
-                            {{#if theme_settings.footer_col4_text2}}
-                                <li>
-                                    <a href="{{theme_settings.footer_col4_link2}}" class="hover-link" style="--underlineColor: #ffffff;">
-                                        <span>{{theme_settings.footer_col4_text2}}</span>
-                                    </a>
-                                </li>
-                            {{/if}}
-                            {{#if theme_settings.footer_col4_text3}}
-                                <li>
-                                    <a href="{{theme_settings.footer_col4_link3}}" class="hover-link" style="--underlineColor: #ffffff;">
-                                        <span>{{theme_settings.footer_col4_text3}}</span>
-                                    </a>
-                                </li>
-                            {{/if}}
-                            {{#if theme_settings.footer_col4_text4}}
-                                <li>
-                                    <a href="{{theme_settings.footer_col4_link4}}" class="hover-link" style="--underlineColor: #ffffff;">
-                                        <span>{{theme_settings.footer_col4_text4}}</span>
-                                    </a>
-                                </li>
-                            {{/if}}
-                            {{#if theme_settings.footer_col4_text5}}
-                                <li>
-                                    <a href="{{theme_settings.footer_col4_link5}}" class="hover-link" style="--underlineColor: #ffffff;">
-                                        <span>{{theme_settings.footer_col4_text5}}</span>
-                                    </a>
-                                </li>
-                            {{/if}}
-                        </ul>
-                    </article>
-                    <article class="footer-info-col col custom-animation" data-step-animate="5" data-section-load="animation">
-                        <h3 class="footer-info-heading footer-info-heading--toggle">{{theme_settings.footer_col5_heading}}</h3>
-                        <ul class="footer-info-list">
-                            {{#if theme_settings.footer_col5_text1}}
-                                <li>
-                                    <a href="{{theme_settings.footer_col5_link1}}" class="hover-link" style="--underlineColor: #ffffff;">
-                                        <span>{{theme_settings.footer_col5_text1}}</span>
-                                    </a>
-                                </li>
-                            {{/if}}
-                            {{#if theme_settings.footer_col5_text2}}
-                                <li>
-                                    <a href="{{theme_settings.footer_col5_link2}}" class="hover-link" style="--underlineColor: #ffffff;">
-                                        <span>{{theme_settings.footer_col5_text2}}</span>
-                                    </a>
-                                </li>
-                            {{/if}}
-                            {{#if theme_settings.footer_col5_text3}}
-                                <li>
-                                    <a href="{{theme_settings.footer_col5_link3}}" class="hover-link" style="--underlineColor: #ffffff;">
-                                        <span>{{theme_settings.footer_col5_text3}}</span>
-                                    </a>
-                                </li>
-                            {{/if}}
-                            {{#if theme_settings.footer_col5_text4}}
-                                <li>
-                                    <a href="{{theme_settings.footer_col5_link4}}" class="hover-link" style="--underlineColor: #ffffff;">
-                                        <span>{{theme_settings.footer_col5_text4}}</span>
-                                    </a>
-                                </li>
-                            {{/if}}
-                            {{#if theme_settings.footer_col5_text5}}
-                                <li>
-                                    <a href="{{theme_settings.footer_col5_link5}}" class="hover-link" style="--underlineColor: #ffffff;">
-                                        <span>{{theme_settings.footer_col5_text5}}</span>
-                                    </a>
-                                </li>
-                            {{/if}}
-                        </ul>
-                    </article>
-                    <article class="footer-info-col col custom-animation" data-step-animate="6" data-section-load="animation">
-                        <h3 class="footer-info-heading footer-info-heading--toggle">{{theme_settings.footer_col6_heading}}</h3>
-                        <ul class="footer-info-list">
-                            {{#if theme_settings.footer_col6_text1}}
-                                <li>
-                                    <a href="{{theme_settings.footer_col6_link1}}" class="hover-link" style="--underlineColor: #ffffff;">
-                                        <span>{{theme_settings.footer_col6_text1}}</span>
-                                    </a>
-                                </li>
-                            {{/if}}
-                            {{#if theme_settings.footer_col6_text2}}
-                                <li>
-                                    <a href="{{theme_settings.footer_col6_link2}}" class="hover-link" style="--underlineColor: #ffffff;">
-                                        <span>{{theme_settings.footer_col6_text2}}</span>
-                                    </a>
-                                </li>
-                            {{/if}}
-                            {{#if theme_settings.footer_col6_text3}}
-                                <li>
-                                    <a href="{{theme_settings.footer_col6_link3}}" class="hover-link" style="--underlineColor: #ffffff;">
-                                        <span>{{theme_settings.footer_col6_text3}}</span>
-                                    </a>
-                                </li>
-                            {{/if}}
-                            {{#if theme_settings.footer_col6_text4}}
-                                <li>
-                                    <a href="{{theme_settings.footer_col6_link4}}" class="hover-link" style="--underlineColor: #ffffff;">
-                                        <span>{{theme_settings.footer_col6_text4}}</span>
-                                    </a>
-                                </li>
-                            {{/if}}
-                            {{#if theme_settings.footer_col6_text5}}
-                                <li>
-                                    <a href="{{theme_settings.footer_col6_link5}}" class="hover-link" style="--underlineColor: #ffffff;">
-                                        <span>{{theme_settings.footer_col6_text5}}</span>
-                                    </a>
-                                </li>
-                            {{/if}}
-                        </ul>
-                    </article>
-                </div>
-            </div>
-            <div class="footer-info--right">
-                <div class="footerRight-row">
-                    <article class="footer-info-col col custom-animation footer-info-col--location" data-step-animate="4" data-section-load="animation">
-                        <h3 class="footer-info-heading footer-info-heading--toggle">{{theme_settings.footer_col7_heading}}</h3>
-                        <ul class="footer-info-list">
-                            {{#if settings.address}}
-                                <li>
-                                    <a href="http://maps.google.com/?q={{settings.address}}" class="hover-link" style="--underlineColor: #ffffff;">
-                                        <span>{{settings.address}}</span>
-                                    </a>
-                                </li>
-                            {{/if}}
-    
-                            {{#if settings.phone_number}}
-                                <li>
-                                    <a href="tel:{{settings.phone_number}}" class="hover-link" style="--underlineColor: #ffffff;">
-                                        <span>{{settings.phone_number}}</span>
-                                    </a>
-                                </li>
-                            {{/if}}
-                            
-                            {{#if theme_settings.footer_col7_email}}
-                                <li>
-                                    <a href="mailto:{{theme_settings.footer_col7_email}}" class="hover-link" style="--underlineColor: #ffffff;">
-                                        <span>{{theme_settings.footer_col7_email}}</span>
-                                    </a>
-                                </li>
-                            {{/if}}
-    
-                            {{#if theme_settings.footer_col7_text1}}
-                                <li>
-                                    <a href="{{theme_settings.footer_col7_link1}}" class="hover-link" style="--underlineColor: #ffffff;">
-                                        <span>{{theme_settings.footer_col7_text1}}</span>
-                                    </a>
-                                </li>
-                            {{/if}}
-                            {{#if theme_settings.footer_col7_text2}}
-                                <li>
-                                    <a href="{{theme_settings.footer_col7_link2}}" class="hover-link" style="--underlineColor: #ffffff;">
-                                        <span>{{theme_settings.footer_col7_text2}}</span>
-                                    </a>
-                                </li>
-                            {{/if}}
-                            {{#if theme_settings.footer_col7_text3}}
-                                <li>
-                                    <a href="{{theme_settings.footer_col7_link3}}" class="hover-link" style="--underlineColor: #ffffff;">
-                                        <span>{{theme_settings.footer_col7_text3}}</span>
-                                    </a>
-                                </li>
-                            {{/if}}
-                        </ul>
-                    </article>
-                </div>
-
-                <article class="footer-info-col footer-info-col--submitForm custom-animation" data-step-animate="0" data-section-load="animation">
-                    <h3 class="footer-info-heading footer-info-heading--submitForm">
-                        Subscribe now to get latest updates
-                    </h3>
-                    {{#if settings.show_newsletter_box}}
-                        {{> components/common/subscription-form}}
-                    {{/if}}
-                    
-                    {{#if theme_settings.show_footer_payment_icon}}
-                        <div class="footer-icon-image">
-                            <img class="lazyload" src="" data-src="https://cdn11.bigcommerce.com/s-{{settings.store_hash}}/images/stencil/original/image-manager/credit-cards.png" alt="Footer Payment Icons">
+    <div class="container container--1920">
+        <div class="footer__wrapper">
+            <div class="footer__left">
+                <h2 class="footer-heading container-padding">{{lang 'footer.title'}}</h2>
+                <!-- Footer Service -->
+                <div class="footerService container-padding">
+                    <div class="footerService__list">
+                        <div class="footerService__item">
+                            <span class="icon item-icon">
+                                <svg><use xlink:href="#icon-footer-certified"></use></svg>
+                            </span>
+                            <div class="item-content">
+                                <h3 class="item-title">Certified Experts</h3>
+                                <p class="item-text">Certified product specialists offering installation support and expert advice.</p>
+                            </div>
                         </div>
-                    {{/if}}
-                </article>
-            </div>
-        </section>
+                        <div class="footerService__item">
+                            <span class="icon item-icon">
+                                <svg><use xlink:href="#icon-footer-manufacturer"></use></svg>
+                            </span>
+                            <div class="item-content">
+                                <h3 class="item-title">Manufacturer Authorize</h3>
+                                <p class="item-text">Manufacturer-certified and authorized for all products, ensuring quality and reliability.</p>
+                            </div>
+                        </div>
+                        <div class="footerService__item">
+                            <span class="icon item-icon">
+                                <svg><use xlink:href="#icon-footer-expert"></use></svg>
+                            </span>
+                            <div class="item-content">
+                                <h3 class="item-title">Expert Access</h3>
+                                <p class="item-text">Expert insights through blogs,
+                                    detailed product guides, &
+                                    personalized pre-sales consultations.</p>
+                            </div>
+                        </div>
+                        <div class="footerService__item">
+                            <span class="icon item-icon">
+                                <svg><use xlink:href="#icon-footer-since"></use></svg>
+                            </span>
+                            <div class="item-content">
+                                <h3 class="item-title">Since 2007</h3>
+                                <p class="item-text">Pioneers since 2007, specializing in video conferencing longer than any other online store.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-        {{#if theme_settings.show_copyright_footer}}
-            <div class="footer-copyright">
-                <p class="powered-by text-center">Copyright @ <span class="">{{settings.store_name}}</span> {{moment format="YYYY"}}, All Rights Reserved</p>
+                <div class="footerContent container-padding">
+                    <div class="footerContent__row">
+                        <article class="footer-info-col col custom-animation" data-step-animate="1" data-section-load="animation">
+                            <h3 class="footer-info-heading footer-info-heading--toggle">{{theme_settings.footer_col1_heading}}</h3>
+                            <ul class="footer-info-list">
+                                {{#if theme_settings.footer_col1_text1}}
+                                    <li>
+                                        <a href="{{theme_settings.footer_col1_link1}}" class="hover-link" style="--underlineColor: #ffffff;">
+                                            <span>{{theme_settings.footer_col1_text1}}</span>
+                                        </a>
+                                    </li>
+                                {{/if}}
+                                {{#if theme_settings.footer_col1_text2}}
+                                    <li>
+                                        <a href="{{theme_settings.footer_col1_link2}}" class="hover-link" style="--underlineColor: #ffffff;">
+                                            <span></span>
+                                        </a>
+                                    </li>
+                                {{/if}}
+                                {{#if theme_settings.footer_col1_text3}}
+                                    <li>
+                                        <a href="{{theme_settings.footer_col1_link3}}" class="hover-link" style="--underlineColor: #ffffff;">
+                                            <span>{{theme_settings.footer_col1_text3}}</span>
+                                        </a>
+                                    </li>
+                                {{/if}}
+                                {{#if theme_settings.footer_col1_text4}}
+                                    <li>
+                                        <a href="{{theme_settings.footer_col1_link4}}" class="hover-link" style="--underlineColor: #ffffff;">
+                                            <span>{{theme_settings.footer_col1_text4}}</span>
+                                        </a>
+                                    </li>
+                                {{/if}}
+                                {{#if theme_settings.footer_col1_text5}}
+                                    <li>
+                                        <a href="{{theme_settings.footer_col1_link5}}" class="hover-link" style="--underlineColor: #ffffff;">
+                                            <span>{{theme_settings.footer_col1_text5}}</span>
+                                        </a>
+                                    </li>
+                                {{/if}}
+                            </ul>
+                        </article>
+                        <article class="footer-info-col col custom-animation" data-step-animate="2" data-section-load="animation">
+                            <h3 class="footer-info-heading footer-info-heading--toggle">{{theme_settings.footer_col2_heading}}</h3>
+                            <ul class="footer-info-list">
+                                {{#each categories}}
+                                    <li>
+                                        <a href="{{url}}" class="hover-link" style="--underlineColor: #ffffff;">
+                                            <span>{{name}}</span>
+                                        </a>
+                                    </li>
+                                {{/each}}
+                            </ul>
+                        </article>
+                        <article class="footer-info-col col custom-animation" data-step-animate="3" data-section-load="animation">
+                            <h3 class="footer-info-heading footer-info-heading--toggle">{{theme_settings.footer_col3_heading}}</h3>
+                            <ul class="footer-info-list">
+                                {{#if theme_settings.footer_col3_text1}}
+                                    <li>
+                                        <a href="{{theme_settings.footer_col3_link1}}" class="hover-link" style="--underlineColor: #ffffff;">
+                                            <span>{{theme_settings.footer_col3_text1}}</span>
+                                        </a>
+                                    </li>
+                                {{/if}}
+                                {{#if theme_settings.footer_col3_text2}}
+                                    <li>
+                                        <a href="{{theme_settings.footer_col3_link2}}" class="hover-link" style="--underlineColor: #ffffff;">
+                                            <span>{{theme_settings.footer_col3_text2}}</span>
+                                        </a>
+                                    </li>
+                                {{/if}}
+                                {{#if theme_settings.footer_col3_text3}}
+                                    <li>
+                                        <a href="{{theme_settings.footer_col3_link3}}" class="hover-link" style="--underlineColor: #ffffff;">
+                                            <span>{{theme_settings.footer_col3_text3}}</span>
+                                        </a>
+                                    </li>
+                                {{/if}}
+                                {{#if theme_settings.footer_col3_text4}}
+                                    <li>
+                                        <a href="{{theme_settings.footer_col3_link4}}" class="hover-link" style="--underlineColor: #ffffff;">
+                                            <span>{{theme_settings.footer_col3_text4}}</span>
+                                        </a>
+                                    </li>
+                                {{/if}}
+                                {{#if theme_settings.footer_col3_text5}}
+                                    <li>
+                                        <a href="{{theme_settings.footer_col3_link5}}" class="hover-link" style="--underlineColor: #ffffff;">
+                                            <span>{{theme_settings.footer_col3_text5}}</span>
+                                        </a>
+                                    </li>
+                                {{/if}}
+                            </ul>
+                        </article>
+                        <article class="footer-info-col col custom-animation" data-step-animate="4" data-section-load="animation">
+                            <h3 class="footer-info-heading footer-info-heading--toggle">{{theme_settings.footer_col4_heading}}</h3>
+                            <ul class="footer-info-list">
+                                {{#if theme_settings.footer_col4_text1}}
+                                    <li>
+                                        <a href="{{theme_settings.footer_col4_link1}}" class="hover-link" style="--underlineColor: #ffffff;">
+                                            <span>{{theme_settings.footer_col4_text1}}</span>
+                                        </a>
+                                    </li>
+                                {{/if}}
+                                {{#if theme_settings.footer_col4_text2}}
+                                    <li>
+                                        <a href="{{theme_settings.footer_col4_link2}}" class="hover-link" style="--underlineColor: #ffffff;">
+                                            <span>{{theme_settings.footer_col4_text2}}</span>
+                                        </a>
+                                    </li>
+                                {{/if}}
+                                {{#if theme_settings.footer_col4_text3}}
+                                    <li>
+                                        <a href="{{theme_settings.footer_col4_link3}}" class="hover-link" style="--underlineColor: #ffffff;">
+                                            <span>{{theme_settings.footer_col4_text3}}</span>
+                                        </a>
+                                    </li>
+                                {{/if}}
+                                {{#if theme_settings.footer_col4_text4}}
+                                    <li>
+                                        <a href="{{theme_settings.footer_col4_link4}}" class="hover-link" style="--underlineColor: #ffffff;">
+                                            <span>{{theme_settings.footer_col4_text4}}</span>
+                                        </a>
+                                    </li>
+                                {{/if}}
+                                {{#if theme_settings.footer_col4_text5}}
+                                    <li>
+                                        <a href="{{theme_settings.footer_col4_link5}}" class="hover-link" style="--underlineColor: #ffffff;">
+                                            <span>{{theme_settings.footer_col4_text5}}</span>
+                                        </a>
+                                    </li>
+                                {{/if}}
+                            </ul>
+                        </article>
+                        <article class="footer-info-col col custom-animation" data-step-animate="5" data-section-load="animation">
+                            <h3 class="footer-info-heading footer-info-heading--toggle">{{theme_settings.footer_col5_heading}}</h3>
+                            <ul class="footer-info-list">
+                                {{#if theme_settings.footer_col5_text1}}
+                                    <li>
+                                        <a href="{{theme_settings.footer_col5_link1}}" class="hover-link" style="--underlineColor: #ffffff;">
+                                            <span>{{theme_settings.footer_col5_text1}}</span>
+                                        </a>
+                                    </li>
+                                {{/if}}
+                                {{#if theme_settings.footer_col5_text2}}
+                                    <li>
+                                        <a href="{{theme_settings.footer_col5_link2}}" class="hover-link" style="--underlineColor: #ffffff;">
+                                            <span>{{theme_settings.footer_col5_text2}}</span>
+                                        </a>
+                                    </li>
+                                {{/if}}
+                                {{#if theme_settings.footer_col5_text3}}
+                                    <li>
+                                        <a href="{{theme_settings.footer_col5_link3}}" class="hover-link" style="--underlineColor: #ffffff;">
+                                            <span>{{theme_settings.footer_col5_text3}}</span>
+                                        </a>
+                                    </li>
+                                {{/if}}
+                                {{#if theme_settings.footer_col5_text4}}
+                                    <li>
+                                        <a href="{{theme_settings.footer_col5_link4}}" class="hover-link" style="--underlineColor: #ffffff;">
+                                            <span>{{theme_settings.footer_col5_text4}}</span>
+                                        </a>
+                                    </li>
+                                {{/if}}
+                                {{#if theme_settings.footer_col5_text5}}
+                                    <li>
+                                        <a href="{{theme_settings.footer_col5_link5}}" class="hover-link" style="--underlineColor: #ffffff;">
+                                            <span>{{theme_settings.footer_col5_text5}}</span>
+                                        </a>
+                                    </li>
+                                {{/if}}
+                            </ul>
+                        </article>
+                        <article class="footer-info-col col custom-animation" data-step-animate="6" data-section-load="animation">
+                            <h3 class="footer-info-heading footer-info-heading--toggle">{{theme_settings.footer_col6_heading}}</h3>
+                            <ul class="footer-info-list">
+                                {{#if theme_settings.footer_col6_text1}}
+                                    <li>
+                                        <a href="{{theme_settings.footer_col6_link1}}" class="hover-link" style="--underlineColor: #ffffff;">
+                                            <span>{{theme_settings.footer_col6_text1}}</span>
+                                        </a>
+                                    </li>
+                                {{/if}}
+                                {{#if theme_settings.footer_col6_text2}}
+                                    <li>
+                                        <a href="{{theme_settings.footer_col6_link2}}" class="hover-link" style="--underlineColor: #ffffff;">
+                                            <span>{{theme_settings.footer_col6_text2}}</span>
+                                        </a>
+                                    </li>
+                                {{/if}}
+                                {{#if theme_settings.footer_col6_text3}}
+                                    <li>
+                                        <a href="{{theme_settings.footer_col6_link3}}" class="hover-link" style="--underlineColor: #ffffff;">
+                                            <span>{{theme_settings.footer_col6_text3}}</span>
+                                        </a>
+                                    </li>
+                                {{/if}}
+                                {{#if theme_settings.footer_col6_text4}}
+                                    <li>
+                                        <a href="{{theme_settings.footer_col6_link4}}" class="hover-link" style="--underlineColor: #ffffff;">
+                                            <span>{{theme_settings.footer_col6_text4}}</span>
+                                        </a>
+                                    </li>
+                                {{/if}}
+                                {{#if theme_settings.footer_col6_text5}}
+                                    <li>
+                                        <a href="{{theme_settings.footer_col6_link5}}" class="hover-link" style="--underlineColor: #ffffff;">
+                                            <span>{{theme_settings.footer_col6_text5}}</span>
+                                        </a>
+                                    </li>
+                                {{/if}}
+                            </ul>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="footerReview container-padding">
+                     <div class="footerReview__top">
+                        <span class="footerReview__text">5.0</span>
+                        <span class="icon icon--shopperApproved-star">
+                            <svg><use xlink:href="#icon-shopperApproved-star"></use></svg>
+                        </span>
+                     </div>
+                     <div class="footerReview__bottom">
+                        <a href="{{theme_settings.footer_review_link}}" class="image-desktop">
+                            <img class="lazyload" src="" 
+                            data-src="/product_images/uploaded_images/{{theme_settings.footer_review_img}}" 
+                            alt="{{theme_settings.footer_review_img}}" 
+                            title="{{theme_settings.footer_review_img}}">
+                        </a>
+                     </div>
+                </div>
+
+                <div class="footerCopyright container-padding footer-copyright">
+                    <p class="powered-by text-center">Copyright @ <span class="">{{settings.store_name}}</span> {{moment format="YYYY"}}, All Rights Reserved</p>
+                </div>
             </div>
-        {{/if}}
+            <div class="footer__right">
+                <div class="footer-right__top">
+                    <div class="footer__logo">
+                        <img class="lazyload" src="{{cdn 'img/loading.svg'}}" data-src="/product_images/uploaded_images/footer-logo.png" alt="Footer Logo">
+                    </div>
+                    <div class="footer__info">
+                        <div class="info-list">
+                            <div class="info-item">
+                                <h3 class="title">Sales & Expert Advice</h3>
+                                <a href="tel:+800.606.6969">800.606.6969</a>
+                            </div>
+                            <div class="info-item">
+                                <h3 class="title">Customer Service</h3>
+                                <a href="tel:+800.221.5743">800.221.5743</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer__contact">
+                        <div class="contact-list">
+                            <div class="contact-item">
+                                <span class="icon icon--footer-chat">
+                                    <svg><use xlink:href="#icon-footer-chat"></use></svg>
+                                </span>
+                                <a href="#">Live Chat</a>
+                            </div>
+                            <div class="contact-item">
+                                <span class="icon icon--footer-mail">
+                                    <svg><use xlink:href="#icon-footer-mail"></use></svg>
+                                </span>
+                                <a href="/contact-us/">Contact Us</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer__submitForm">
+                        {{#if settings.show_newsletter_box}}
+                            {{> components/common/subscription-form}}
+                        {{/if}}
+                    </div>
+                </div>
+
+                <div class="footer-right__icon">
+                    <div class="icon-list">
+                        <div class="icon-image">
+                            <img class="lazyload" src="{{cdn 'img/loading.svg'}}" data-src="/product_images/uploaded_images/footer-payment-visa.png" alt="Visa">
+                        </div>
+                        <div class="icon-image">
+                            <img class="lazyload" src="{{cdn 'img/loading.svg'}}" data-src="/product_images/uploaded_images/footer-payment-master-card.png" alt="Master Card">
+                        </div>
+                        <div class="icon-image">
+                            <img class="lazyload" src="{{cdn 'img/loading.svg'}}" data-src="/product_images/uploaded_images//footer-payment-discover.png" alt="Discover">
+                        </div>
+                        <div class="icon-image">
+                            <img class="lazyload" src="{{cdn 'img/loading.svg'}}" data-src="/product_images/uploaded_images/footer-payment-american-express.png" alt="American Express">
+                        </div>
+                        <div class="icon-image">
+                            <img class="lazyload" src="{{cdn 'img/loading.svg'}}" data-src="/product_images/uploaded_images/footer-payment-google.png" alt="Gogole Pay">
+                        </div>
+                        <div class="icon-image">
+                            <img class="lazyload" src="{{cdn 'img/loading.svg'}}" data-src="/product_images/uploaded_images/footer-payment-apple.png" alt="Apple Pay">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
     </div>
     {{{region name="ssl_site_seal--global"}}}
 </footer>
