@@ -169,7 +169,7 @@
     @include smin-m {
         .hover-link {
             > span:not(.icon):not(.navUser-icon) {
-                background: linear-gradient(90deg,var(--underlineColor) 33.33333%,transparent 0 70%,var(--underlineColor) 0) 50% 100%/300% 1px no-repeat;
+                background: linear-gradient(90deg,var(--underlineColor) 33.33333%,transparent 0 70%,var(--underlineColor) 0) 51% 100%/300% 1px no-repeat;
                 transition: background .6s cubic-bezier(.52,.18,.45,1.4) 0s;
             }
     

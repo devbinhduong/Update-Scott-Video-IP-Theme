@@ -283,7 +283,7 @@
                         </span>
                      </div>
                      <div class="footerReview__bottom">
-                        <a href="{{theme_settings.footer_review_link}}" class="image-desktop">
+                        <a href="{{theme_settings.footer_review_link}}">
                             <img class="lazyload" src="" 
                             data-src="/product_images/uploaded_images/{{theme_settings.footer_review_img}}" 
                             alt="{{theme_settings.footer_review_img}}" 
@@ -292,7 +292,7 @@
                      </div>
                 </div>
 
-                <div class="footerCopyright container-padding footer-copyright">
+                <div class="footerCopyright footerCopyright--desktop footer-copyright">
                     <p class="powered-by text-center">Copyright @ <span class="">{{settings.store_name}}</span> {{moment format="YYYY"}}, All Rights Reserved</p>
                 </div>
             </div>
@@ -358,6 +358,10 @@
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <div class="footerCopyright footerCopyright--mobile container-padding footer-copyright">
+                <p class="powered-by text-center">Copyright @ <span class="">{{settings.store_name}}</span> {{moment format="YYYY"}}, All Rights Reserved</p>
             </div>
         </div>
        
