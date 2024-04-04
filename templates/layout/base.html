@@ -58,7 +58,7 @@
         {{~inject 'token' settings.storefront_api.token}}
         {{~inject 'money' settings.money}}
     </head>
-    <body class="page-type-{{page_type}}{{#if page.title '===' 'About Us'}}  aboutUsPage{{/if}}">
+    <body class="page-type-{{page_type}}{{#if page.title '===' 'About Us'}}  aboutUsPage{{/if}}{{#if page.title}} page-{{dashcase (lowercase (sanitize page.title))}}{{/if}}">
         <svg data-src="{{cdn 'img/icon-sprite.svg'}}" class="icons-svg-sprite"></svg>
 
         {{> components/common/header }}

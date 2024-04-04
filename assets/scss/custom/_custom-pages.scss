@@ -1,0 +1,248 @@
+// Common
+.page-shipping {
+    #main-content .container {
+        max-width: 1350px;
+    }
+    .page-heading {
+        display: none;
+    }
+}
+.custom-separator {
+    &::after {
+        content: "";
+        display: inline-block;
+        width: 1px;
+        height: 82.4%;
+        background-color: #000000;
+        opacity: 0.2;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 0;
+        @include smax-m {
+            width: 82.4%;
+            height: 1px;
+            position: absolute;
+            left: 50%;
+            top: unset;
+            transform: translateX(-50%);
+            bottom: 0;
+        }
+    }
+    &.custom-separator--bottom {
+        &::after {
+            height: 1px;
+            width: 100%;
+            background-color: #000000;
+            opacity: 0.2;
+            top: unset;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 0;
+        }
+    }
+}
+.bottom-line {
+    position: relative;
+    &::after {
+        content: "";
+        height: 2px;
+        width: 30%;
+        max-width: 88px;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        background-color: #F47B20;
+    }
+    @include smax-m {
+        &::after {
+            width: 46px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
+}
+// Section Banner
+.section-image-banner {
+    padding-top: 10px;
+    padding-bottom: 0px;
+    .image-banner {
+        position: relative;
+        @include lazy-loaded-padding("cover_banner_size");
+        img {
+            @include lazy-loaded-img;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        @include smax-s {
+            &::after {
+                padding-bottom: 51.30303%;
+            }
+        }
+    }
+    .content-banner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 40px;
+        &__title {
+            color: #444444;
+            font-size: 40px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 1.5;
+            margin-top: 0px;
+            margin-bottom: 0px;
+        }
+        &__description {
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 300;
+            line-height: 1.55;
+            padding-left: 43px;
+        }
+        &__left {
+            position: relative;
+            width: 50%;
+        }
+        &__right {
+            width: 50%;
+        }
+        @include smax-m {
+            flex-direction: column;
+            margin-top: 30px;
+            &__title {
+                font-size: 25px;
+                line-height: 1.4;
+                text-align: center;
+            }
+        
+            &__description {
+                font-size: 16px;
+                line-height: 1.625;
+                padding-left: 0px;
+                text-align: center;
+            }
+            &__left {
+                width: 100%;
+                padding-bottom: 20px;
+            }
+            &__right {
+                width: 100%;
+                padding-top: 20px;
+            }
+        }
+        @include smax-s {
+            margin-top: 20px;
+        }
+    }
+}
+
+.section-content {
+    &-list {
+        padding-top: 80px;
+    }
+    &-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        position: relative;
+        padding-top: 30px;
+        padding-bottom: 30px;
+        &:last-child {
+            &::after {
+                content: unset;
+            }
+        }
+        &__title {
+            width: 40%;
+            margin-top: 0px;
+            color: #444444;
+            font-size: 30px;
+            font-weight: 600;
+            line-height: 1.3333em;
+            margin-bottom: 0px;
+            padding-bottom: 10px;
+            @include smax-m {
+                font-size: 20px;
+            }
+        }
+        &__content {
+            width: 60%;
+            padding-left: 60px;
+            font-size: 18px;
+            p {
+                font-weight: 300;
+                margin-bottom: 20px;
+                &:last-child {
+                    margin-bottom: 8px;
+                }
+            }
+            strong {
+                font-weight: 500;
+                color: #F47B20;
+            }
+            .image-list {
+                display: flex;
+                justify-content: flex-start;
+                margin-top: 20px;
+                .image-item {
+                    width: 16.6666%;
+                    padding: 20px;
+                    border-radius: 10px;
+                    width: 95px;
+                    height: 95px;
+                    position: relative;
+                    overflow: hidden;
+                    margin-right: 20px;
+                    &:after {
+                        content: "";
+                        opacity: 0.1;
+                        z-index: -1;
+                        background: #F47B20;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        bottom: 0;
+                    }
+                    &-img-box {
+                        position: relative;
+                        &:after {
+                            content: "";
+                            display: block;
+                            height: 0;
+                            padding-bottom: 100%;
+                            width: 100%;
+                        }
+                        img {
+                            @include lazy-loaded-img;
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    @include smax-m {
+        &-item {
+            flex-direction: column;
+            &__title,
+            &__content {
+                width: 100%;
+                text-align: center;
+                padding-top: 30px;
+                padding-left: 0px;
+            }
+            &__title {
+                
+            }
+            &__content {
+                font-size: 16px;
+            }
+        }
+    }
+}

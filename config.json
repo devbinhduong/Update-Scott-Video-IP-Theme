@@ -419,6 +419,7 @@
       "images": {
       },
       "settings": {
+        "cover_banner_size": "1320x400",
         "hide_breadcrumbs": false,
         "hide_page_heading": false,
         "hide_category_page_heading": false,
@@ -755,6 +756,7 @@
           "paypal"
         ],
         "headings-font2": "Google_Poppins_800",
+        "thin-body-font": "Google_Poppins_300",
         "footer-heading-fontColor": "#ffffff",
         "navPages-lv1-color": "#003A63",
         "navPages-lv1-color-hover": "#003A63",
