@@ -21,13 +21,13 @@
 
     {{{region name="page_builder_content"}}}
 
-    <!-- <div class="page-content page-content--centered">
+    <div class="page-content page-content--centered">
         {{#replace '%%Syndicate%%' page.content}}
             {{> components/page/rss_feed}}
         {{else}}
             <p>{{{page.content}}}</p>
         {{/replace}}
-    </div> -->
+    </div>
 
     {{{region name="custom_page_region_1"}}}
 
@@ -38,145 +38,6 @@
             {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
         </div>
     {{/if}}
-
-
-    <div class="custom-section section-image-banner">
-        <div class="image-banner hover-image">
-            <a href="#" class="image-banner--link">
-                <img class="lazyload hover-image" src="{{cdn 'img/loading.svg'}}"
-                    data-src="https://cdn11.bigcommerce.com/s-{{settings.store_hash}}/images/stencil/original/image-manager/shipping-cover-img-opt.jpg"
-                    alt="Image Banner Shipping">
-            </a>
-        </div>
-        <div class="content-banner">
-            <div class="content-banner__left custom-separator">
-                <h2 class="content-banner__title">Secure and Convenient
-                Payment Options at Video
-                Conferencing Supply</h2>
-            </div>
-            <div class="content-banner__right">
-                <p class="content-banner__description">At Video Conferencing Supply, we prioritize your convenience and peace of mind from placing your order until it arrives at your doorstep. Our shipping policies are designed with your needs in mind, ensuring a swift and secure delivery
-                experience. Here's what you can expect when you choose us:</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="custom-section section-content-list">
-        <div class="section-content-item custom-separator custom-separator--bottom">
-            <h3 class="section-content-item__title bottom-line bottom-line--left">
-                Same-Day Shipping Promise
-            </h3>
-            <div class="section-content-item__content">
-                <p><strong>Efficiency is Key:</strong> Place your order by 3:00 PM CST M-F; we promise to ship it the same business day. Our commitment to
-                efficiency ensures you get your products when you need them.</p>
-            </div>
-        </div>
-        <div class="section-content-item custom-separator custom-separator--bottom">
-            <h3 class="section-content-item__title bottom-line bottom-line--left">
-                Choose Your Carrier
-            </h3>
-            <div class="section-content-item__content">
-                <p><strong>Flexibility in Delivery:</strong> We understand the importance of choice. That's why we offer shipping through leading carriers
-                like UPS, FedEx, and DHL, all insured for your security and peace of mind.</p>
-                <div class="image-list">
-                    <div class="image-item">
-                        <div class="image-item-img-box">
-                            <img class="lazyload" src="{{cdn 'img/loading.svg'}}"
-                                data-src="https://cdn11.bigcommerce.com/s-{{settings.store_hash}}/images/stencil/original/image-manager/ups-1.png"
-                                alt="Ups Logo">
-                        </div>
-                    </div>
-                    <div class="image-item">
-                        <div class="image-item-img-box">
-                            <img class="lazyload" src="{{cdn 'img/loading.svg'}}"
-                                data-src="https://cdn11.bigcommerce.com/s-{{settings.store_hash}}/images/stencil/original/image-manager/ups-1-1.png"
-                                alt="FedEx Logo">
-                        </div>
-                    </div>
-                    <div class="image-item">
-                        <div class="image-item-img-box">
-                            <img class="lazyload" src="{{cdn 'img/loading.svg'}}"
-                                data-src="https://cdn11.bigcommerce.com/s-{{settings.store_hash}}/images/stencil/original/image-manager/ups-1-2.png"
-                                alt="DHL Logo">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="section-content-item custom-separator custom-separator--bottom">
-            <h3 class="section-content-item__title bottom-line bottom-line--left">
-                Transparent Shipping Rates
-            </h3>
-            <div class="section-content-item__content">
-                <p><strong>No Surprises:</strong> Our shipping rates are calculated based on the items in your order, ensuring transparency and fairness.
-                Use our 'Estimate Shipping Cost' feature in your shopping cart for a full list of options and rates, keeping in mind
-                that free shipping does not apply to residences.</p>
-            </div>
-        </div>
-        <div class="section-content-item custom-separator custom-separator--bottom">
-            <h3 class="section-content-item__title bottom-line bottom-line--left">
-                Diverse Shipping Options
-            </h3>
-            <div class="section-content-item__content">
-                <p><strong>Tailored to Your Needs:</strong> Whether it's Priority Overnight, Next Day Air, or Ground Shipping, our range of options means
-                you can choose what best suits your schedule and budget.</p>
-            </div>
-        </div>
-        <div class="section-content-item custom-separator custom-separator--bottom">
-            <h3 class="section-content-item__title bottom-line bottom-line--left">
-                Secure Delivery
-            </h3>
-            <div class="section-content-item__content">
-                <p><strong>Your Trust, Our Responsibility:</strong> To maintain the highest security levels and prevent fraud, we require a signature upon
-                delivery for all orders. Rest assured, we take every measure to ensure your order reaches the correct address safely and
-                securely.</p>
-            </div>
-        </div>
-        <div class="section-content-item custom-separator custom-separator--bottom">
-            <h3 class="section-content-item__title bottom-line bottom-line--left">
-                Important Notes
-            </h3>
-            <div class="section-content-item__content">
-                <p><strong>US-Only Shipping:</strong> Currently, Video Conferencing Supply ships exclusively within the US. We're dedicated to providing the
-                best service possible to our domestic customers.</p>
-                <p><strong>Dedicated Support:</strong> If you have questions about our shipping policies or need assistance with your order, our customer
-                service team is just a call or click away.</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="custom-section custom-block custom-block-banner">
-        <div class="container container--full">
-            <div class="custom-block-content">
-                <div class="block-banner-item">
-                    <div class="img-box text-center custom-animation" data-step-animate="1" data-section-load="animation">
-                        <a href="#" class="image-desktop">
-                            <img class="lazyload" src=""
-                                data-src="https://cdn11.bigcommerce.com/s-z0pc1wbljg/images/stencil/original/image-manager/bottom-cover-shipping.png"
-                                alt="Bottom Cover Banner" title="Bottom Cover Banner">
-                        </a>
-                    </div>
-                    <div class="img-box img-box-mb text-center custom-animation" data-step-animate="1" data-section-load="animation">
-                        <a href="#" class="image-desktop">
-                            <img class="lazyload" src=""
-                                data-src="https://cdn11.bigcommerce.com/s-z0pc1wbljg/images/stencil/original/image-manager/bottom-cover-shipping-mb.png"
-                                alt="Bottom Cover Banner" title="Bottom Cover Banner">
-                        </a>
-                    </div>
-                    <div class="content-box text-left content-box--left custom-animation"
-                        data-step-animate="3" data-section-load="animation">
-                        <h3 class="banner-title bottom-line bottom-line--left">We're Here for You</h3>
-                        <p class="desc banner-text text-strong">Do you have questions or need assistance with your shipping options?</p>
-                        <p class="desc banner-text">Our dedicated team is committed to ensuring your Video Conferencing
-                        Supply experience is seamless from start to finish.</p>
-                        <p class="desc banner-text">Choose Video Conferencing Supply for reliable, secure, and flexible
-                        shipping solutions. Your satisfaction is our top priority.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
 
     {{{region name="custom_page_region_2"}}}
     {{{region name="custom_page_region_3"}}}

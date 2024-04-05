@@ -52,25 +52,37 @@
 }
 
 /* ----------------- Load Animation ----------------------*/
-.no-js .custom-animation {
+.no-js.custom-animation {
     transform: translatey(0);
 }
 
 .custom-animation {
-    transform: translatey(100px);
+    [data-step-animate],
+    &[data-step-animate] {
+        transform: translatey(100px);
+    }
 }
 
-.js .custom-animation {
-    transition-property: transform, opacity;
-    transition-timing-function: ease;
-    transform: translatey(100px);
-    opacity: 0;
+.js {
+    [data-step-animate] {
+        transition-property: transform, opacity;
+        transition-timing-function: ease;
+        transform: translatey(100px);
+        opacity: 0;
 
+        @for $i from 0 through 100 {
+            &[data-step-animate='#{$i}'] {
+                transition-delay: 0.1s + $i * 0.02;
+                transition-duration: 0.3s + $i * 0.1;
+            }
+        }
+    }
 
-    @for $i from 0 through 100 {
-        &[data-step-animate="#{$i}"] {
-            transition-delay: 0.1s + $i * 0.02;
-            transition-duration: 0.3s + $i * 0.1;
+    .animated {
+        [data-step-animate],
+        &[data-step-animate] {
+            transform: translatey(0);
+            opacity: 1;
         }
     }
 }
