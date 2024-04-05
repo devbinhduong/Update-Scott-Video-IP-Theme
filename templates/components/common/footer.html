@@ -17,7 +17,7 @@
                 <!-- Footer Service -->
                 <div class="footerService container-padding">
                     <div class="footerService__list">
-                        <div class="footerService__item">
+                        <div class="footerService__item custom-animation" data-section-load="animation" data-step-animate="1">
                             <span class="icon item-icon">
                                 <svg><use xlink:href="#icon-footer-certified"></use></svg>
                             </span>
@@ -26,7 +26,7 @@
                                 <p class="item-text">Certified product specialists offering installation support and expert advice.</p>
                             </div>
                         </div>
-                        <div class="footerService__item">
+                        <div class="footerService__item custom-animation" data-section-load="animation" data-step-animate="2">
                             <span class="icon item-icon">
                                 <svg><use xlink:href="#icon-footer-manufacturer"></use></svg>
                             </span>
@@ -35,7 +35,7 @@
                                 <p class="item-text">Manufacturer-certified and authorized for all products, ensuring quality and reliability.</p>
                             </div>
                         </div>
-                        <div class="footerService__item">
+                        <div class="footerService__item custom-animation" data-section-load="animation" data-step-animate="3">
                             <span class="icon item-icon">
                                 <svg><use xlink:href="#icon-footer-expert"></use></svg>
                             </span>
@@ -46,7 +46,7 @@
                                     personalized pre-sales consultations.</p>
                             </div>
                         </div>
-                        <div class="footerService__item">
+                        <div class="footerService__item custom-animation" data-section-load="animation" data-step-animate="4">
                             <span class="icon item-icon">
                                 <svg><use xlink:href="#icon-footer-since"></use></svg>
                             </span>
@@ -73,7 +73,7 @@
                                 {{#if theme_settings.footer_col1_text2}}
                                     <li>
                                         <a href="{{theme_settings.footer_col1_link2}}" class="hover-link" style="--underlineColor: #ffffff;">
-                                            <span></span>
+                                            <span>{{theme_settings.footer_col1_text2}}</span>
                                         </a>
                                     </li>
                                 {{/if}}
@@ -98,20 +98,64 @@
                                         </a>
                                     </li>
                                 {{/if}}
+                                {{#if theme_settings.footer_col1_text6}}
+                                    <li>
+                                        <a href="{{theme_settings.footer_col1_link6}}" class="hover-link" style="--underlineColor: #ffffff;">
+                                            <span>{{theme_settings.footer_col1_text6}}</span>
+                                        </a>
+                                    </li>
+                                {{/if}}
                             </ul>
                         </article>
+                        
                         <article class="footer-info-col col custom-animation" data-step-animate="2" data-section-load="animation">
                             <h3 class="footer-info-heading footer-info-heading--toggle">{{theme_settings.footer_col2_heading}}</h3>
                             <ul class="footer-info-list">
-                                {{#each categories}}
+                                {{#if theme_settings.footer_col2_text1}}
                                     <li>
-                                        <a href="{{url}}" class="hover-link" style="--underlineColor: #ffffff;">
-                                            <span>{{name}}</span>
+                                        <a href="{{theme_settings.footer_col2_link1}}" class="hover-link" style="--underlineColor: #ffffff;">
+                                            <span>{{theme_settings.footer_col2_text1}}</span>
                                         </a>
                                     </li>
-                                {{/each}}
+                                {{/if}}
+                                {{#if theme_settings.footer_col2_text2}}
+                                    <li>
+                                        <a href="{{theme_settings.footer_col2_link2}}" class="hover-link" style="--underlineColor: #ffffff;">
+                                            <span>{{theme_settings.footer_col2_text2}}</span>
+                                        </a>
+                                    </li>
+                                {{/if}}
+                                {{#if theme_settings.footer_col2_text3}}
+                                    <li>
+                                        <a href="{{theme_settings.footer_col2_link3}}" class="hover-link" style="--underlineColor: #ffffff;">
+                                            <span>{{theme_settings.footer_col2_text3}}</span>
+                                        </a>
+                                    </li>
+                                {{/if}}
+                                {{#if theme_settings.footer_col2_text4}}
+                                    <li>
+                                        <a href="{{theme_settings.footer_col2_link4}}" class="hover-link" style="--underlineColor: #ffffff;">
+                                            <span>{{theme_settings.footer_col2_text4}}</span>
+                                        </a>
+                                    </li>
+                                {{/if}}
+                                {{#if theme_settings.footer_col2_text5}}
+                                    <li>
+                                        <a href="{{theme_settings.footer_col2_link5}}" class="hover-link" style="--underlineColor: #ffffff;">
+                                            <span>{{theme_settings.footer_col2_text5}}</span>
+                                        </a>
+                                    </li>
+                                {{/if}}
+                                {{#if theme_settings.footer_col2_text6}}
+                                    <li>
+                                        <a href="{{theme_settings.footer_col2_link6}}" class="hover-link" style="--underlineColor: #ffffff;">
+                                            <span>{{theme_settings.footer_col2_text6}}</span>
+                                        </a>
+                                    </li>
+                                {{/if}}
                             </ul>
                         </article>
+
                         <article class="footer-info-col col custom-animation" data-step-animate="3" data-section-load="animation">
                             <h3 class="footer-info-heading footer-info-heading--toggle">{{theme_settings.footer_col3_heading}}</h3>
                             <ul class="footer-info-list">
@@ -147,6 +191,13 @@
                                     <li>
                                         <a href="{{theme_settings.footer_col3_link5}}" class="hover-link" style="--underlineColor: #ffffff;">
                                             <span>{{theme_settings.footer_col3_text5}}</span>
+                                        </a>
+                                    </li>
+                                {{/if}}
+                                {{#if theme_settings.footer_col3_text6}}
+                                    <li>
+                                        <a href="{{theme_settings.footer_col3_link6}}" class="hover-link" style="--underlineColor: #ffffff;">
+                                            <span>{{theme_settings.footer_col3_text6}}</span>
                                         </a>
                                     </li>
                                 {{/if}}
@@ -230,6 +281,13 @@
                                         </a>
                                     </li>
                                 {{/if}}
+                                {{#if theme_settings.footer_col5_text6}}
+                                    <li>
+                                        <a href="{{theme_settings.footer_col5_link6}}" class="hover-link" style="--underlineColor: #ffffff;">
+                                            <span>{{theme_settings.footer_col5_text6}}</span>
+                                        </a>
+                                    </li>
+                                {{/if}}
                             </ul>
                         </article>
                         <article class="footer-info-col col custom-animation" data-step-animate="6" data-section-load="animation">
@@ -270,6 +328,13 @@
                                         </a>
                                     </li>
                                 {{/if}}
+                                {{#if theme_settings.footer_col6_text6}}
+                                    <li>
+                                        <a href="{{theme_settings.footer_col6_link6}}" class="hover-link" style="--underlineColor: #ffffff;">
+                                            <span>{{theme_settings.footer_col6_text6}}</span>
+                                        </a>
+                                    </li>
+                                {{/if}}
                             </ul>
                         </article>
                     </div>
@@ -297,17 +362,17 @@
                 </div>
             </div>
             <div class="footer__right">
-                <div class="footer-right__top">
+                <div class="footer-right__top custom-animation" data-section-load="animation" data-step-animate="1">
                     <div class="footer__logo">
                         <img class="lazyload" src="{{cdn 'img/loading.svg'}}" data-src="/product_images/uploaded_images/footer-logo.png" alt="Footer Logo">
                     </div>
                     <div class="footer__info">
                         <div class="info-list">
-                            <div class="info-item">
+                            <div class="info-item custom-animation" data-section-load="animation" data-step-animate="2">
                                 <h3 class="title">Sales & Expert Advice</h3>
                                 <a href="tel:+800.606.6969">800.606.6969</a>
                             </div>
-                            <div class="info-item">
+                            <div class="info-item custom-animation" data-section-load="animation" data-step-animate="3">
                                 <h3 class="title">Customer Service</h3>
                                 <a href="tel:+800.221.5743">800.221.5743</a>
                             </div>
@@ -315,13 +380,13 @@
                     </div>
                     <div class="footer__contact">
                         <div class="contact-list">
-                            <div class="contact-item">
+                            <div class="contact-item custom-animation" data-section-load="animation" data-step-animate="4">
                                 <span class="icon icon--footer-chat">
                                     <svg><use xlink:href="#icon-footer-chat"></use></svg>
                                 </span>
                                 <a href="#">Live Chat</a>
                             </div>
-                            <div class="contact-item">
+                            <div class="contact-item custom-animation" data-section-load="animation" data-step-animate="5">
                                 <span class="icon icon--footer-mail">
                                     <svg><use xlink:href="#icon-footer-mail"></use></svg>
                                 </span>
@@ -329,7 +394,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="footer__submitForm">
+                    <div class="footer__submitForm custom-animation" data-section-load="animation" data-step-animate="6">
                         {{#if settings.show_newsletter_box}}
                             {{> components/common/subscription-form}}
                         {{/if}}
