@@ -1,4 +1,6 @@
 // Common
+$color-webpage-primary: #F47B20;
+
 .page-shipping,
 .page-payment-methods,
 .page-contact-us {
@@ -38,6 +40,11 @@
 .page-payment-methods {
     .page-content {
         display: none;
+    }
+}
+.page-contact-us {
+    .body {
+        padding-bottom: 76px !important;
     }
 }
 .custom-separator {
@@ -85,7 +92,7 @@
         position: absolute;
         left: 0;
         bottom: -10px;
-        background-color: #F47B20;
+        background-color: $color-webpage-primary;
     }
     @include smax-m {
         &::after {
@@ -228,7 +235,7 @@
             }
             strong {
                 font-weight: 500;
-                color: #F47B20;
+                color: $color-webpage-primary;
             }
             .image-list {
                 display: flex;
@@ -250,7 +257,7 @@
                         content: "";
                         opacity: 0.1;
                         z-index: -1;
-                        background: #F47B20;
+                        background: $color-webpage-primary;
                         position: absolute;
                         top: 0;
                         left: 0;
@@ -447,7 +454,7 @@
                 }
                 &.text-strong {
                     font-weight: 500;
-                    color: #F47B20;
+                    color: $color-webpage-primary;
                 }
 
                 @include smax-m {
@@ -564,6 +571,7 @@
     .icon-with-text {
         &__list {
             display: flex;
+            flex-wrap: wrap;
             justify-content: center;
             align-items: center;
             margin-left: -10px;
@@ -582,11 +590,17 @@
             top: 0;
             left: 10px;
             opacity: 0.1;
+            width: 84px;
+            height: 84px;
+            svg {
+                width: 100%;
+                height: 100%;
+            }
         }
         &__content {
-            padding: 20px 15px 25px 15px;
+            padding: 20px 15px 23px 15px;
             border-radius: 10px;
-            border: 1px solid #F47B20;
+            border: 1px solid $color-webpage-primary;
             background: rgba(244, 123, 32, 0.10);
             text-align: center;
             height: 100%;
@@ -603,6 +617,15 @@
                 font-size: 18px;
                 font-weight: 400;
                 line-height: 1;
+                text-decoration: none;
+                @include smax-xs {
+                    &--mail .text {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        flex-wrap: wrap;
+                    }
+                }
                 &.des-bigger {
                     font-size: 20px;
                 }
@@ -610,6 +633,57 @@
                     font-weight: 300;
                 }
                 + .description {
+                    margin-top: 20px;
+                }
+            }
+        }
+        @include smax-l {
+            &__item {
+                width: 50%;
+            }
+            &__item--full-mb {
+                width: 100%;
+                margin-top: 20px;
+            }
+        }
+    }
+    @include smax-m {
+        padding-top: 0px;
+        .icon-with-text {
+            &__item {
+                width: 100%;
+                padding-left: 0px;
+                padding-right: 0px;
+    
+                &:not(:first-child) {
+                    margin-top: 20px;
+                }
+            }
+    
+            &__icon {
+                left: 0px;
+            }
+    
+            &__content {
+                padding: 20px 15px 21px 15px;
+                font-size: 18px;
+                min-height: 156px;
+    
+                .title,
+                .description,
+                .description.des-bigger {
+                    font-size: 18px;
+                }
+            }
+        }
+    }
+    @include smax-s {
+        .icon-with-text {
+            &__item {
+                width: 100%;
+                padding-left: 0px;
+                padding-right: 0px;
+                &:not(:first-child) {
                     margin-top: 20px;
                 }
             }
@@ -651,37 +725,235 @@
             &__left {
                 padding-left: 20px;
                 width: 45.8538%;
+                &.custom-separator {
+                    @include smin-m {
+                        &::after {
+                            min-height: 90px;
+                        }
+                    }
+                }
+                @include smax-m {
+                    padding-left: 0px;
+                    width: 100%;
+                    &.custom-separator::after {
+                        width: 100%;
+                    }
+                }
             }
             &__right {
                 padding-right: 40px;
                 width: calc(100% - 45.8538%);
                 display: flex;
                 justify-content: flex-end;
+                @include smax-m {
+                    padding-right: 0px;
+                    width: 100%;
+                }
             }
             &__description {
-                max-width: 570px;
+                @include smin-m {
+                    max-width: 570px;
+                }
             }
         }
         &.list-options {
+            padding-top: 75px;
             .content-banner {
+                margin-top: 0px;
                 &__left {
-                    padding-left: 0px;
+                    padding-left: 7px;
+                    padding-top: 15px;
+                    &.custom-separator {
+                        @include smin-m {
+                            &::after {
+                                min-height: 180px;
+                            }
+                        }
+                    }
                 }
                 &__normal-text {
-                    max-width: 560px;
+                    font-weight: 300;
+                    font-size: 18px;
+                    line-height: 1.5555;
+                    @include smin-m {
+                        max-width: 560px;
+                    }
                 }
                 &__right {
+                    padding: 5px 0px 0px 32px;
                     .list-check {
                         &-item {
                             position: relative;
-                            padding-left: 40px;
+                            padding-left: 35px;
+                            font-size: 18px;
+                            font-weight: 300;
+                        }
+                        &-content {
+                            margin-bottom: 18px;
+                            strong {
+                                font-weight: 500;
+                            }
+                            line-height: 1.5555;
                         }
                         &-icon {
                             position: absolute;
                             width: 24px;
                             height: 20px;
                             left: 0;
-                            top: 0;
+                            top: 5px;
+                        }
+                    }
+                }
+            }
+        }
+        @include smax-m {
+            padding-top: 16px;
+            padding-bottom: 5px;
+            .content-banner {
+                &__title {
+                    font-size: 25px;
+                    margin-bottom: 26px;
+                    &.bottom-line {
+                        &::after {
+                            bottom: -15px;
+                        }
+                    }
+                }
+            }
+            &.list-options {
+                padding-top: 35px;
+                .content-banner {
+                    &__left {
+                        padding-top: 17px;
+                        padding-bottom: 2px;
+                    }
+                    &__right {
+                        padding-left: 0px;
+                        padding-top: 30px;
+                        .list-check {
+                            &-item {
+                                padding-left: 20px;
+                                font-size: 16px;
+                            }
+                            &-icon {
+                                width: 16px;
+                                height: 24px;
+                                top: 0px;
+                            }
+                        }
+                    }
+                    &__normal-text {
+                        font-size: 16px;
+                        text-align: center;
+                        line-height: 1.6555;
+                    }
+                }
+            }
+        }
+    }
+    .custom_contact-us {
+        padding: 87px 55px 0;
+        #contact-us-page {
+            .contact-us-content + p {
+                text-align: center;
+                font-size: 20px;
+                line-height: 1;
+                font-weight: 500;
+                padding-left: 15px;
+                color: $color-webpage-primary;
+            }
+            [data-contact-form] {
+                padding-top: 25px;
+                .form {
+                    &-row {
+                        margin: 0 -25px;
+                    }
+                    &-input {
+                        color: #444444;
+                        font-size: 18px;
+                        font-weight: 400;
+                        line-height: 1;
+                        height: 60px;
+                        padding-left: 30px;
+                    }
+                    &-label {
+                        color: #333333;
+                        font-size: 20px;
+                        font-weight: 500;
+                        line-height: 1;
+                        margin-bottom: 15px;
+                        small {
+                            color: #F00;
+                            float: unset;
+                            font-size: 20px;
+                            font-style: normal;
+                            font-weight: 500;
+                            line-height: 20px;
+                        }
+                    }
+                    &-field {
+                        padding-left: 25px;
+                        padding-right: 25px;
+                        margin-bottom: 50px;
+
+                        &.form-contact_question {
+                            padding-left: 0px;
+                            padding-right: 0px;
+                            margin-bottom: 42px;
+                            .form-input {
+                                height: 210px;
+                                line-height: 1.4;
+                            }
+                        }
+                    }
+                }
+            }
+            .form-actions {
+                margin-top: 14px;
+                margin-left: 3px;
+                .button {
+                    min-width: 170px;
+                    min-height: 56px;
+                }
+            }
+        }
+        @include smax-m {
+            padding: 50px 0 0;
+            #contact-us-page {
+                .contact-us-content+p {
+                    font-size: 18px;
+                    line-height: 1.5555;
+                    max-width: 260px;
+                    margin: 0 auto;
+                    padding-left: 0px;
+                }
+                [data-contact-form] {
+                    padding-top: 18px;
+                    .form {
+                        &-label {
+                            font-size: 18px;
+                        }
+                        &-input {
+                            height: 50px;
+                            font-size: 16px;
+                        }
+                        &-field {
+                            margin-bottom: 32px;
+                            &.form-contact_question {
+                                margin-bottom: 28px;
+                                .form-input {
+                                    height: 180px;
+                                }
+                            }
+                        }
+                        &-actions {
+                            margin-top: 0px;
+                            margin-left: 0px;
+                            .button {
+                                min-height: 50px;
+                                min-width: unset;
+                                max-width: 150px;
+                            }
                         }
                     }
                 }

@@ -9,35 +9,35 @@
         {{#if forms.contact.name}}
             <div class="form-field">
                 <label class="form-label" for="contact_fullname">{{lang 'forms.contact_us.full_name'}}</label>
-                <input class="form-input" type="text" id="contact_fullname" name="contact_fullname" value="{{customer.name}}">
+                <input class="form-input" type="text" id="contact_fullname" name="contact_fullname" value="{{customer.name}}" placeholder="Full Name">
             </div>
         {{/if}}
 
         {{#if forms.contact.phone}}
             <div class="form-field">
                 <label class="form-label" for="contact_phone">{{lang 'forms.contact_us.phone'}}</label>
-                <input class="form-input" type="text" id="contact_phone" name="contact_phone" value="{{customer.phone}}">
+                <input class="form-input" type="text" id="contact_phone" name="contact_phone" value="{{customer.phone}}" placeholder="Phone Number">
             </div>
         {{/if}}
 
         <div class="form-field">
             <label class="form-label" for="contact_email">{{lang 'forms.contact_us.email'}}
-                <small>{{lang 'common.required' }}</small>
+                <small>*</small>
             </label>
-            <input class="form-input" type="text" id="contact_email" name="contact_email" value="{{customer.email}}">
+            <input class="form-input" type="text" id="contact_email" name="contact_email" value="{{customer.email}}" placeholder="Email Address">
         </div>
 
         {{#if forms.contact.order}}
             <div class="form-field">
                 <label class="form-label" for="contact_orderno">{{lang 'forms.contact_us.order'}}</label>
-                <input class="form-input" type="text" id="contact_orderno" name="contact_orderno">
+                <input class="form-input" type="text" id="contact_orderno" name="contact_orderno" placeholder="Order Number">
             </div>
         {{/if}}
 
         {{#if forms.contact.company}}
             <div class="form-field">
                 <label class="form-label" for="contact_companyname">{{lang 'forms.contact_us.company'}}</label>
-                <input class="form-input" type="text" id="contact_companyname" name="contact_companyname">
+                <input class="form-input" type="text" id="contact_companyname" name="contact_companyname" placeholder="Company Name">
             </div>
         {{/if}}
 
@@ -49,17 +49,17 @@
         {{/if}}
     </div>
 
-    <div class="form-field">
+    <div class="form-field form-contact_question">
         <label class="form-label" for="contact_question">{{lang 'forms.contact_us.question'}}
-            <small>{{lang 'common.required' }}</small>
+            <small>*</small>
         </label>
-        <textarea name="contact_question" id="contact_question" rows="5" cols="50" class="form-input"></textarea>
+        <textarea name="contact_question" id="contact_question" rows="5" cols="50" class="form-input" placeholder="Comments/Questions"></textarea>
     </div>
     {{#if forms.contact.manualcaptcha}}
         <div class="form-field">
             <label class="form-label" for="{{forms.contact.manualcaptcha.name}}">
                 {{lang 'forms.contact_us.manual_captcha_instruction'}}
-                <small>{{lang 'common.required' }}</small>
+                <small>*</small>
             </label>
             <div class="manual-captcha-input-container">
                 <span class="question">{{forms.contact.manualcaptcha.question}}</span>
@@ -69,6 +69,6 @@
     {{/if}}
     {{{forms.contact.recaptcha.markup}}}
     <div class="form-actions">
-        <input class="button button--primary" type="submit" value="{{lang 'forms.contact_us.submit' }}">
+        <button class="button button--primary" type="submit">{{lang 'forms.contact_us.submit' }}</button>
     </div>
 </form>

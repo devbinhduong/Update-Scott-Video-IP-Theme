@@ -55,10 +55,12 @@
                     </span>
                     <div class="icon-with-text__content">
                         <p class="title">Mobile Number</p>
-                        <p class="description">1-888-272-5560</p>
+                        <a class="description hover-link" href="tel:+1-888-272-5560">
+                            <span class="text">1-888-272-5560</span>
+                        </a>
                     </div>
                 </div>
-                <div class="icon-with-text__item">
+                <div class="icon-with-text__item icon-with-text__item--full-mb">
                     <span class="icon-with-text__icon">
                         <svg>
                             <use xlink:href="#icon-mail-contact"></use>
@@ -66,7 +68,9 @@
                     </span>
                     <div class="icon-with-text__content">
                         <p class="title">Email Address</p>
-                        <p class="description">service@videoconferencingsupply.com</p>
+                        <a class="description description--mail hover-link" href="mailto: service@videoconferencingsupply.com">
+                            <span class="text"><span>service@</span>videoconferencingsupply.com</span>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -113,7 +117,7 @@
                     {{#if forms.contact.success}}
                     <div id="contact-us-success">{{{lang 'forms.contact_us.successful' shopPath=urls.home}}}</div>
                     {{else}}
-                    <p>{{{page.content}}}</p>
+                    <p class="contact-us-content">{{{page.content}}}</p>
                     {{> components/page/contact-us-form}}
                     {{/if}}
                 </div>
